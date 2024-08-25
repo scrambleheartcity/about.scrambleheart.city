@@ -1,0 +1,6 @@
+{
+  "[typescript]": {
+    // uses global prettier if not installed locally
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
