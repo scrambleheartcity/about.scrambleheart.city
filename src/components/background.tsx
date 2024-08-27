@@ -1,28 +1,32 @@
-import React from 'react';
-import { LazyVideo } from './lazyVideo';
+'use client';
 
-export function Background({
-  img,
-  children,
-}: { img: string | undefined } & React.PropsWithChildren) {
+import React, { useState } from 'react';
+
+export function Background(
+  props: { img: string | undefined; video?: string } & React.PropsWithChildren,
+) {
+  const [loaded, setLoaded] = useState(false);
   return (
     <div
       className="bg-cover bg-center min-h-screen"
       style={{
-        backgroundImage: img ? `url(${img})` : undefined,
+        backgroundImage: props.img && !loaded ? `url(${props.img})` : undefined,
       }}
     >
-      <LazyVideo
-        autoPlay={true}
-        muted={true}
-        loop={true}
-        src="assets/replay-2024-08-23-[480p].mp4"
-        preload={'auto'}
-        itemType={'video/mp4'}
-        className="fixed top-0 left-0 w-screen h-screen"
-      />
+      {props.video && (
+        <video
+          className="fixed w-screen top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+          autoPlay={true}
+          muted={true}
+          loop={true}
+          style={{ opacity: loaded ? 1 : 0 }}
+          onTimeUpdate={() => setLoaded(true)}
+        >
+          <source src={props.video}></source>
+        </video>
+      )}
       <div className="min-h-screen w-screen flex flex-col justify-center items-center bg-black bg-opacity-50 fixed top-0 left-0">
-        {children}
+        {props.children}
       </div>
     </div>
   );

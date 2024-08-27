@@ -5,7 +5,10 @@ import { ProjectLinks, SocialLinks } from './data';
 export default function Home() {
   return (
     <main>
-      <Background img="assets/newtagfighter_4.jpg">
+      <Background
+        img="assets/newtagfighter_4.jpg"
+        video="assets/replay-2024-08-23-[480p].mp4"
+      >
         <section>
           <img src="assets/scramble_logo.png" className="h-60" />
         </section>
