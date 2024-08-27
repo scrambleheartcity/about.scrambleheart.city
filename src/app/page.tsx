@@ -6,8 +6,10 @@ export default function Home() {
   return (
     <main>
       <Background img="assets/newtagfighter_4.jpg">
-        <article className="bg-black bg-opacity-80 text-white p-12 flex flex-col justify-center items-center">
-          hello
+        <section>
+          <img src="assets/scramble_logo.png" className="h-60" />
+        </section>
+        <section className="bg-black text-white rounded-xl p-12 flex flex-col justify-center items-center">
           {SocialLinks.map(link => (
             <div key={link.url}>
               <ExternalLink
@@ -29,7 +31,7 @@ export default function Home() {
               <ExternalLink label={link.label} src={link.url} />
             </div>
           ))}
-        </article>
+        </section>
       </Background>
     </main>
   );
