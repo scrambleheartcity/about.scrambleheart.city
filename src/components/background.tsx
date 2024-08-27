@@ -15,7 +15,7 @@ export function Background(
     >
       {props.video && (
         <video
-          className="fixed w-screen top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+          className="min-w-full min-h-screen max-w-none max-h-none fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
           autoPlay={true}
           muted={true}
           loop={true}
