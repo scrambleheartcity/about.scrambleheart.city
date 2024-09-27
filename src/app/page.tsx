@@ -1,5 +1,4 @@
 import { Background } from '@/components/background';
-import { SocialIcon } from '@/components/social';
 import { ProjectLinks, SocialLinks } from './data';
 import styles from './page.module.css';
 
@@ -12,7 +11,15 @@ export default function Home() {
       >
         <aside className={styles.socials}>
           {SocialLinks.map(link => (
-            <SocialIcon key={link.url} link={link} />
+            <div>
+              <a href={link.url}>
+                <img
+                  src={link.icon}
+                  className={styles.socialIcon}
+                  alt={link.label}
+                />
+              </a>
+            </div>
           ))}
         </aside>
         <section>
@@ -20,8 +27,8 @@ export default function Home() {
         </section>
         <section>
           {ProjectLinks.map(link => (
-            <a key={link.url} href={link.url} className={styles.cta}>
-              <div>{link.label}</div>
+            <a key={link.url} href={link.url}>
+              <div className={styles.cta}>{link.label}</div>
             </a>
           ))}
         </section>
