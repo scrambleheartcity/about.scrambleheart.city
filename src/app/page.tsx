@@ -18,11 +18,11 @@ export default function Home() {
         <section>
           <img src="assets/scramble_logo.png" className={styles.logo} />
         </section>
-        <section className={styles.cta}>
+        <section>
           {ProjectLinks.map(link => (
-            <div key={link.url}>
-              <a href={link.url}>{link.label}</a>
-            </div>
+            <a key={link.url} href={link.url} className={styles.cta}>
+              <div>{link.label}</div>
+            </a>
           ))}
         </section>
       </Background>
