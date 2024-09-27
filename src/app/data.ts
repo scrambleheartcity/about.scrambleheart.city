@@ -8,7 +8,7 @@ export type SocialLink = Link & {
 
 export const ProjectLinks: Link[] = [
   {
-    label: 'join the mailing list',
+    label: 'Join mailing list',
     url: 'https://forms.gle/LSc9YWop2oSNqPdAA',
   },
 ];
@@ -16,16 +16,16 @@ export const SocialLinks: SocialLink[] = [
   {
     label: 'Discord',
     url: 'https://discord.gg/6hbrfUgZJB',
-    icon: 'assets/social_discord.png',
+    icon: 'assets/figma/social_discord.png',
   },
   {
     label: 'Twitter',
     url: 'https://twitter.com/ScrambleHeartC',
-    icon: 'assets/social_twitter.png',
+    icon: 'assets/figma/social_twitter.png',
   },
   {
     label: 'Instagram',
     url: 'https://www.instagram.com/scrambleheartcity/',
-    icon: 'assets/social_instagram.png',
+    icon: 'assets/figma/social_instagram.png',
   },
 ];

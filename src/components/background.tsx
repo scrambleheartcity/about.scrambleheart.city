@@ -1,21 +1,25 @@
 'use client';
 
 import React, { useState } from 'react';
+import styles from './background.module.css';
 
 export function Background(
-  props: { img: string | undefined; video?: string } & React.PropsWithChildren,
+  props: {
+    img: string | undefined;
+    video?: string;
+  } & React.PropsWithChildren,
 ) {
   const [loaded, setLoaded] = useState(false);
   return (
     <div
-      className="bg-cover bg-center min-h-screen"
+      className={styles.wrapper}
       style={{
         backgroundImage: props.img && !loaded ? `url(${props.img})` : undefined,
       }}
     >
       {props.video && (
         <video
-          className="min-w-full min-h-screen max-w-none max-h-none fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+          className={styles.video}
           autoPlay={true}
           muted={true}
           loop={true}
@@ -25,9 +29,7 @@ export function Background(
           <source src={props.video}></source>
         </video>
       )}
-      <div className="min-h-screen w-screen flex flex-col justify-center items-center bg-black bg-opacity-50 fixed top-0 left-0">
-        {props.children}
-      </div>
+      <div className={styles.content}>{props.children}</div>
     </div>
   );
 }
