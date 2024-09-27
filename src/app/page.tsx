@@ -11,15 +11,13 @@ export default function Home() {
       >
         <aside className={styles.socials}>
           {SocialLinks.map(link => (
-            <div>
-              <a href={link.url}>
-                <img
-                  src={link.icon}
-                  className={styles.socialIcon}
-                  alt={link.label}
-                />
-              </a>
-            </div>
+            <a key={link.url} href={link.url}>
+              <img
+                src={link.icon}
+                className={styles.socialIcon}
+                alt={link.label}
+              />
+            </a>
           ))}
         </aside>
         <section>
