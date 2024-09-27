@@ -7,7 +7,7 @@
   gap: 1em;
 }
 
-.logo {
+img.logo {
   height: 600px;
 }
 
@@ -18,6 +18,13 @@ a.cta {
 a.cta > * {
   background-color: black;
   color: white;
-  border-radius: 1em;
+  border-radius: 0.5em;
   padding: 1em 2em;
+}
+
+@media (width <= 800px) {
+  img.logo {
+    height: auto;
+    width: 80vw;
+  }
 }
