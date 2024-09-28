@@ -1,4 +1,6 @@
 import { Background } from '@/components/background';
+import { ExternalLink } from '@/components/externalLink';
+import { classCat } from '@/components/util';
 import { ProjectLinks, SocialLinks } from './data';
 import styles from './page.module.css';
 
@@ -11,23 +13,23 @@ export default function Home() {
       >
         <aside className={styles.socials}>
           {SocialLinks.map(link => (
-            <a key={link.url} href={link.url}>
+            <ExternalLink key={link.url} href={link.url}>
               <img
                 src={link.icon}
-                className={styles.socialIcon}
+                className={classCat(styles.socialIcon, styles.hover)}
                 alt={link.label}
               />
-            </a>
+            </ExternalLink>
           ))}
         </aside>
-        <section>
+        <section className={styles.content}>
           <img src="assets/scramble_logo.png" className={styles.logo} />
-        </section>
-        <section>
           {ProjectLinks.map(link => (
-            <a key={link.url} href={link.url}>
-              <div className={styles.cta}>{link.label}</div>
-            </a>
+            <ExternalLink key={link.url} href={link.url}>
+              <div className={classCat(styles.cta, styles.hover)}>
+                {link.label}
+              </div>
+            </ExternalLink>
           ))}
         </section>
       </Background>

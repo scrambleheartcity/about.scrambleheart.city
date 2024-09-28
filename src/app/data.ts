@@ -16,16 +16,16 @@ export const SocialLinks: SocialLink[] = [
   {
     label: 'Discord',
     url: 'https://discord.gg/6hbrfUgZJB',
-    icon: 'assets/figma/social_discord.png',
+    icon: 'assets/social/social_discord.png',
   },
   {
     label: 'Twitter',
     url: 'https://twitter.com/ScrambleHeartC',
-    icon: 'assets/figma/social_twitter.png',
+    icon: 'assets/social/social_twitter.png',
   },
   {
     label: 'Instagram',
     url: 'https://www.instagram.com/scrambleheartcity/',
-    icon: 'assets/figma/social_instagram.png',
+    icon: 'assets/social/social_instagram.png',
   },
 ];

@@ -1,42 +1,53 @@
+.hover {
+  box-shadow: 0 0 #ee3757;
+  transition-property: box-shadow;
+  transition-duration: 0.1s;
+}
+.hover:hover {
+  box-shadow: 0 0.5em #ee3757;
+}
+
 .socials {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 1em;
   display: flex;
-  gap: 1em;
+  gap: 8px;
+  margin: 16px 48px;
 }
 .socialIcon {
-  height: 4em;
-  box-shadow: 0 0 #ee3757;
-  transition-property: box-shadow;
-  transition-duration: 0.5s;
+  height: 48px;
   border-radius: 100%;
 }
-.socialIcon:hover {
-  box-shadow: 0 0 0 0.5em #ee3757;
+
+section.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
 }
 
 img.logo {
-  height: 600px;
+  height: auto;
+  max-width: 560px;
 }
 @media (width <= 800px) {
+  section.content {
+    margin: 0 24px;
+    align-items: stretch;
+  }
   img.logo {
-    height: auto;
-    width: 80vw;
+    max-width: none;
+    width: 100%;
   }
 }
 
 .cta {
+  text-align: center;
   background-color: black;
   color: white;
   text-decoration: none;
   border-radius: 0.5em;
-  padding: 1em 2em;
-  box-shadow: 0 0 #ee3757;
-  transition-property: box-shadow;
-  transition-duration: 0.5s;
-}
-.cta:hover {
-  box-shadow: 0 0.5em #ee3757;
+  padding: 12px 2em;
 }
