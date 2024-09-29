@@ -34,22 +34,28 @@ export default function Home() {
         </section>
       </Background>
       <section className={styles.info}>
-        <div className={styles.infoCopy}>
-          <h1>
-            The newest game from the creators of{' '}
-            <ExternalLink href="https://about.toughlovearena.com">
-              Tough Love Arena
-            </ExternalLink>
-            !
-          </h1>
-          <ul>
-            <li>Exciting 3v3 tag team fighting action</li>
-            <li>Playable in the browser, no installation required</li>
-            <li>Closed Alpha - Late 2024</li>
-            <li>Early Access - 2025</li>
-          </ul>
+        <div className={styles.left}>
+          <div className={styles.infoCopy}>
+            <h2>
+              From the team behind{' '}
+              <ExternalLink href="https://about.toughlovearena.com">
+                Tough Love Arena
+              </ExternalLink>
+              !
+            </h2>
+            <ul>
+              <li>Exciting 3v3 tag team fighting action</li>
+              <li>Playable in the browser, no installation required</li>
+              <li>Closed Alpha - Late 2024</li>
+              <li>Early Access - 2025</li>
+            </ul>
+          </div>
+          <div className={styles.infoSprites}>
+            <img src="assets/sprites/sword_1.png" />
+            <img src="assets/sprites/sword_2.png" className={styles.mirror} />
+          </div>
         </div>
-        <div>
+        <div className={styles.right}>
           <video
             className={styles.video}
             autoPlay={true}
