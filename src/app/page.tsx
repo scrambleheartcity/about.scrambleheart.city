@@ -58,6 +58,7 @@ export default function Home() {
         <div className={styles.right}>
           <video
             className={styles.video}
+            preload="none"
             autoPlay={true}
             muted={true}
             loop={true}
