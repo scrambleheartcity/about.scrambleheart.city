@@ -19,8 +19,8 @@ export default function Home() {
         ))}
       </aside>
       <Background
-        img="assets/beach_day_1080.jpg"
-        // video="assets/replay-2024-08-23-[480p].mp4"
+        img="assets/bg/rooftop_v2.jpg"
+        // video="assets/video/replay-2024-08-23-[480p].mp4"
       >
         <section className={styles.content}>
           <img src="assets/scramble_logo.png" className={styles.logo} />
@@ -62,7 +62,7 @@ export default function Home() {
             muted={true}
             loop={true}
           >
-            <source src="assets/replay-2024-08-23-[480p].mp4"></source>
+            <source src="assets/video/replay-2024-08-23-[480p].mp4"></source>
           </video>
         </div>
       </section>

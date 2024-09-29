@@ -2,6 +2,20 @@
   background-size: cover;
   background-position: center;
   min-height: 100vh;
+
+  animation-name: bg-slide;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  /* animation-direction: alternate; */
+}
+@keyframes bg-slide {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
 }
 
 .video {
@@ -24,4 +38,10 @@
   align-items: center;
   top: 0;
   left: 0;
+}
+
+@media (width <= 800px) {
+  .wrapper {
+    animation-duration: 30s;
+  }
 }
