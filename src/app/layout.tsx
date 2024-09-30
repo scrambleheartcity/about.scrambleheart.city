@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
@@ -20,6 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <GoogleAnalytics gaId="G-9PRMTH9QGG" />
+      </head>
       <body>{children}</body>
     </html>
   );
