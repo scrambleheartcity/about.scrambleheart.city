@@ -1,3 +1,4 @@
+import { GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
@@ -20,6 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="GTM-MF3GJHQ8" />
       <body>{children}</body>
     </html>
   );
