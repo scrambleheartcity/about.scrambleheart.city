@@ -75,7 +75,7 @@ section.info .infoSprites {
 }
 section.info .infoSprites img {
   height: 300px;
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 section.info .infoSprites .mirror {
   transform: scaleX(-1);
