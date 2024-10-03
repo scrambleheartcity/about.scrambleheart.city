@@ -1,10 +1,14 @@
-.hover {
+.hoverButton,
+.hoverCircle {
   box-shadow: 0 0 #ee3757;
   transition-property: box-shadow;
   transition-duration: 0.1s;
 }
-.hover:hover {
-  box-shadow: 0 0.5em #ee3757;
+.hoverButton:hover {
+  box-shadow: 0 8px #ee3757;
+}
+.hoverCircle:hover {
+  box-shadow: 4px 2px #ee3757;
 }
 
 .socials {

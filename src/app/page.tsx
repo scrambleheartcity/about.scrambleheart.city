@@ -12,7 +12,7 @@ export default function Home() {
           <ExternalLink key={link.url} href={link.url}>
             <img
               src={link.icon}
-              className={classCat(styles.socialIcon, styles.hover)}
+              className={classCat(styles.socialIcon, styles.hoverCircle)}
               alt={link.label}
             />
           </ExternalLink>
@@ -26,7 +26,7 @@ export default function Home() {
           <img src="assets/scramble_logo.png" className={styles.logo} />
           {ProjectLinks.map(link => (
             <ExternalLink key={link.url} href={link.url}>
-              <div className={classCat(styles.cta, styles.hover)}>
+              <div className={classCat(styles.cta, styles.hoverButton)}>
                 {link.label}
               </div>
             </ExternalLink>
