@@ -111,8 +111,11 @@ section.info .infoSprites {
   justify-content: center;
   align-items: center;
 }
+section.info .right {
+  width: 60%;
+}
 section.info video {
-  width: 66vw;
+  width: 100%;
 }
 
 section.dates {
@@ -139,10 +142,10 @@ section.dates .dateCols .right {
 }
 
 .tilt {
-  transform: skewY(6deg);
+  /* transform: skewY(6deg); */
 }
 .tilt > * {
-  transform: skewY(-6deg);
+  /* transform: skewY(-6deg); */
 }
 .tilt.info {
   background: white;

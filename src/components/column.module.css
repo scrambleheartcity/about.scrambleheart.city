@@ -1,0 +1,16 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.column .inner {
+  max-width: 1440px;
+}
+
+@media (width <= 1920px) {
+  .column .inner {
+    max-width: unset;
+  }
+}
