@@ -31,6 +31,7 @@
 .page footer {
   padding: 24px;
   box-sizing: border-box;
+  width: 100vw;
 }
 .page footer {
   background-color: #fff9ef;
@@ -43,11 +44,10 @@
 
 .page header {
   font-size: 60.8px;
-  font-weight: bold;
   margin: 0.5em auto;
 }
 
-section.content {
+section.hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,7 +55,7 @@ section.content {
   gap: 24px;
   min-height: 100vh;
 }
-section.content img.logo {
+section.hero img.logo {
   height: auto;
   max-width: 560px;
 }
@@ -72,7 +72,7 @@ section.content img.logo {
     opacity: 1;
   }
 }
-section.content .cta {
+section.hero .cta {
   text-align: center;
   background-color: black;
   color: white;
@@ -81,7 +81,7 @@ section.content .cta {
   padding: 12px 2em;
 }
 
-section.info {
+section.info .content {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -120,6 +120,8 @@ section.info video {
 
 section.dates {
   background-color: #fec254;
+}
+section.dates .content {
   display: flex;
   flex-direction: row;
   justify-content: center;
