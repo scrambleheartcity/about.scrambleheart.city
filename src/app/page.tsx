@@ -46,7 +46,7 @@ export default function Home() {
       <div className={classCat(styles.tilt, styles.info)}>
         <section className={styles.info}>
           <Column>
-            <div className={styles.content}>
+            <div className={styles.contextualFlex}>
               <div className={styles.left}>
                 <div className={styles.infoCopy}>
                   <header>An in-browser 3v3 tag team fighting game</header>
@@ -78,7 +78,7 @@ export default function Home() {
       </div>
       <section className={styles.dates}>
         <Column>
-          <div className={styles.content}>
+          <div className={styles.contextualFlex}>
             <div className={styles.left}>
               <img src="assets/sprites/sword_1.png" />
             </div>
@@ -104,7 +104,7 @@ export default function Home() {
           </div>
         </Column>
       </section>
-      <footer>© M. Paul Games LLC</footer>
+      <section className={styles.footer}>© M. Paul Games LLC</section>
     </main>
   );
 }
