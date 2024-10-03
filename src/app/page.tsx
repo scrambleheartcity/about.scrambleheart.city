@@ -23,10 +23,19 @@ export default function Home() {
         // video="assets/video/replay-2024-08-23-[480p].mp4"
       >
         <section className={styles.content}>
-          <img src="assets/scramble_logo.png" className={styles.logo} />
+          <img
+            src="assets/scramble_logo.png"
+            className={classCat(styles.logo, styles.fader)}
+          />
           {ProjectLinks.map(link => (
             <ExternalLink key={link.url} href={link.url}>
-              <div className={classCat(styles.cta, styles.hoverButton)}>
+              <div
+                className={classCat(
+                  styles.cta,
+                  styles.hoverButton,
+                  styles.fader,
+                )}
+              >
                 {link.label}
               </div>
             </ExternalLink>
