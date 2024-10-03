@@ -24,6 +24,29 @@
   border-radius: 100%;
 }
 
+.page {
+  font-size: 18px;
+}
+.page section,
+.page footer {
+  padding: 24px;
+  box-sizing: border-box;
+}
+.page footer {
+  background-color: #fff9ef;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.page header {
+  font-size: 60.8px;
+  font-weight: bold;
+  margin: 0.5em auto;
+}
+
 section.content {
   display: flex;
   flex-direction: column;
@@ -36,7 +59,6 @@ section.content img.logo {
   height: auto;
   max-width: 560px;
 }
-
 section.content .cta {
   text-align: center;
   background-color: black;
@@ -47,7 +69,6 @@ section.content .cta {
 }
 
 section.info {
-  padding: 24px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -77,19 +98,48 @@ section.info .infoSprites {
   justify-content: center;
   align-items: center;
 }
-section.info .infoSprites img {
-  height: 300px;
-  /* filter: invert(1); */
-}
-section.info .infoSprites .mirror {
-  transform: scaleX(-1);
+section.info video {
+  width: 66vw;
 }
 
-section.info video {
-  width: 60vw;
+section.dates {
+  background-color: #fec254;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+section.dates img {
+  height: 600px;
+}
+section.dates .right {
+  flex: 1;
+}
+section.dates .dateCols {
+  display: flex;
+  justify-content: space-between;
+}
+section.dates .dateCols .left,
+section.dates .dateCols .right {
+  flex: 1;
+}
+
+.tilt {
+  transform: skewY(6deg);
+}
+.tilt > * {
+  transform: skewY(-6deg);
+}
+.tilt.info {
+  background: white;
 }
 
 @media (width <= 800px) {
+  .page header {
+    font-size: 40.5px;
+  }
+
   section.content {
     margin: 0 24px;
     align-items: stretch;
