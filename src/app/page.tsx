@@ -19,14 +19,7 @@ export default function Home() {
           </ExternalLink>
         ))}
       </aside>
-      <Background
-        img={[
-          'assets/stages/rooftop_day/shc_rooftop_day_sky.png',
-          'assets/stages/rooftop_day/shc_rooftop_day_buildings.png',
-          'assets/stages/rooftop_day/shc_rooftop_day_platform.png',
-        ]}
-        // video="assets/video/replay-2024-08-23-[480p].mp4"
-      >
+      <Background>
         <section className={styles.hero}>
           <img
             src="assets/scramble_logo.png"
