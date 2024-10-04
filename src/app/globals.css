@@ -17,7 +17,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground: white;
-    --background: black;
+    --background: #111;
     --background-gold: #6f4902;
     --image-invert: 1;
   }

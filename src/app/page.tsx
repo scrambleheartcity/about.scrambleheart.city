@@ -41,39 +41,41 @@ export default function Home() {
           ))}
         </section>
       </Background>
-      <div className={classCat(styles.tilt, styles.info)}>
-        <section className={styles.info}>
-          <Column>
-            <div className={styles.contextualFlex}>
-              <div className={styles.left}>
-                <div className={styles.infoCopy}>
-                  <header>An in-browser 3v3 tag team fighting game</header>
-                  <div>
-                    From the team behind{' '}
-                    <ExternalLink href="https://about.toughlovearena.com">
-                      Tough Love Arena
-                    </ExternalLink>{' '}
-                    comes Scramble Heart City, an exciting, action-packed
-                    adventure {`that's`} playable in browser — no installation
-                    required!
-                  </div>
+      <div className={classCat(styles.edge, styles.edgeBorder)}></div>
+      <div
+        className={classCat(styles.edge, styles.edgeFill, styles.info)}
+      ></div>
+      <section className={styles.info}>
+        <Column>
+          <div className={styles.contextualFlex}>
+            <div className={styles.left}>
+              <div className={styles.infoCopy}>
+                <header>An in-browser 3v3 tag team fighting game</header>
+                <div>
+                  From the team behind{' '}
+                  <ExternalLink href="https://about.toughlovearena.com">
+                    Tough Love Arena
+                  </ExternalLink>{' '}
+                  comes Scramble Heart City, an exciting, action-packed
+                  adventure {`that's`} playable in browser — no installation
+                  required!
                 </div>
               </div>
-              <div className={styles.right}>
-                <video
-                  className={styles.video}
-                  preload="none"
-                  autoPlay={true}
-                  muted={true}
-                  loop={true}
-                >
-                  <source src="assets/video/replay-2024-08-23-[480p].mp4" />
-                </video>
-              </div>
             </div>
-          </Column>
-        </section>
-      </div>
+            <div className={styles.right}>
+              <video
+                className={styles.video}
+                preload="none"
+                autoPlay={true}
+                muted={true}
+                loop={true}
+              >
+                <source src="assets/video/replay-2024-08-23-[480p].mp4" />
+              </video>
+            </div>
+          </div>
+        </Column>
+      </section>
       <section className={styles.dates}>
         <Column>
           <div className={styles.contextualFlex}>
