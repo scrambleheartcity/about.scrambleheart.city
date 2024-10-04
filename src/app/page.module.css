@@ -40,7 +40,7 @@
   /* transform: skewY(-6deg); */
 }
 .tilt.info {
-  background: white;
+  background-color: var(--background);
 }
 
 /************
@@ -131,10 +131,11 @@ section.info video {
 * section.dates *
 ************/
 section.dates {
-  background-color: #fec254;
+  background-color: var(--background-gold);
 }
 section.dates img {
   height: 600px;
+  filter: invert(var(--image-invert));
 }
 section.dates .right {
   flex: 1;
@@ -152,7 +153,6 @@ section.dates .dateCols .right {
 * section.footer *
 ************/
 section.footer {
-  background-color: #fff9ef;
   height: 160px;
   display: flex;
   flex-direction: column;

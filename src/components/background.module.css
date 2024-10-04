@@ -39,6 +39,17 @@
 .bg3 {
   background-image: url('/assets/stages/rooftop_day/shc_rooftop_day_platform.png');
 }
+@media (prefers-color-scheme: dark) {
+  .bg1 {
+    background-image: url('/assets/stages/rooftop_night/shc_rooftop_night_paint_sky.png');
+  }
+  .bg2 {
+    background-image: url('/assets/stages/rooftop_night/shc_rooftop_night_buildings.png');
+  }
+  .bg3 {
+    background-image: url('/assets/stages/rooftop_night/shc_rooftop_night_platform.png');
+  }
+}
 
 .content {
   position: absolute;

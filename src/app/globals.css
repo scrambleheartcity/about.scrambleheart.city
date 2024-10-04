@@ -8,11 +8,26 @@
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+:root {
+  --foreground: black;
+  --background: white;
+  --background-gold: #fec254;
+  --image-invert: 0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: white;
+    --background: black;
+    --background-gold: #6f4902;
+    --image-invert: 1;
+  }
+}
+
 body {
   font-family: 'Alexandria';
   margin: 0;
-  color: black;
-  background: white;
+  color: var(--foreground);
+  background: var(--background);
 }
 
 a {
