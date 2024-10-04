@@ -10,7 +10,7 @@
 
 :root {
   --foreground: black;
-  --background: white;
+  --background-info: white;
   --background-gold: #fec254;
   --image-invert: 0;
   --edgeHeight: 32px;
@@ -18,7 +18,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground: white;
-    --background: #111;
+    --background-info: #444;
     --background-gold: #6f4902;
     --image-invert: 1;
   }
@@ -28,7 +28,8 @@ body {
   font-family: 'Alexandria';
   margin: 0;
   color: var(--foreground);
-  background-color: var(--background);
+  background-color: var(--background-info);
+  /* for testing */
   /* background-color: purple; */
 }
 
