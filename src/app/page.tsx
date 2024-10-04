@@ -41,9 +41,16 @@ export default function Home() {
           ))}
         </section>
       </Background>
-      <div className={classCat(styles.edge, styles.edgeBorder)}></div>
       <div
-        className={classCat(styles.edge, styles.edgeFill, styles.info)}
+        className={classCat(styles.edge, styles.edgeDown, styles.edgeBorder)}
+      ></div>
+      <div
+        className={classCat(
+          styles.edge,
+          styles.edgeDown,
+          styles.edgeFill,
+          styles.info,
+        )}
       ></div>
       <section className={styles.info}>
         <Column>
@@ -76,6 +83,25 @@ export default function Home() {
           </div>
         </Column>
       </section>
+      <div
+        className={classCat(
+          styles.edge,
+          styles.edgeUp,
+          styles.edgeFill,
+          styles.info,
+        )}
+      ></div>
+      <div
+        className={classCat(styles.edge, styles.edgeUp, styles.edgeBorder)}
+      ></div>
+      <div
+        className={classCat(
+          styles.edge,
+          styles.edgeUp,
+          styles.edgeFill,
+          styles.dates,
+        )}
+      ></div>
       <section className={styles.dates}>
         <Column>
           <div className={styles.contextualFlex}>
@@ -113,6 +139,26 @@ export default function Home() {
           </div>
         </Column>
       </section>
+
+      <div
+        className={classCat(
+          styles.edge,
+          styles.edgeDown,
+          styles.edgeFill,
+          styles.dates,
+        )}
+      ></div>
+      <div
+        className={classCat(styles.edge, styles.edgeDown, styles.edgeBorder)}
+      ></div>
+      <div
+        className={classCat(
+          styles.edge,
+          styles.edgeDown,
+          styles.edgeFill,
+          styles.info,
+        )}
+      ></div>
       <section className={styles.footer}>© M. Paul Games LLC</section>
     </main>
   );

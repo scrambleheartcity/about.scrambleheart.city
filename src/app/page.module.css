@@ -42,23 +42,33 @@
 .edge {
   position: relative;
   box-sizing: border-box;
-  transform: skewY(1deg);
+  --skew: 0deg;
+  --edgeHeight: 32px;
+}
+.edgeDown {
+  transform: skewY(var(--skew));
+}
+.edgeUp {
+  transform: skewY(calc(-1 * var(--skew)));
 }
 .edge.edgeBorder {
   z-index: 2;
-  height: 40px;
-  margin-top: -40px;
-  margin-bottom: -40px;
+  height: var(--edgeHeight);
+  margin: calc(-1 * var(--edgeHeight)) 0;
   border: 0 solid black;
   background-color: white;
   border-width: 10px 0 10px 0;
 }
 .edge.edgeFill {
-  height: 80px;
+  height: calc(2 * var(--edgeHeight));
+  margin: calc(-1 * var(--edgeHeight)) 0;
   border-width: 10px 0 10px 0;
 }
 .edge.info {
   background-color: var(--background);
+}
+.edge.dates {
+  background-color: var(--background-gold);
 }
 
 /************
@@ -85,7 +95,7 @@
   font-size: 27px;
 }
 .page section {
-  padding: 24px;
+  padding: 48px 24px;
   box-sizing: border-box;
   width: 100vw;
 }
@@ -110,6 +120,7 @@ section.hero img.logo {
   max-width: 560px;
 }
 section.hero .cta {
+  font-size: 18px;
   text-align: center;
   background-color: black;
   color: white;
@@ -176,9 +187,15 @@ section.footer {
   align-items: flex-start;
 }
 
+@media (width <= 3000px) {
+  .edge {
+    --skew: 1deg;
+  }
+}
+
 @media (width <= 1200px) {
   .edge {
-    transform: skewY(2deg);
+    --skew: 2deg;
   }
 }
 
@@ -198,7 +215,7 @@ section.footer {
     font-size: 40.5px;
   }
   .edge {
-    transform: skewY(3deg);
+    --skew: 3deg;
   }
 
   .socials {
