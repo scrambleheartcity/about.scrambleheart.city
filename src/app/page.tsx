@@ -77,13 +77,22 @@ export default function Home() {
       <section className={styles.dates}>
         <Column>
           <div className={styles.contextualFlex}>
-            <div className={styles.left}>
-              <img src="assets/sprites/sword_1.png" alt="rosie sprite" />
+            <div className={classCat(styles.left, styles.imgWrapper)}>
+              <img
+                className={styles.desktop}
+                src="assets/sprites/sword_3.png"
+                alt="rosie sprite"
+              />
+              <img
+                className={styles.mobile}
+                src="assets/sprites/sword_4.png"
+                alt="rosie sprite"
+              />
             </div>
             <div className={styles.right}>
               <div className={styles.dateCopy}>
                 <header>Coming soon</header>
-                <div className={styles.dateCols}>
+                <div className={styles.contextualFlex}>
                   <div className={styles.left}>
                     <div>
                       <b>Closed Alpha</b>

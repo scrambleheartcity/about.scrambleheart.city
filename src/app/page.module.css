@@ -1,6 +1,12 @@
 /************
 * shared *
 ************/
+.desktop {
+  display: unset;
+}
+.mobile {
+  display: none;
+}
 .hoverButton,
 .hoverCircle {
   box-shadow: 0 0 #ee3757;
@@ -64,7 +70,7 @@
 * page *
 ************/
 .page {
-  font-size: 18px;
+  font-size: 27px;
 }
 .page section {
   padding: 24px;
@@ -133,27 +139,25 @@ section.info video {
 section.dates {
   background-color: var(--background-gold);
 }
-section.dates img {
-  height: 600px;
-  filter: invert(var(--image-invert));
-}
 section.dates .right {
   flex: 1;
 }
-section.dates .dateCols {
-  display: flex;
-  justify-content: space-between;
+
+section.dates .imgWrapper {
+  text-align: center;
 }
-section.dates .dateCols .left,
-section.dates .dateCols .right {
-  flex: 1;
+section.dates img {
+  height: 500px;
+  filter: invert(var(--image-invert));
+  margin: 0 auto;
 }
 
 /************
 * section.footer *
 ************/
 section.footer {
-  height: 160px;
+  font-size: 18px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -161,11 +165,23 @@ section.footer {
 }
 
 @media (width <= 800px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: unset;
+  }
   .contextualFlex {
     flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
   }
   .page header {
     font-size: 40.5px;
+  }
+
+  .socials {
+    margin-right: 24px;
   }
 
   section.hero {
@@ -181,11 +197,12 @@ section.footer {
   section.info {
     flex-direction: column;
   }
-  section.info .infoSprites img {
-    height: 150px;
-    filter: invert(1);
-  }
-  section.info video {
+  section.info .right {
     width: 100%;
+  }
+
+  section.dates img {
+    height: auto;
+    width: 60%;
   }
 }

@@ -6,10 +6,10 @@
 }
 
 .column .inner {
-  max-width: 1080px;
+  max-width: 1440px;
 }
 
-@media (width <= 1080px) {
+@media (width <= 1440px) {
   .column .inner {
     max-width: unset;
   }
