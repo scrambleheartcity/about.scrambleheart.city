@@ -27,6 +27,7 @@ export default function Home() {
           <img
             src="assets/scramble_logo.png"
             className={classCat(styles.logo, styles.fader)}
+            alt="Scramble Heart City logo"
           />
           {ProjectLinks.map(link => (
             <ExternalLink key={link.url} href={link.url}>
@@ -56,7 +57,7 @@ export default function Home() {
                       Tough Love Arena
                     </ExternalLink>{' '}
                     comes Scramble Heart City, an exciting, action-packed
-                    adventure that's playable in browser — no installation
+                    adventure {`that's`} playable in browser — no installation
                     required!
                   </div>
                 </div>
@@ -80,7 +81,7 @@ export default function Home() {
         <Column>
           <div className={styles.contextualFlex}>
             <div className={styles.left}>
-              <img src="assets/sprites/sword_1.png" />
+              <img src="assets/sprites/sword_1.png" alt="rosie sprite" />
             </div>
             <div className={styles.right}>
               <div className={styles.dateCopy}>
