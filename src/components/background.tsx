@@ -5,18 +5,24 @@ import styles from './background.module.css';
 
 export function Background(
   props: {
-    img: string | undefined;
+    img?: string[];
     video?: string;
   } & React.PropsWithChildren,
 ) {
   const [loaded, setLoaded] = useState(false);
   return (
-    <div
-      className={styles.wrapper}
-      style={{
-        backgroundImage: props.img && !loaded ? `url(${props.img})` : undefined,
-      }}
-    >
+    <div className={styles.wrapper}>
+      {!loaded && props.img
+        ? props.img.map((src, i) => (
+            <div
+              key={src}
+              className={styles.image}
+              style={{
+                backgroundImage: `url(${src})`,
+              }}
+            ></div>
+          ))
+        : undefined}
       {props.video && (
         <video
           className={styles.video}

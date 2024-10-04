@@ -1,10 +1,22 @@
 .wrapper {
+  min-height: 100vh;
+  position: relative;
+}
+.image {
+  min-width: 100%;
+  min-height: 100vh;
+  max-width: none;
+  max-height: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
 
   animation-name: bg-slide;
-  animation-duration: 20s;
+  animation-duration: 30s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   /* animation-direction: alternate; */
@@ -30,6 +42,7 @@
 }
 
 .content {
+  position: absolute;
   min-height: 100vh;
   width: 100vw;
   display: flex;
