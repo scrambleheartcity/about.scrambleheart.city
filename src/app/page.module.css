@@ -186,6 +186,9 @@ section.footer {
   justify-content: center;
   align-items: flex-start;
 }
+section.footer a {
+  color: inherit;
+}
 
 @media (width <= 3000px) {
   .edge {

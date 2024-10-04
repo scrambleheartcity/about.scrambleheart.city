@@ -159,7 +159,11 @@ export default function Home() {
           styles.info,
         )}
       ></div>
-      <section className={styles.footer}>© M. Paul Games LLC</section>
+      <section className={styles.footer}>
+        <ExternalLink href="https://mpaul.games">
+          © M. Paul Games LLC
+        </ExternalLink>
+      </section>
     </main>
   );
 }
