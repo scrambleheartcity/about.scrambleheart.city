@@ -43,7 +43,6 @@
   position: relative;
   box-sizing: border-box;
   --skew: 0deg;
-  --edgeHeight: 32px;
 }
 .edgeDown {
   transform: skewY(var(--skew));
@@ -63,6 +62,9 @@
   height: calc(2 * var(--edgeHeight));
   margin: calc(-1 * var(--edgeHeight)) 0;
   border-width: 10px 0 10px 0;
+}
+.edge.empty {
+  background-color: none;
 }
 .edge.info {
   background-color: var(--background);
@@ -95,7 +97,7 @@
   font-size: 27px;
 }
 .page section {
-  padding: 48px 24px;
+  padding: 48px;
   box-sizing: border-box;
   width: 100vw;
 }
@@ -113,7 +115,6 @@ section.hero {
   justify-content: center;
   align-items: center;
   gap: 24px;
-  min-height: 100vh;
 }
 section.hero img.logo {
   height: auto;
@@ -132,6 +133,9 @@ section.hero .cta {
 /************
 * section.info *
 ************/
+section.info {
+  background-color: var(--background);
+}
 section.info .left {
   flex: 1;
   display: flex;
@@ -179,6 +183,7 @@ section.dates img {
 * section.footer *
 ************/
 section.footer {
+  background-color: var(--background);
   font-size: 18px;
   height: 120px;
   display: flex;
@@ -190,12 +195,17 @@ section.footer a {
   color: inherit;
 }
 
+/* edge breakpoints */
 @media (width <= 3000px) {
   .edge {
     --skew: 1deg;
   }
 }
-
+@media (width <= 2000px) {
+  .edge {
+    --skew: 1.5deg;
+  }
+}
 @media (width <= 1200px) {
   .edge {
     --skew: 2deg;
@@ -218,7 +228,7 @@ section.footer a {
     font-size: 40.5px;
   }
   .edge {
-    --skew: 3deg;
+    --skew: 4deg;
   }
 
   .socials {

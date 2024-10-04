@@ -1,6 +1,7 @@
 .wrapper {
   min-height: 100vh;
   position: relative;
+  margin-bottom: calc(-2 * var(--edgeHeight));
 }
 .image {
   min-width: 100%;

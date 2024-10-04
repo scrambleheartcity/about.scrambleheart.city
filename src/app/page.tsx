@@ -42,6 +42,14 @@ export default function Home() {
         </section>
       </Background>
       <div
+        className={classCat(
+          styles.edge,
+          styles.edgeDown,
+          styles.edgeFill,
+          styles.empty,
+        )}
+      ></div>
+      <div
         className={classCat(styles.edge, styles.edgeDown, styles.edgeBorder)}
       ></div>
       <div
