@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import styles from './background.module.css';
 import { classCat } from './util';
