@@ -138,6 +138,9 @@ section.hero .cta {
 section.info {
   background-color: var(--background-info);
 }
+section.info .infoFlex {
+  gap: 32px;
+}
 section.info .left {
   flex: 1;
   display: flex;
@@ -171,7 +174,9 @@ section.dates {
 section.dates .right {
   flex: 1;
 }
-
+section.dates .dateSubFlex {
+  gap: 48px;
+}
 section.dates .imgWrapper {
   text-align: center;
 }
@@ -238,7 +243,6 @@ section.footer a {
   }
 
   section.hero {
-    margin: 0 24px;
     align-items: stretch;
   }
   section.hero img.logo {

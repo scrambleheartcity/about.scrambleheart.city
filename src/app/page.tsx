@@ -62,7 +62,7 @@ export default function Home() {
       ></div>
       <section className={styles.info}>
         <Column>
-          <div className={styles.contextualFlex}>
+          <div className={classCat(styles.contextualFlex, styles.infoFlex)}>
             <div className={styles.left}>
               <div className={styles.infoCopy}>
                 <header>An in-browser 3v3 tag team fighting game</header>
@@ -128,7 +128,12 @@ export default function Home() {
             <div className={styles.right}>
               <div className={styles.dateCopy}>
                 <header>Coming soon</header>
-                <div className={styles.contextualFlex}>
+                <div
+                  className={classCat(
+                    styles.contextualFlex,
+                    styles.dateSubFlex,
+                  )}
+                >
                   <div className={styles.left}>
                     <div>
                       <b>Closed Alpha</b>
@@ -139,7 +144,7 @@ export default function Home() {
                     <div>
                       <b>Early Access</b>
                     </div>
-                    <div>2025</div>
+                    <div>Late 2025</div>
                   </div>
                 </div>
               </div>
