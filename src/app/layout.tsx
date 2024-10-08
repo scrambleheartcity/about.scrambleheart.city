@@ -7,6 +7,9 @@ export const viewport: Viewport = {
   width: 'device-width',
 };
 
+// todo social preview
+// punching art for image preview
+// title & description
 export const metadata: Metadata = {
   title: 'Scramble Heart City',
   icons: {
