@@ -98,7 +98,7 @@
   font-size: 27px;
 }
 .page section {
-  padding: 48px;
+  padding: 120px 48px;
   box-sizing: border-box;
   width: 100vw;
 }
@@ -242,7 +242,11 @@ section.footer a {
     margin-right: 24px;
   }
 
+  .page section {
+    padding: 64px 24px;
+  }
   section.hero {
+    height: 80vh;
     align-items: stretch;
   }
   section.hero img.logo {

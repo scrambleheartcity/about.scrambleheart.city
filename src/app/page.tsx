@@ -78,6 +78,7 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.right}>
+              {/* todo replace with youtube embed */}
               <video
                 className={styles.video}
                 preload="none"
