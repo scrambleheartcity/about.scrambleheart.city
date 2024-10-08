@@ -18,8 +18,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground: white;
-    --background-info: #444;
-    --background-gold: #6f4902;
+    --background-info: #3d3c39;
+    --background-gold: #9c6d18;
     --image-invert: 1;
   }
 }
