@@ -13,11 +13,13 @@
   transition-property: box-shadow;
   transition-duration: 0.1s;
 }
-.hoverButton:hover {
-  box-shadow: 0 8px #ee3757;
-}
-.hoverCircle:hover {
-  box-shadow: 4px 2px #ee3757;
+@media (hover: hover) {
+  .hoverButton:hover {
+    box-shadow: 0 8px #ee3757;
+  }
+  .hoverCircle:hover {
+    box-shadow: 4px 2px #ee3757;
+  }
 }
 .fader {
   animation-name: fadeIn;
