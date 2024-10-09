@@ -15,6 +15,22 @@ export const metadata: Metadata = {
   icons: {
     shortcut: 'assets/Grenade800.png',
   },
+  openGraph: {
+    title: 'Scramble Heart City',
+    description: `Scramble Heart City is in-browser 3v3 tag team fighting game that's coming soon!`,
+    url: 'https://scrambleheart.city',
+    siteName: 'Scramble Heart City',
+    images: [
+      {
+        // must be absolute
+        url: 'https://scrambleheart.city/assets/poster_1920x1440.jpg',
+        width: 1920,
+        height: 1440,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({

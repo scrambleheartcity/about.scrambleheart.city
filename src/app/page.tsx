@@ -71,9 +71,8 @@ export default function Home() {
                   <ExternalLink href="https://about.toughlovearena.com">
                     Tough Love Arena
                   </ExternalLink>{' '}
-                  comes Scramble Heart City, an exciting, action-packed
-                  adventure {`that's`} playable in browser — no installation
-                  required!
+                  comes Scramble Heart City, an exciting, action-packed fighter{' '}
+                  {`that's`} playable in browser — no installation required!
                 </div>
               </div>
             </div>
