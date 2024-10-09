@@ -14,7 +14,8 @@ const openGraph: MyOpenGraph = {
   title: 'Scramble Heart City',
   description: `Scramble Heart City is in-browser 3v3 tag team fighting game that's coming soon!`,
   url: 'https://scrambleheart.city',
-  siteName: 'Scramble Heart City',
+  // only use when different from title, looks weird when its the same
+  // siteName: 'Scramble Heart City',
   images: [
     {
       // must be absolute
