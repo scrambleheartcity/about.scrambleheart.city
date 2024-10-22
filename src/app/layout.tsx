@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   title: openGraph.title,
   description: openGraph.description,
   icons: {
-    shortcut: 'assets/Grenade800.png',
+    shortcut: '/assets/Grenade800.png',
   },
   openGraph: openGraph,
 };
