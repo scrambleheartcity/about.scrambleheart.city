@@ -9,6 +9,7 @@
   color: white;
 }
 
-.page .userAgent {
-  font-size: 0.8em;
+.logo {
+  max-width: 80vw;
+  width: 400px;
 }

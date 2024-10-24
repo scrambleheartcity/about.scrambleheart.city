@@ -22,7 +22,7 @@ export default function Home() {
       <Background>
         <section className={styles.hero}>
           <img
-            src="assets/scramble_logo.png"
+            src="/assets/scramble_logo.png"
             className={classCat(styles.logo, styles.fader)}
             alt="Scramble Heart City logo"
           />
@@ -85,7 +85,7 @@ export default function Home() {
                 muted={true}
                 loop={true}
               >
-                <source src="assets/video/replay-2024-08-23-[480p].mp4" />
+                <source src="/assets/video/replay-2024-08-23-[480p].mp4" />
               </video>
             </div>
           </div>
@@ -116,12 +116,12 @@ export default function Home() {
             <div className={classCat(styles.left, styles.imgWrapper)}>
               <img
                 className={styles.desktop}
-                src="assets/sprites/sword_3.png"
+                src="/assets/sprites/sword_3.png"
                 alt="rosie sprite"
               />
               <img
                 className={styles.mobile}
-                src="assets/sprites/sword_4.png"
+                src="/assets/sprites/sword_4.png"
                 alt="rosie sprite"
               />
             </div>
