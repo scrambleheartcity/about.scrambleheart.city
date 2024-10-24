@@ -28,7 +28,7 @@ export function WebGpuError(props: {
       }
       setUserAgent(navigator.userAgent);
     })();
-  }, [props.onSuccess]);
+  }, [props]);
 
   const StatusRender = {
     [WebGPU.Checking]: () => <h1>checking for WebGPU...</h1>,
@@ -36,7 +36,7 @@ export function WebGpuError(props: {
       <h1>
         WebGPU detected!
         <br />
-        you're all set for the playtest
+        you are all set for the playtest
       </h1>
     ),
     [WebGPU.Missing]: () => (
