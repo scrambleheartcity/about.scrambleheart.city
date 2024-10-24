@@ -1,0 +1,7 @@
+.webgpu code {
+  font-family: Consolas, 'courier new';
+  color: black;
+  background-color: #ddd;
+  padding: 1px 3px;
+  border-radius: 2px;
+}
