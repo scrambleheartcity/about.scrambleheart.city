@@ -33,15 +33,14 @@ export function WebGpuError(props: {
   const StatusRender = {
     [WebGPU.Checking]: () => <h1>checking for WebGPU...</h1>,
     [WebGPU.Detected]: () => (
-      <h1>
-        WebGPU detected!
-        <br />
-        you are all set for the playtest
-      </h1>
+      <>
+        <h1>WebGPU detected ✅</h1>
+        <div>you are all set for the playtest!</div>
+      </>
     ),
     [WebGPU.Missing]: () => (
       <>
-        <h1>WebGPU not found!</h1>
+        <h1>WebGPU not found ⚠️</h1>
         <div>
           this alpha build requires WebGPU to run.
           <br />
