@@ -77,16 +77,14 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.right}>
-              {/* todo replace with youtube embed */}
-              <video
+              <iframe
                 className={styles.video}
-                preload="none"
-                autoPlay={true}
-                muted={true}
-                loop={true}
-              >
-                <source src="/assets/video/replay-2024-08-23-[480p].mp4" />
-              </video>
+                src="https://www.youtube.com/embed/qMK_qhwsqgg?start=62"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen={true}
+              ></iframe>
             </div>
           </div>
         </Column>

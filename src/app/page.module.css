@@ -163,8 +163,10 @@ section.info .infoCopy a {
 section.info .right {
   width: 60%;
 }
-section.info video {
+section.info iframe {
+  border: 0;
   width: 100%;
+  aspect-ratio: 16/9;
 }
 
 /************
