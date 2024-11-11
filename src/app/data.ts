@@ -8,7 +8,7 @@ export type SocialLink = Link & {
 
 export const ProjectLinks: Link[] = [
   {
-    label: 'Join mailing list',
+    label: 'Join waitlist',
     url: 'https://forms.gle/LSc9YWop2oSNqPdAA',
   },
 ];
