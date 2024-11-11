@@ -28,6 +28,9 @@
   }
 }
 
+.bg0 {
+  background-image: url('/assets/poster_notext_1920x1080.jpg');
+}
 .bg1 {
   background-image: url('/assets/stages/rooftop_day/shc_rooftop_day_sky.png');
 }
