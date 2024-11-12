@@ -24,8 +24,18 @@ export const SocialLinks: SocialLink[] = [
     icon: '/assets/social/social_twitter.png',
   },
   {
+    label: 'Bluesky',
+    url: 'https://bsky.app/profile/scrambleheart.city',
+    icon: '/assets/social/social_bluesky.png',
+  },
+  {
     label: 'Instagram',
     url: 'https://www.instagram.com/scrambleheartcity/',
     icon: '/assets/social/social_instagram.png',
+  },
+  {
+    label: 'YouTube',
+    url: 'https://www.youtube.com/@ScrambleHeartCity',
+    icon: '/assets/social/social_youtube.png',
   },
 ];
