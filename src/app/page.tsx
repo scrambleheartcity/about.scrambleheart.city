@@ -11,11 +11,9 @@ export default function Home() {
       <aside className={styles.socials}>
         {SocialLinks.map(link => (
           <ExternalLink key={link.url} href={link.url}>
-            <img
-              src={link.icon}
-              className={classCat(styles.socialIcon, styles.hoverCircle)}
-              alt={link.label}
-            />
+            <div className={classCat(styles.socialIcon, styles.hoverCircle)}>
+              <img src={link.icon} alt={link.label} />
+            </div>
           </ExternalLink>
         ))}
       </aside>
