@@ -35,17 +35,17 @@ export function WebGpuError(props: {
     [WebGPU.Detected]: () => (
       <>
         <h1>WebGPU detected ✅</h1>
-        <div>you are all set for the playtest!</div>
+        <div>You are all set for the playtest!</div>
       </>
     ),
     [WebGPU.Missing]: () => (
       <>
         <h1>WebGPU not found ⚠️</h1>
         <div>
-          this alpha build requires WebGPU to run.
+          This pre-alpha build requires WebGPU to run.
           <br />
-          please use the latest version of either <u>Google Chrome</u> or{' '}
-          <u>Microsoft Edge</u>.
+          Please use the latest version of either <u>Google Chrome</u> or{' '}
+          <u>Microsoft Edge</u>. If you are on Linux, try Firefox Nightly.
         </div>
         {props.showWorkarounds ? (
           <>
@@ -80,7 +80,7 @@ export function WebGpuError(props: {
         <StatusRender />
         {userAgent ? (
           <div className={styles.userAgent}>
-            <h1>debug info</h1>
+            <h1>Debug Info</h1>
             <div>{userAgent}</div>
           </div>
         ) : null}
