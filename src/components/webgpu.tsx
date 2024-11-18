@@ -15,7 +15,6 @@ export function WebGpuError(props: {
   onSuccess(): void;
 }) {
   const [webgpu, setWebGPU] = useState(WebGPU.Checking);
-  const [userAgent, setUserAgent] = useState<string>();
 
   useEffect(() => {
     (async () => {
@@ -26,7 +25,6 @@ export function WebGpuError(props: {
       } else {
         setWebGPU(WebGPU.Missing);
       }
-      setUserAgent(navigator.userAgent);
     })();
   }, [props]);
 
@@ -42,10 +40,10 @@ export function WebGpuError(props: {
       <>
         <h1>WebGPU not found ⚠️</h1>
         <div>
-          This pre-alpha build requires WebGPU to run.
-          <br />
-          Please use the latest version of either <u>Google Chrome</u> or{' '}
-          <u>Microsoft Edge</u>. If you are on Linux, try Firefox Nightly.
+          This pre-alpha build requires WebGPU to run, which is not yet
+          supported by all web browsers. Please use the latest version of either{' '}
+          <b>Google Chrome</b> or <b>Microsoft Edge</b>. If you are on Linux,
+          try <b>Firefox Nightly</b>.
         </div>
         {props.showWorkarounds ? (
           <>
@@ -76,15 +74,7 @@ export function WebGpuError(props: {
 
   return (
     <div className={styles.webgpu}>
-      <div>
-        <StatusRender />
-        {userAgent ? (
-          <div className={styles.userAgent}>
-            <h1>Debug Info</h1>
-            <div>{userAgent}</div>
-          </div>
-        ) : null}
-      </div>
+      <StatusRender />
     </div>
   );
 }

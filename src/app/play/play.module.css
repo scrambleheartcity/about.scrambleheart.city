@@ -1,12 +1,26 @@
 .page {
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.column {
+  max-width: 600px;
+  margin: 2em auto;
+  padding: 2em;
+  box-sizing: border-box;
+  border-radius: 1em;
 
-  background-color: black;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1em;
+
+  background-color: white;
+  color: black;
 }
 
 .logo {
