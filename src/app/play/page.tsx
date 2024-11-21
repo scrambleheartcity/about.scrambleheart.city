@@ -2,6 +2,7 @@
 
 import { Background } from '@/components/background';
 import { WebGpuError } from '@/components/webgpu';
+import { useUserAgent } from '@/hooks/userAgent';
 import styles from './play.module.css';
 
 const performRedirect = false;
@@ -13,7 +14,7 @@ function redirect() {
 }
 
 export default function Playtest() {
-  const userAgent = navigator.userAgent;
+  const userAgent = useUserAgent();
   return (
     <main>
       <Background>
