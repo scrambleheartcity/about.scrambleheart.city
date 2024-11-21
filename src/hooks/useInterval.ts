@@ -1,23 +1,35 @@
-import { useRef } from 'react';
+import { useCallback, useState } from 'react';
 
 export function useTimer() {
-  const timeoutRef = useRef<NodeJS.Timeout>();
-  function clear() {
-    clearTimeout(timeoutRef.current);
-    clearInterval(timeoutRef.current);
-    timeoutRef.current = undefined;
-  }
-  function startTimeout(cb: () => void, ms: number) {
-    clear();
-    timeoutRef.current = setTimeout(() => {
-      cb();
+  const [timeoutRef, setTimeoutRef] = useState<NodeJS.Timeout | undefined>();
+
+  const clear = useCallback(() => {
+    clearTimeout(timeoutRef);
+    clearInterval(timeoutRef);
+    setTimeoutRef(undefined);
+  }, [timeoutRef]);
+
+  const startTimeout = useCallback(
+    (cb: () => void, ms: number) => {
       clear();
-    }, ms);
-  }
-  function startInterval(cb: () => void, ms: number) {
-    clear();
-    timeoutRef.current = setInterval(cb, ms);
-  }
+      setTimeoutRef(
+        setTimeout(() => {
+          cb();
+          clear();
+        }, ms),
+      );
+    },
+    [clear, setTimeoutRef],
+  );
+
+  const startInterval = useCallback(
+    (cb: () => void, ms: number) => {
+      clear();
+      setTimeoutRef(setInterval(cb, ms));
+    },
+    [clear, setTimeoutRef],
+  );
+
   return {
     timeoutRef,
     startInterval,

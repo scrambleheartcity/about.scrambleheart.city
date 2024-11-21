@@ -2,16 +2,21 @@ export class GpuTracker {
   // store in array to ensure that textures are not GCed
   readonly textures: GPUTexture[] = [];
 
+  alive = true;
+
   constructor(readonly device: GPUDevice) {
     device.lost.then(info => {
       console.error('GPU Device lost', info);
+      this.alive = false;
     });
     device.onuncapturederror = error => {
       console.error(`GPU Uncaptured error`, error);
     };
   }
 
-  addTexture(): GPUTexture {
+  addTexture(): GPUTexture | void {
+    if (!this.alive) return;
+
     const texture = this.device.createTexture({
       size: [4096, 4096],
       format: 'rgba8unorm',

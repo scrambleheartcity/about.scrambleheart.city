@@ -3,7 +3,7 @@
 import { useCanvas } from '@/hooks/useCanvas';
 import { useGpuTracker } from '@/hooks/useGpuTracker';
 import { useTimer } from '@/hooks/useInterval';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 function prettyPrintBytes(bytes: number): string {
   let current = bytes;
@@ -38,6 +38,13 @@ export default function GpuTest() {
     setBit(b => !b);
   }, [timer, setBit]);
 
+  useEffect(() => {
+    if (timer.timeoutRef && tracker?.alive === false) {
+      timer.clear();
+      setBit(b => !b);
+    }
+  }, [timer, setBit]);
+
   return (
     <main
       style={{
@@ -48,7 +55,7 @@ export default function GpuTest() {
       <h1>GPU Test</h1>
       {tracker ? (
         <>
-          {timer.timeoutRef.current ? (
+          {timer.timeoutRef ? (
             <p>
               <button onClick={stopAuto}>Stop Auto</button>
             </p>
