@@ -1,6 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
-
-class GpuTracker {
+export class GpuTracker {
   // ensure that textures are not GCed
   readonly textures: GPUTexture[] = [];
   constructor(readonly device: GPUDevice) {
@@ -30,25 +28,4 @@ class GpuTracker {
     const device = await adapter.requestDevice();
     return new GpuTracker(device);
   }
-}
-
-export function useGpuTest() {
-  const [tracker, setTracker] = useState<GpuTracker>();
-  const [textures, setTextures] = useState<GPUTexture[]>([]);
-
-  useEffect(() => {
-    GpuTracker.fromNavigator().then(t => setTracker(t));
-  }, [setTracker]);
-
-  const addTexture = useCallback(() => {
-    if (!tracker) return;
-    tracker.addTexture();
-    setTextures([...tracker.textures]);
-  }, [tracker]);
-
-  return {
-    textures,
-    addTexture,
-    loaded: !!tracker,
-  };
 }

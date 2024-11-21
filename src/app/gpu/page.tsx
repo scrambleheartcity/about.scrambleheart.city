@@ -1,14 +1,25 @@
 'use client';
 
-import { useGpuTest } from '@/hooks/gpuTest';
+import { useGpuTracker } from '@/hooks/useGpuTracker';
 
 export default function GpuTest() {
-  const { textures, addTexture, loaded } = useGpuTest();
+  const { textures, addTexture, loaded } = useGpuTracker();
   return (
-    <main>
+    <main
+      style={{
+        textAlign: 'center',
+        margin: '2em',
+      }}
+    >
       <h1>GPU Test</h1>
-      <div>Allocated textures: {textures.length}</div>
-      {loaded && <button onClick={addTexture}>Add Texture</button>}
+      {loaded ? (
+        <>
+          <button onClick={addTexture}>Add Texture</button>
+          <div>Allocated textures: {textures.length}</div>
+        </>
+      ) : (
+        <div>loading...</div>
+      )}
     </main>
   );
 }

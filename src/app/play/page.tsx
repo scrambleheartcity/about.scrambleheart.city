@@ -2,7 +2,7 @@
 
 import { Background } from '@/components/background';
 import { WebGpuError } from '@/components/webgpu';
-import { useUserAgent } from '@/hooks/userAgent';
+import { useUserAgent } from '@/hooks/useUserAgent';
 import styles from './play.module.css';
 
 const performRedirect = false;
