@@ -9,7 +9,7 @@ function prettyPrintBytes(bytes: number): string {
   const units = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
   const decimalPoints = [0, 0, 0, 2, 3];
   while (current > 1024) {
-    current = current / 1014;
+    current = current / 1024;
     units.shift();
     decimalPoints.shift();
   }
