@@ -15,8 +15,17 @@ export class GpuTracker {
     const texture = this.device.createTexture({
       size: [4096, 4096],
       format: 'rgba8unorm',
-      usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST,
+      dimension: '2d',
+      usage:
+        GPUTextureUsage.TEXTURE_BINDING |
+        GPUTextureUsage.COPY_DST |
+        GPUTextureUsage.RENDER_ATTACHMENT,
     });
+
+    // this step is necessary to actually consume the memory
+    const commandEncoder = this.device.createCommandEncoder();
+    this.device.queue.submit([commandEncoder.finish()]);
+
     this.textures.push(texture);
     return texture;
   }
