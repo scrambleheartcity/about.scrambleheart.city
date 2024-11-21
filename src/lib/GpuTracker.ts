@@ -1,6 +1,7 @@
 export class GpuTracker {
-  // ensure that textures are not GCed
+  // store in array to ensure that textures are not GCed
   readonly textures: GPUTexture[] = [];
+
   constructor(readonly device: GPUDevice) {
     device.lost.then(info => {
       console.error('GPU Device lost', info);
@@ -18,6 +19,13 @@ export class GpuTracker {
     });
     this.textures.push(texture);
     return texture;
+  }
+
+  getMemoryUsage() {
+    return this.textures.reduce(
+      (sum, texture) => sum + texture.width * texture.height * 4,
+      0,
+    );
   }
 
   static async fromNavigator() {

@@ -1,9 +1,27 @@
 'use client';
 
 import { useGpuTracker } from '@/hooks/useGpuTracker';
+import { useCallback, useState } from 'react';
+
+function prettyPrintBytes(bytes: number): string {
+  let current = bytes;
+  const units = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  while (current > 1024) {
+    current = current / 1014;
+    units.shift();
+  }
+  return `${current.toFixed(1)} ${units[0]}`;
+}
 
 export default function GpuTest() {
-  const { textures, addTexture, loaded } = useGpuTracker();
+  const tracker = useGpuTracker();
+  const [_, setBit] = useState(false);
+
+  const addTexture = useCallback(() => {
+    tracker?.addTexture();
+    setBit(b => !b);
+  }, [tracker, setBit]);
+
   return (
     <main
       style={{
@@ -12,10 +30,12 @@ export default function GpuTest() {
       }}
     >
       <h1>GPU Test</h1>
-      {loaded ? (
+      {tracker ? (
         <>
           <button onClick={addTexture}>Add Texture</button>
-          <div>Allocated textures: {textures.length}</div>
+          <div>
+            Allocated memory: {prettyPrintBytes(tracker.getMemoryUsage())}
+          </div>
         </>
       ) : (
         <div>loading...</div>
