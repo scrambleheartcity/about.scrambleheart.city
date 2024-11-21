@@ -7,7 +7,7 @@ import { useCallback, useState } from 'react';
 function prettyPrintBytes(bytes: number): string {
   let current = bytes;
   const units = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-  const decimalPoints = [0, 0, 0, 2, 3];
+  const decimalPoints = [0, 0, 1, 2, 3];
   while (current > 1024) {
     current = current / 1024;
     units.shift();
