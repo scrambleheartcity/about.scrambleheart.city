@@ -1,5 +1,6 @@
 'use client';
 
+import { useCanvas } from '@/hooks/useCanvas';
 import { useGpuTracker } from '@/hooks/useGpuTracker';
 import { useTimer } from '@/hooks/useInterval';
 import { useCallback, useState } from 'react';
@@ -19,6 +20,7 @@ function prettyPrintBytes(bytes: number): string {
 export default function GpuTest() {
   const tracker = useGpuTracker();
   const timer = useTimer();
+  const { canvasRef } = useCanvas();
   const [_, setBit] = useState(false);
 
   const addTexture = useCallback(() => {
@@ -62,6 +64,7 @@ export default function GpuTest() {
       ) : (
         <div>loading...</div>
       )}
+      <canvas ref={canvasRef} width={400} height={200} />
     </main>
   );
 }
