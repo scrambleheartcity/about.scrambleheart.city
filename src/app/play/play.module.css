@@ -6,6 +6,12 @@
   justify-content: center;
   align-items: center;
 }
+
+.page h1 {
+  font-size: 2em;
+  margin: 0.5em 0;
+}
+
 .column {
   max-width: 600px;
   margin: 2em auto;
