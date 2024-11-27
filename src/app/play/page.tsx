@@ -53,19 +53,27 @@ export default function Playtest() {
             <section>
               <h1>FAQ</h1>
               <p>
-                <b>Am I allowed to stream/record footage?</b>
+                <b>&gt; Am I allowed to stream/record footage?</b>
                 <br />
                 Yes! We want to encourage people to share the game and record
                 their experiences. There will be a channel on our official
                 Discord where you can post any videos/links you have.
               </p>
               <p>
-                <b>Can I share this with my friends?</b>
+                <b>&gt; Can I share this with my friends?</b>
                 <br />
                 Yes! Feel free to share the URL + password all weekend.
               </p>
               <p>
-                <b>The game doesn't have any tutorials yet. How do I play?</b>
+                <b>&gt; Can I play this on my phone?</b>
+                <br />
+                We are currently only targeting desktop web, but you are welcome
+                to try.
+              </p>
+              <p>
+                <b>
+                  &gt; The game doesn't have any tutorials yet. How do I play?
+                </b>
                 <br />
                 There is a "How to Play" button within the game's main menu that
                 shows you the keyboard controls. If you would like to refer to
@@ -75,7 +83,7 @@ export default function Playtest() {
                 .
               </p>
               <p>
-                <b>How can I support the game?</b>
+                <b>&gt; How can I support the game?</b>
                 <br />
                 For now, just sharing the game with your friends and giving us
                 feedback is more than enough!

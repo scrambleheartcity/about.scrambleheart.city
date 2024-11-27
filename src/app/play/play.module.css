@@ -33,3 +33,12 @@
   max-width: 80vw;
   width: 400px;
 }
+
+@media (width <= 800px) {
+  .column {
+    max-width: unset;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+}
