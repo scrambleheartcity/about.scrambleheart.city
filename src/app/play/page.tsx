@@ -17,7 +17,7 @@ export default function Playtest() {
   const userAgent = useUserAgent();
   return (
     <main>
-      <Background>
+      <Background image="promo">
         <div className={styles.page}>
           <aside className={styles.column}>
             <section style={{ textAlign: 'center' }}>

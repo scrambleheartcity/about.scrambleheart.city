@@ -17,7 +17,7 @@ export default function Home() {
           </ExternalLink>
         ))}
       </aside>
-      <Background>
+      <Background image="stage">
         <section className={styles.hero}>
           <img
             src="/assets/scramble_logo.png"
