@@ -53,32 +53,32 @@ export default function Playtest() {
             <section>
               <h1>FAQ</h1>
               <p>
-                <b>&gt; Am I allowed to stream/record footage?</b>
+                <b>{`> Am I allowed to stream/record footage?`}</b>
                 <br />
                 Yes! We want to encourage people to share the game and record
                 their experiences. There will be a channel on our official
                 Discord where you can post any videos/links you have.
               </p>
               <p>
-                <b>&gt; Can I share this with my friends?</b>
+                <b>{`> Can I share this with my friends?`}</b>
                 <br />
                 Yes! Feel free to share the URL + password all weekend.
               </p>
               <p>
-                <b>&gt; Can I play this on my phone?</b>
+                <b>{`> Can I play this on my phone?`}</b>
                 <br />
                 We are currently only targeting desktop web, but you are welcome
                 to try.
               </p>
               <p>
                 <b>
-                  &gt; The game doesn't have any tutorials yet. How do I play?
+                  {`> The game doesn't have any tutorials yet. How do I play?`}
                 </b>
                 <br />
-                There is a "How to Play" button within the game's main menu that
-                shows you the keyboard controls. If you would like to refer to
-                the "How to Play" handout from our offline appearances, you can
-                read it{' '}
+                There is a <b>How to Play</b> button within the game&apos;s main
+                menu that shows you the keyboard controls. If you would like to
+                refer to the informational handout from our offline appearances,
+                you can read it{' '}
                 <ExternalLink href="/assets/how_to_play.pdf">here</ExternalLink>
                 .
               </p>
