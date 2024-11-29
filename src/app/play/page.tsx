@@ -9,8 +9,9 @@ import { DiscordUrl } from '../data';
 import styles from './play.module.css';
 
 const redirectEnabled = false;
+const storageKey = 'played-v1';
 function performRedirect() {
-  localStorage.setItem('played', '1');
+  localStorage.setItem(storageKey, '1');
   const target =
     'https://play.void.dev/mpaulweeks/scramble-heart-city/preview/playtest/';
   const search = window.location.search;
@@ -24,7 +25,7 @@ export default function Playtest() {
   useEffect(() => {
     const autoRedirect =
       redirectEnabled &&
-      localStorage.getItem('played') &&
+      localStorage.getItem(storageKey) &&
       window.location.search.length > 1;
     if (autoRedirect) {
       performRedirect();
@@ -50,13 +51,16 @@ export default function Playtest() {
               Thank you for participating in the first ever Scramble Heart City
               online playtest!
               <br />
+              This playtest will run Friday November 29 to Sunday December 1.
               <br />
-              The playtest will run from Friday November 29 to Sunday December
-              1. You can find the <b>password</b> and other info in our{' '}
-              <ExternalLink href={DiscordUrl}>
-                official Discord server
-              </ExternalLink>
-              .
+              <br />
+              <b>
+                You must join the{' '}
+                <ExternalLink href={DiscordUrl}>
+                  official Discord server
+                </ExternalLink>{' '}
+                to get the password.
+              </b>
               <br />
               <br />
               This is a very early build, and we expect there to be issues. Some
