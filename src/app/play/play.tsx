@@ -28,7 +28,8 @@ export function PlaytestComp() {
     const autoRedirect =
       redirectEnabled &&
       localStorage.getItem(storageKey) &&
-      window.location.search.length > 1;
+      (window.location.search.includes('pm=') ||
+        window.location.search.includes('replay='));
     if (autoRedirect) {
       performRedirect();
     }
