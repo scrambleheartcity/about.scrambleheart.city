@@ -4,18 +4,33 @@ import { Background } from '@/components/background';
 import { ExternalLink } from '@/components/externalLink';
 import { WebGpuError } from '@/components/webgpu';
 import { useUserAgent } from '@/hooks/useUserAgent';
+import { useEffect, useState } from 'react';
+import { DiscordUrl } from '../data';
 import styles from './play.module.css';
 
-const performRedirect = false;
-const target = '';
-function redirect() {
-  if (!performRedirect) return;
+const redirectEnabled = false;
+function performRedirect() {
+  localStorage.setItem('played', '1');
+  const target =
+    'https://play.void.dev/mpaulweeks/scramble-heart-city/preview/playtest/';
   const search = window.location.search;
   window.location.href = target + search;
 }
 
 export default function Playtest() {
   const userAgent = useUserAgent();
+  const [webgpu, setWebgpu] = useState(false);
+
+  useEffect(() => {
+    const autoRedirect =
+      redirectEnabled &&
+      localStorage.getItem('played') &&
+      window.location.search.length > 1;
+    if (autoRedirect) {
+      performRedirect();
+    }
+  }, []);
+
   return (
     <main>
       <Background image="promo">
@@ -32,13 +47,16 @@ export default function Playtest() {
             </section>
 
             <section>
-              Welcome, and thank you for participating in the first ever
-              Scramble Heart City online playtest!
+              Thank you for participating in the first ever Scramble Heart City
+              online playtest!
               <br />
               <br />
               The playtest will run from Friday November 29 to Sunday December
-              1. During that period, this page will have a button below that
-              takes you to the game.
+              1. You can find the <b>password</b> and other info in our{' '}
+              <ExternalLink href={DiscordUrl}>
+                official Discord server
+              </ExternalLink>
+              .
               <br />
               <br />
               This is a very early build, and we expect there to be issues. Some
@@ -47,8 +65,17 @@ export default function Playtest() {
             </section>
 
             <section>
-              <WebGpuError showWorkarounds={false} onSuccess={redirect} />
+              <WebGpuError
+                showWorkarounds={false}
+                onSuccess={() => setWebgpu(true)}
+              />
             </section>
+
+            {redirectEnabled && webgpu ? (
+              <section className={styles.button}>
+                <button onClick={performRedirect}>PLAY NOW</button>
+              </section>
+            ) : null}
 
             <section>
               <h1>FAQ</h1>

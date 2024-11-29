@@ -1,5 +1,6 @@
 .page {
   min-height: 100vh;
+  font-size: 18px;
 
   display: flex;
   flex-direction: column;
@@ -12,8 +13,12 @@
   margin: 0.5em 0;
 }
 
+.page a {
+  text-decoration: underline;
+}
+
 .column {
-  max-width: 600px;
+  max-width: 800px;
   margin: 2em auto;
   padding: 2em;
   box-sizing: border-box;
@@ -32,6 +37,22 @@
 .logo {
   max-width: 80vw;
   width: 400px;
+}
+
+.button {
+  text-align: center;
+}
+.button button {
+  font-size: 3em;
+  padding: 0.5em 1em;
+  border-radius: 0.2em;
+  color: white;
+  background-color: green;
+}
+.button button:hover {
+  cursor: pointer;
+  color: black;
+  background-color: lightgreen;
 }
 
 @media (width <= 800px) {

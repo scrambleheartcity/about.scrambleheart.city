@@ -12,10 +12,11 @@ export const ProjectLinks: Link[] = [
     url: 'https://forms.gle/LSc9YWop2oSNqPdAA',
   },
 ];
+export const DiscordUrl = 'https://discord.gg/6hbrfUgZJB';
 export const SocialLinks: SocialLink[] = [
   {
     label: 'Discord',
-    url: 'https://discord.gg/6hbrfUgZJB',
+    url: DiscordUrl,
     icon: '/assets/social/social_discord.png',
   },
   {
