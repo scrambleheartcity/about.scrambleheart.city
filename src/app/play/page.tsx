@@ -112,7 +112,7 @@ export default function Playtest() {
                 <br />
                 You cannot change the keyboard controls, but there is a Button
                 Mapping menu inside Options that should work with most
-                controllers. If your controller doesn't work, please report it
+                controllers. If your controller does not work, please report it
                 in the #playtest-bugs channel.
               </p>
               <p>
