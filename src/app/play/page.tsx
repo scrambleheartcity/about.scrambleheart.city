@@ -96,12 +96,6 @@ export default function Playtest() {
                 Yes! Feel free to share the URL + password all weekend.
               </p>
               <p>
-                <b>{`> Can I play this on my phone?`}</b>
-                <br />
-                We are currently only targeting desktop web, but you are welcome
-                to try.
-              </p>
-              <p>
                 <b>
                   {`> The game doesn't have any tutorials yet. How do I play?`}
                 </b>
@@ -112,6 +106,20 @@ export default function Playtest() {
                 you can read it{' '}
                 <ExternalLink href="/assets/how_to_play.pdf">here</ExternalLink>
                 .
+              </p>
+              <p>
+                <b>{`> Can I change the controls?`}</b>
+                <br />
+                You cannot change the keyboard controls, but there is a Button
+                Mapping menu inside Options that should work with most
+                controllers. If your controller doesn't work, please report it
+                in the #playtest-bugs channel.
+              </p>
+              <p>
+                <b>{`> Can I play this on my phone?`}</b>
+                <br />
+                We are currently only targeting desktop web, but you are welcome
+                to try.
               </p>
               <p>
                 <b>&gt; How can I support the game?</b>
