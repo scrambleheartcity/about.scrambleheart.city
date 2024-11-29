@@ -8,13 +8,14 @@ export const viewport: Viewport = {
   width: 'device-width',
 };
 
+const homeGraph = OpenGraphConfig;
 export const metadata: Metadata = {
-  title: OpenGraphConfig.title,
-  description: OpenGraphConfig.description,
+  title: homeGraph.title,
+  description: homeGraph.description,
   icons: {
     shortcut: '/assets/Grenade800.png',
   },
-  openGraph: OpenGraphConfig,
+  openGraph: homeGraph,
 };
 
 export default function RootLayout({
