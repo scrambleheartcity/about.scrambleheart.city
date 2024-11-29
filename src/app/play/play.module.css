@@ -55,6 +55,12 @@
   background-color: lightgreen;
 }
 
+.error {
+  background-color: lightgray;
+  padding: 1em;
+  font-family: monospace;
+}
+
 @media (width <= 800px) {
   .column {
     max-width: unset;

@@ -1,7 +1,7 @@
 import { OpenGraphConfig } from '@/components/openGraph';
 import { Metadata } from 'next';
 import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types';
-import { Playtest } from './play';
+import { PlaytestComp } from './play';
 
 const playGraph: OpenGraph = {
   ...OpenGraphConfig,
@@ -18,5 +18,5 @@ export const metadata: Metadata = {
 };
 
 export default function PlaytestPage() {
-  return <Playtest />;
+  return <PlaytestComp />;
 }

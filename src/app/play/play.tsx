@@ -3,6 +3,7 @@
 import { Background } from '@/components/background';
 import { ExternalLink } from '@/components/externalLink';
 import { WebGpuError } from '@/components/webgpu';
+import { useQueryParam } from '@/hooks/useQueryParam';
 import { useUserAgent } from '@/hooks/useUserAgent';
 import { useEffect, useState } from 'react';
 import { DiscordUrl } from '../data';
@@ -18,9 +19,10 @@ function performRedirect() {
   window.location.href = target + search;
 }
 
-export function Playtest() {
+export function PlaytestComp() {
   const userAgent = useUserAgent();
   const [webgpu, setWebgpu] = useState(false);
+  const errorMessage = useQueryParam('error');
 
   useEffect(() => {
     const autoRedirect =
@@ -31,6 +33,51 @@ export function Playtest() {
       performRedirect();
     }
   }, []);
+
+  if (errorMessage) {
+    const errorSnippet = `
+error v1
+timestamp: ${new Date().toISOString()}
+errorText: ${errorMessage}
+useragent: ${userAgent}
+    `.trim();
+    return (
+      <main>
+        <Background image="promo">
+          <div className={styles.page}>
+            <aside className={styles.column}>
+              <section style={{ textAlign: 'center' }}>
+                <a href="/">
+                  <img
+                    src="/assets/scramble_logo.png"
+                    className={styles.logo}
+                    alt="Scramble Heart City logo"
+                  />
+                </a>
+              </section>
+
+              <section>
+                <h1>{`Oh no! An error occurred :(`}</h1>
+                Please copy/paste the following into #playtest-bugs:
+              </section>
+
+              <section>
+                <div className={styles.error}>
+                  {errorSnippet.split('\n').map((line, li) => (
+                    <div key={li}>{line}</div>
+                  ))}
+                </div>
+              </section>
+
+              <section>
+                You can <a href="?">click here</a> to go back to the game.
+              </section>
+            </aside>
+          </div>
+        </Background>
+      </main>
+    );
+  }
 
   return (
     <main>
