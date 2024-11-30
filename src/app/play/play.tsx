@@ -132,6 +132,14 @@ useragent: ${userAgent}
             <section>
               <h1>FAQ</h1>
               <p>
+                <b>{`> My game keeps crashing with a white screen! How do I fix it?`}</b>
+                <br />
+                Unfortunately this is a known issue with the experimental engine
+                we&apos;re using and won&apos;t be fixed for another few months.
+                All you can do in the meantime is close other applications to
+                reduce the stress on your machine and try refreshing.
+              </p>
+              <p>
                 <b>{`> Am I allowed to stream/record footage?`}</b>
                 <br />
                 Yes! We want to encourage people to share the game and record
