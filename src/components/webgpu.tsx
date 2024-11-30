@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { ExternalLink } from './externalLink';
 import { detectWebGPU } from './util';
 import styles from './webgpu.module.css';
 
@@ -42,8 +43,10 @@ export function WebGpuError(props: {
         <div>
           This pre-alpha build requires WebGPU to run, which is not yet
           supported by all web browsers. Please use the latest version of either{' '}
-          <b>Google Chrome</b> or <b>Microsoft Edge</b>. If you are on Linux,
-          try <b>Firefox Nightly</b>.
+          <b>Google Chrome</b> or <b>Microsoft Edge</b>. If you are using
+          Chrome, make sure{' '}
+          <ExternalLink href="https://support.google.com/chrome/thread/274266347?hl=en&msgid=274267394">{`"Graphics Acceleration"`}</ExternalLink>{' '}
+          is enabled. If you are on Linux, try <b>Firefox Nightly</b>.
         </div>
         {props.showWorkarounds ? (
           <>
