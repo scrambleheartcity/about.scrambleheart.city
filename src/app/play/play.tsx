@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { DiscordUrl } from '../data';
 import styles from './play.module.css';
 
-const redirectEnabled = true;
+const redirectEnabled = false;
 const storageKey = 'played-v1';
 function performRedirect() {
   localStorage.setItem(storageKey, '1');
