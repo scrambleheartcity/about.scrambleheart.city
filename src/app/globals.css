@@ -31,6 +31,13 @@ body {
   background-color: var(--background-info);
   /* for testing */
   /* background-color: purple; */
+
+  /*
+    hides extra bit caused by width: 100vw,
+    which is bugged when there is a scrollbar
+  */
+  width: 100%;
+  overflow-x: hidden;
 }
 
 a {
