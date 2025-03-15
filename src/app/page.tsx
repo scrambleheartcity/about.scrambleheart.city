@@ -134,13 +134,13 @@ export default function Home() {
                     <div>
                       <b>Closed Alpha</b>
                     </div>
-                    <div>2024</div>
+                    <div>Late 2024</div>
                   </div>
                   <div className={styles.right}>
                     <div>
                       <b>Early Access</b>
                     </div>
-                    <div>2026</div>
+                    <div>Est. 2026</div>
                   </div>
                 </div>
               </div>
