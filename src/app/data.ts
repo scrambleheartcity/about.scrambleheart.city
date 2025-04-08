@@ -6,13 +6,21 @@ export type SocialLink = Link & {
   icon: string;
 };
 
+export const DiscordUrl = 'https://discord.gg/6hbrfUgZJB';
 export const ProjectLinks: Link[] = [
+  // {
+  //   label: 'Join waitlist',
+  //   url: 'https://forms.gle/LSc9YWop2oSNqPdAA',
+  // },
   {
-    label: 'Join waitlist',
-    url: 'https://forms.gle/LSc9YWop2oSNqPdAA',
+    label: 'Wishlist on Steam',
+    url: 'https://store.steampowered.com/app/3041800/Scramble_Heart_City/',
+  },
+  {
+    label: 'Join the Discord',
+    url: DiscordUrl,
   },
 ];
-export const DiscordUrl = 'https://discord.gg/6hbrfUgZJB';
 export const SocialLinks: SocialLink[] = [
   {
     label: 'Discord',

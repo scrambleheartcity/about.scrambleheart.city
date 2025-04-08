@@ -140,7 +140,7 @@ export default function Home() {
                     <div>
                       <b>Early Access</b>
                     </div>
-                    <div>Late 2025</div>
+                    <div>Est. 2026</div>
                   </div>
                 </div>
               </div>
