@@ -1,6 +1,6 @@
 # Scramble Heart City Frame Data
 
-generated 2025-04-08T17:09:51.585Z
+generated 2025-04-08T18:39:33.632Z
 
 - [Rosie Espada](#rosie-espada)
 - [Alistair IV](#alistair-iv)
@@ -72,7 +72,7 @@ generated 2025-04-08T17:09:51.585Z
 | Sword_Proj_GroundThrow_Plant | 11 |  |  |  |  |  |  |  |
 | Sword_Proj_GroundThrow_Explode | 19 |  |  |  |  |  |  |  |
 | Super_FlurryRush | 69 | 4 | 40 | 60 | 64 | 25 | +20 | -19 |
-| Super_FlurryRush_OnHit | 4 | 2 | 137 | 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 60 | 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 30 | 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 25 | -109 | -114 |
+| Super_FlurryRush_OnHit | 4 | 2 | 137 | 30x10, 60 | 25x10, 30 | 20x10, 25 | -107.18181818181819 | -112.18181818181819 |
 | Super_SkyRocket | 69 | 4 | 40 | 60 | 64 | 25 | +20 | -19 |
 | Super_SkyRocket_OnHit | 28 | 1 | 31 | 10 | 20 | 15 | -12 | -17 |
 | Super_GrenadeFrenzy | 108 |  |  |  |  |  |  |  |
@@ -92,15 +92,15 @@ generated 2025-04-08T17:09:51.585Z
 | Spear_Normal_5C | 15 | 2 | 20 | 48 | 30 | 25 | +8 | +3 |
 | Spear_Normal_Launcher | 12 | 2 | 34 | 64 | 30 | 25 | -6 | -11 |
 | Spear_Normal_jA | 5 | 5 | 7 | 8 | 20 | 15 | +8 | +3 |
-| Spear_Normal_jB | 7 | 6 | 20 | 24, 24 | 25, 25 | 20, 20 | -1 | -6 |
+| Spear_Normal_jB | 7 | 6 | 20 | 24x2 | 25x2 | 20x2 | +2 | -3 |
 | Spear_Normal_jC | 12 | 4 | 24 | 48 | 30 | 25 | +2 | -3 |
 | Spear_Special_Stance_Start | 30 |  |  |  |  |  |  |  |
 | Spear_Special_Stance_Exit | 10 |  |  |  |  |  |  |  |
 | Spear_Special_Stance_Mid | 5 | 5 | 31 | 48 | 30 | 25 | -6 | -11 |
-| Spear_Special_Stance_Low | 12 | 2 | 37 | 24, 24 | 25, 25 | 20, 20 | -14 | -19 |
+| Spear_Special_Stance_Low | 12 | 2 | 37 | 24x2 | 25x2 | 20x2 | -13 | -18 |
 | Spear_Special_Stance_Overhead | 25 | 5 | 21 | 48 | 30 | 25 | +4 | -1 |
 | Spear_Special_StraightLaser | 72 |  |  |  |  |  |  |  |
-| Spear_Special_TwirlForward | 10 | 16 | 4 | 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48 | 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 | 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25 | +10 | +5 |
+| Spear_Special_TwirlForward | 10 | 16 | 4 | 48x16 | 30x16 | 25x16 | +25 | +20 |
 | Spear_Special_SwaySlash | 26 |  |  |  |  |  |  |  |
 | Spear_Special_Stroke_Start | 12 | 52 |  | 0 | 20 | 15 |  |  |
 | Spear_Special_Stroke_Attack | 4 | 4 | 28 | 48 | 30 | 25 | -2 | -7 |
@@ -110,14 +110,14 @@ generated 2025-04-08T17:09:51.585Z
 | Spear_Special_Air_Pogo_Bounce4 | 600 |  |  |  |  |  |  |  |
 | Spear_Special_Air_Pogo_Bounce5 | 600 |  |  |  |  |  |  |  |
 | Spear_Special_Air_Pogo_Bounce6 | 600 |  |  |  |  |  |  |  |
-| Spear_Proj_StraightLaser | 4 | 24 |  | 8, 8, 8, 24 | 20, 20, 20, 25 | 15, 15, 15, 20 |  |  |
-| Spear_Proj_StraightLaser:super | 4 | 80 | 4 | 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 48 | 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 30 | 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 25 | -54 | -59 |
+| Spear_Proj_StraightLaser | 4 | 24 |  | 8x3, 24 | 20x3, 25 | 15x3, 20 |  |  |
+| Spear_Proj_StraightLaser:super | 4 | 80 | 4 | 24x15, 48 | 25x15, 30 | 20x15, 25 | +21 | +16 |
 | Spear_Proj_MuzzleFlash | 24 |  |  |  |  |  |  |  |
 | Spear_Proj_MuzzleFlash:super | 84 |  |  |  |  |  |  |  |
 | Spear_Proj_Splode | 8 |  |  |  |  |  |  |  |
 | Spear_Super_GroundLaser | 232 |  |  |  |  |  |  |  |
 | Spear_Super_Uppercut_Start | 55 | 4 | 42 | 48 | 60 | 25 | +14 | -21 |
-| Spear_Super_Uppercut_Hit | 30 | 40 | 60 | 24, 24, 24, 24, 24, 24, 24, 24, 24, 48 | 25, 25, 25, 25, 25, 25, 25, 25, 25, 30 | 20, 20, 20, 20, 20, 20, 20, 20, 20, 25 | -70 | -75 |
+| Spear_Super_Uppercut_Hit | 30 | 40 | 60 | 24x9, 48 | 25x9, 30 | 20x9, 25 | -34 | -39 |
 | Spear_Super_AirTackle_Start | 55 | 545 |  | 50 | 60 | 15 |  |  |
 | Spear_DHC_Super_Air | 55 | 545 |  | 50 | 60 | 15 |  |  |
 | Spear_Super_AirTackle_Land | 0 | 4 | 56 | 100 | 30 | 25 | -30 | -35 |
@@ -144,7 +144,7 @@ generated 2025-04-08T17:09:51.585Z
 | Book_Launcher | 10 | 4 | 46 | 80 | 30 | 30 | -20 | -20 |
 | Book_Normal_jA | 5 | 26 |  | 10 | 20 | 15 |  |  |
 | Book_Normal_jAA | 5 | 24 |  | 10 | 20 | 15 |  |  |
-| Book_Normal_jB | 10 | 590 |  | 30, 30, 30, 30, 30 | 25, 25, 25, 25, 25 | 20, 20, 20, 20, 20 |  |  |
+| Book_Normal_jB | 10 | 590 |  | 30x5 | 25x5 | 20x5 |  |  |
 | Book_Special_Puppet_Pipe | 16 | 2 | 582 | 90 | 30 | 25 | -554 | -559 |
 | Book_Special_Lonely_Pipe | 16 | 2 | 582 | 60 | 30 | 25 | -554 | -559 |
 | Book_Special_Puppet_Bookdoken | 44 |  |  |  |  |  |  |  |
@@ -175,14 +175,14 @@ generated 2025-04-08T17:09:51.585Z
 | Book_Puppet_SpikeTrap | 600 |  |  |  |  |  |  |  |
 | Book_Puppet_SpikeTrapSprung | 4 | 5 | 30 | 30 | 25 | 20 | -10 | -15 |
 | Book_Puppet_Special_Air_Slam | 0 | 600 |  | 30 | 25 | 20 |  |  |
-| Book_Puppet_SpinInPlace | 10 | 96 | 60 | 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6 | 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25 | 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 | -131 | -136 |
+| Book_Puppet_SpinInPlace | 10 | 96 | 60 | 6x12 | 25x12 | 20x12 | -43 | -48 |
 | Book_Puppet_Spellbook_Front | 119 |  |  |  |  |  |  |  |
 | Book_Puppet_Spellbook_Above | 119 |  |  |  |  |  |  |  |
 | Book_Puppet_Grounded | 68 |  |  |  |  |  |  |  |
 | Book_Puppet_Respawn | 28 |  |  |  |  |  |  |  |
 | Super_Vortex_Projectile_Start_Front | 18 |  |  |  |  |  |  |  |
 | Super_Vortex_Projectile_Start_Back | 18 |  |  |  |  |  |  |  |
-| Super_Vortex_Projectile | 2 | 180 |  | 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 | 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40 | 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 |  |  |
+| Super_Vortex_Projectile | 2 | 180 |  | 30x12 | 40x12 | 20x12 |  |  |
 | Super_Air_Projectile | 10 | 15 | 5 | 30 | 25 | 20 | +5 | +0 |
 
 ## Harmony
@@ -226,12 +226,12 @@ generated 2025-04-08T17:09:51.585Z
 | Shadow_Proj_jA | 2 | 4 | 16 | 10 | 20 | 15 | +0 | -5 |
 | Shadow_Proj_jAA | 2 | 4 | 16 | 10 | 20 | 15 | +0 | -5 |
 | Shadow_Proj_jAAA | 2 | 4 | 16 | 10 | 20 | 15 | +0 | -5 |
-| Shadow_Proj_2B | 9 | 4 | 8 | 10, 30 | 20, 25 | 15, 20 | +13 | +8 |
+| Shadow_Proj_2B | 9 | 4 | 8 | 10, 30 | 20, 25 | 15, 20 | +15 | +10 |
 | Shadow_Proj_Launcher | 9 | 2 | 22 | 80 | 30 | 25 | +6 | +1 |
 | Shadow_Proj_Bubble | 32 | 568 |  | 0 | 20 | 15 |  |  |
 | Shadow_Proj_Bubble_Capture | 0 | 1 | 120 | 100 | 120 | 20 | -1 | -101 |
-| Shadow_Proj_Spike_First | 1 | 1 | 66 | 0, 10 | 20, 20 | 15, 15 | -47 | -52 |
-| Shadow_Proj_Spike | 1 | 1 | 66 | 0, 10 | 20, 20 | 15, 15 | -47 | -52 |
+| Shadow_Proj_Spike_First | 1 | 1 | 66 | 0, 10 | 20x2 | 15x2 | -46.5 | -51.5 |
+| Shadow_Proj_Spike | 1 | 1 | 66 | 0, 10 | 20x2 | 15x2 | -46.5 | -51.5 |
 | Shadow_Proj_Super_Hand | 14 | 2 | 36 | 60 | 30 | 25 | -8 | -13 |
 | Shadow_Proj_Super_Hand_Kill | 4 |  |  |  |  |  |  |  |
 | Shadow_Proj_Super_Hand_NotKill | 0 | 4 |  |  |  |  |  |  |
@@ -251,7 +251,7 @@ generated 2025-04-08T17:09:51.585Z
 
 | name | startup | active | recovery | damage | hitstun | blockstun | onHit | onBlock |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --- | --- |
-| Robot_Normal_5A | 5 | 12 | 12 | 5, 5, 10 | 20, 20, 20 | 15, 15, 15 | -4 | -9 |
+| Robot_Normal_5A | 5 | 12 | 12 | 5x2, 10 | 20x3 | 15x3 | +4 | -1 |
 | Robot_Normal_2A | 5 | 2 | 14 | 10 | 20 | 15 | +4 | -1 |
 | Robot_Normal_5B | 8 | 10 | 12 | 30 | 25 | 20 | +3 | -2 |
 | Robot_Normal_2B | 14 | 18 | 6 | 30 | 25 | 20 | +1 | -4 |
