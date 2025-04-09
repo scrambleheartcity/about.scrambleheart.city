@@ -1,6 +1,6 @@
 # Scramble Heart City Frame Data
 
-generated 2025-04-09T17:56:04.679Z
+generated 2025-04-09T18:34:58.408Z
 
 - [Rosie Espada](#rosie-espada)
 - [Alistair IV](#alistair-iv)
@@ -72,7 +72,7 @@ generated 2025-04-09T17:56:04.679Z
 | Sword_Proj_GroundThrow_Plant | 11 |  |  |  |  |  |  |  |
 | Sword_Proj_GroundThrow_Explode | 19 |  |  |  |  |  |  |  |
 | Super_FlurryRush | 69 | 4 | 40 | 60 | 64 | 25 | +20 | -19 |
-| Super_FlurryRush_OnHit | 4 | 2 | 137 | 30x10, 60 | 25x10, 30 | 20x10, 25 | -107.18181818181819 | -112.18181818181819 |
+| Super_FlurryRush_OnHit | 4 | 2 | 137 | 30x10, 60 | 25x10, 30 | 20x10, 25 | -107 | -112 |
 | Super_SkyRocket | 69 | 4 | 40 | 60 | 64 | 25 | +20 | -19 |
 | Super_SkyRocket_OnHit | 28 | 1 | 31 | 10 | 20 | 15 | -12 | -17 |
 | Super_GrenadeFrenzy | 108 |  |  |  |  |  |  |  |
@@ -230,8 +230,8 @@ generated 2025-04-09T17:56:04.679Z
 | Shadow_Proj_Launcher | 9 | 2 | 22 | 80 | 30 | 25 | +6 | +1 |
 | Shadow_Proj_Bubble | 32 | 568 |  | 0 | 20 | 15 |  |  |
 | Shadow_Proj_Bubble_Capture | 0 | 1 | 120 | 100 | 120 | 20 | -1 | -101 |
-| Shadow_Proj_Spike_First | 1 | 1 | 66 | 0, 10 | 20x2 | 15x2 | -46.5 | -51.5 |
-| Shadow_Proj_Spike | 1 | 1 | 66 | 0, 10 | 20x2 | 15x2 | -46.5 | -51.5 |
+| Shadow_Proj_Spike_First | 1 | 1 | 66 | 0, 10 | 20x2 | 15x2 | -47 | -52 |
+| Shadow_Proj_Spike | 1 | 1 | 66 | 0, 10 | 20x2 | 15x2 | -47 | -52 |
 | Shadow_Proj_Super_Hand | 14 | 2 | 36 | 60 | 30 | 25 | -8 | -13 |
 | Shadow_Proj_Super_Hand_Kill | 4 |  |  |  |  |  |  |  |
 | Shadow_Proj_Super_Hand_NotKill | 0 | 4 |  |  |  |  |  |  |
