@@ -1,6 +1,6 @@
 # Scramble Heart City Frame Data
 
-generated 2025-04-13T04:43:41.810Z
+generated 2025-04-13T05:01:12.120Z
 
 - [Rosie Espada](#rosie-espada)
 - [Alistair IV](#alistair-iv)
@@ -98,6 +98,7 @@ generated 2025-04-13T04:43:41.810Z
 | Spear_Special2_Rekka_Forward | 20 | 4 | 22 | 48 | 30 | 25 | +4 | -1 |
 | Spear_Special2_Rekka_Restand | 12 | 4 | 26 | 48 | 30 | 25 | +0 | -5 |
 | Spear_Special2_Rekka_Low | 12 | 4 | 26 | 48 | 30 | 25 | +0 | -5 |
+| Spear_Special2_Stance_Overhead | 30 | 5 | 21 | 48 | 30 | 25 | +4 | -1 |
 | Spear_Special_Stance_Start | 30 |  |  |  |  |  |  |  |
 | Spear_Special_Stance_Exit | 10 |  |  |  |  |  |  |  |
 | Spear_Special_Stance_Mid | 5 | 5 | 31 | 48 | 30 | 25 | -6 | -11 |
