@@ -1,9 +1,7 @@
 {
   "name": "about.scrambleheart.city",
   "scripts": {
-    "gen:framedata": "tsx src/bin/framedata.ts",
     "dev": "next dev",
-    "prebuild": "npm run gen:framedata",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -15,6 +13,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-markdown": "^10.1.0",
+    "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {

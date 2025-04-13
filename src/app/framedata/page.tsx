@@ -1,7 +1,7 @@
 import { OpenGraphConfig } from '@/components/openGraph';
 import { Metadata } from 'next';
 import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types';
-import { FrameData } from './framedata';
+import { FrameData, FrameDataProps } from './framedata';
 
 const playGraph: OpenGraph = {
   ...OpenGraphConfig,
@@ -17,6 +17,16 @@ export const metadata: Metadata = {
   openGraph: playGraph,
 };
 
-export default function FrameDataPage() {
-  return <FrameData />;
+async function getFrameData(): Promise<FrameDataProps> {
+  // no CORS issue because this is SSG
+  const res = await fetch(
+    'https://play.void.dev/mpaulweeks/scramble-heart-city/preview/main/data/framedata.md',
+  );
+  const data = await res.text();
+  return { data };
+}
+
+export default async function FrameDataPage() {
+  const props = await getFrameData();
+  return <FrameData {...props} />;
 }
