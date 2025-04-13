@@ -1,6 +1,6 @@
 # Scramble Heart City Frame Data
 
-generated 2025-04-13T05:41:50.400Z
+generated 2025-04-13T05:49:04.951Z
 
 - [Rosie Espada](#rosie-espada)
 - [Alistair IV](#alistair-iv)
@@ -94,10 +94,10 @@ generated 2025-04-13T05:41:50.400Z
 | Spear_Normal_jA | 5 | 5 | 7 | 8 | 20 | 15 | +8 | +3 |
 | Spear_Normal_jB | 7 | 6 | 20 | 24x2 | 25x2 | 20x2 | +2 | -3 |
 | Spear_Normal_jC | 12 | 4 | 24 | 48 | 30 | 25 | +2 | -3 |
-| Spear_Special2_Rekka_AntiAir | 12 | 4 | 26 | 48 | 30 | 25 | +0 | -5 |
-| Spear_Special2_Rekka_Forward | 20 | 4 | 22 | 48 | 30 | 25 | +4 | -1 |
-| Spear_Special2_Rekka_Low | 12 | 4 | 26 | 48 | 30 | 25 | +0 | -5 |
-| Spear_Special2_Rekka_Restand | 12 | 4 | 26 | 48 | 30 | 25 | +0 | -5 |
+| Spear_Special2_Rekka_AntiAir | 12 | 4 | 26 | 24 | 25 | 20 | -5 | -10 |
+| Spear_Special2_Rekka_Forward | 20 | 4 | 22 | 24 | 25 | 20 | -1 | -6 |
+| Spear_Special2_Rekka_Low | 12 | 4 | 26 | 24 | 25 | 20 | -5 | -10 |
+| Spear_Special2_Rekka_Restand | 12 | 4 | 26 | 24 | 25 | 20 | -5 | -10 |
 | Spear_Special2_Stance_Dash4 | 20 |  |  |  |  |  |  |  |
 | Spear_Special2_Stance_Dash6 | 20 |  |  |  |  |  |  |  |
 | Spear_Special2_Stance_Overhead | 30 | 5 | 21 | 48 | 30 | 25 | +4 | -1 |
