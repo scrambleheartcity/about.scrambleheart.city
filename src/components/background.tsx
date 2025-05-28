@@ -16,6 +16,9 @@ export function Background(
           <div className={classCat(styles.imageHolder, styles.bg1)}></div>
           <div className={classCat(styles.imageHolder, styles.bg2)}></div>
           <div className={classCat(styles.imageHolder, styles.bg3)}></div>
+          <div className={classCat(styles.imageHolder, styles.bg4)}></div>
+          <div className={classCat(styles.imageHolder, styles.bg5)}></div>
+          <div className={classCat(styles.imageHolder, styles.bg6)}></div>
         </>
       )}
       <div className={styles.content}>{props.children}</div>

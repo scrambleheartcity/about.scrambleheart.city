@@ -32,23 +32,41 @@
   background-image: url('/assets/poster_notext_1920x1080.jpg');
 }
 .bg1 {
-  background-image: url('/assets/stages/comp_rooftop_day/shc_rooftop_day_sky.jpg');
+  background-image: url('/assets/stages/comp_rooftop_day_v2/shc_rooftop_daytime_sky.png');
 }
 .bg2 {
-  background-image: url('/assets/stages/comp_rooftop_day/shc_rooftop_day_buildings.png');
+  background-image: url('/assets/stages/comp_rooftop_day_v2/shc_rooftop_daytime_parallax_02.png');
 }
 .bg3 {
-  background-image: url('/assets/stages/comp_rooftop_day/shc_rooftop_day_platform.png');
+  background-image: url('/assets/stages/comp_rooftop_day_v2/shc_rooftop_daytime_parallax_01.png');
+}
+.bg4 {
+  background-image: url('/assets/stages/comp_rooftop_day_v2/shc_rooftop_daytime_main.png');
+}
+.bg5 {
+  background-image: url('/assets/stages/comp_rooftop_day_v2/shc_rooftop_daytime_vendingmachine.png');
+}
+.bg6 {
+  background-image: url('/assets/stages/comp_rooftop_day_v2/shc_rooftop_daytime_bench.png');
 }
 @media (prefers-color-scheme: dark) {
   .bg1 {
-    background-image: url('/assets/stages/comp_rooftop_night/shc_rooftop_night_paint_sky.jpg');
+    background-image: url('/assets/stages/comp_rooftop_night_v2/shc_rooftop_night_paint_sky.png');
   }
   .bg2 {
-    background-image: url('/assets/stages/comp_rooftop_night/shc_rooftop_night_buildings.png');
+    background-image: url('/assets/stages/comp_rooftop_night_v2/shc_rooftop_night_parallax_02_combine.png');
   }
   .bg3 {
-    background-image: url('/assets/stages/comp_rooftop_night/shc_rooftop_night_platform.png');
+    background-image: url('/assets/stages/comp_rooftop_night_v2/shc_rooftop_night_parallax_01_combine.png');
+  }
+  .bg4 {
+    background-image: url('/assets/stages/comp_rooftop_night_v2/shc_rooftop_night_platform.png');
+  }
+  .bg5 {
+    background-image: url('/assets/stages/comp_rooftop_night_v2/shc_rooftop_night_vendingmachine.png');
+  }
+  .bg6 {
+    background-image: url('/assets/stages/comp_rooftop_night_v2/shc_rooftop_night_bench.png');
   }
 }
 
