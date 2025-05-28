@@ -6,16 +6,15 @@ import { WebGpuError } from '@/components/webgpu';
 import { useQueryParam } from '@/hooks/useQueryParam';
 import { useUserAgent } from '@/hooks/useUserAgent';
 import { PropsWithChildren, useEffect, useState } from 'react';
-import { DiscordUrl } from '../data';
+import { DiscordUrl, PlaytestIsActive } from '../data';
 import styles from './play.module.css';
 
-const playtestActive = false;
-const redirectEnabled = false;
+const autoRedirectEnabled = false;
 const storageKey = 'played-v1';
 function performRedirect() {
   localStorage.setItem(storageKey, '1');
   const target =
-    'https://play.void.dev/mpaulweeks/scramble-heart-city/preview/playtest/';
+    'https://play.void.dev/mpaulweeks/scramble-heart-city/serve/playtest/';
   const search = window.location.search;
   window.location.href = target + search;
 }
@@ -24,10 +23,9 @@ function PlaytestInfoActive(props: PropsWithChildren) {
   return (
     <>
       <section>
-        Thank you for participating in the first ever Scramble Heart City online
-        playtest!
+        Thank you for participating in the Scramble Heart City online playtest!
         <br />
-        This playtest will run Friday November 29 to Sunday December 1.
+        This playtest will run Friday June 6 to Sunday June 8.
         <br />
         <br />
         <b>
@@ -121,7 +119,7 @@ export function PlaytestComp() {
 
   useEffect(() => {
     const autoRedirect =
-      redirectEnabled &&
+      autoRedirectEnabled &&
       localStorage.getItem(storageKey) &&
       (window.location.search.includes('pm=') ||
         window.location.search.includes('replay='));
@@ -175,7 +173,7 @@ useragent: ${userAgent}
     );
   }
 
-  const InfoComp = playtestActive ? PlaytestInfoActive : PlaytestInfoInactive;
+  const InfoComp = PlaytestIsActive ? PlaytestInfoActive : PlaytestInfoInactive;
 
   return (
     <main>
@@ -199,7 +197,7 @@ useragent: ${userAgent}
                   onSuccess={() => setWebgpu(true)}
                 />
               </section>
-              {redirectEnabled && webgpu ? (
+              {PlaytestIsActive && webgpu ? (
                 <section className={styles.button}>
                   <button onClick={performRedirect}>PLAY NOW</button>
                 </section>

@@ -6,6 +6,8 @@ export type SocialLink = Link & {
   icon: string;
 };
 
+export const PlaytestIsActive = process.env.NODE_ENV === 'development';
+
 export const DiscordUrl = 'https://discord.gg/6hbrfUgZJB';
 export const ProjectLinks: Link[] = [
   // {
@@ -16,10 +18,15 @@ export const ProjectLinks: Link[] = [
     label: 'Wishlist on Steam',
     url: 'https://store.steampowered.com/app/3041800/Scramble_Heart_City/',
   },
-  {
-    label: 'Join the Discord',
-    url: DiscordUrl,
-  },
+  PlaytestIsActive
+    ? {
+        label: 'Playtest now!',
+        url: '/play',
+      }
+    : {
+        label: 'Join the Discord',
+        url: DiscordUrl,
+      },
 ];
 export const SocialLinks: SocialLink[] = [
   {
