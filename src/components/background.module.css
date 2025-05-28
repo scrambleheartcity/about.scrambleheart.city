@@ -12,7 +12,11 @@
 
   background-size: cover;
   background-position: center;
-
+}
+.imageFixed {
+  position: fixed;
+}
+.imageSlide {
   animation-name: bg-slide;
   animation-duration: 40s;
   animation-timing-function: linear;

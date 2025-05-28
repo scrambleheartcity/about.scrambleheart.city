@@ -177,7 +177,7 @@ useragent: ${userAgent}
 
   return (
     <main>
-      <Background image="promo">
+      <Background image="promo" fixed={true}>
         <div className={styles.page}>
           <aside className={styles.column}>
             <section style={{ textAlign: 'center' }}>
