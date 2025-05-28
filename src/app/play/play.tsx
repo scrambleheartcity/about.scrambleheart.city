@@ -10,7 +10,7 @@ import { DiscordUrl, PlaytestIsActive } from '../data';
 import styles from './play.module.css';
 
 const autoRedirectEnabled = false;
-const storageKey = 'played-v1';
+const storageKey = 'played-v2025-05-28';
 function performRedirect() {
   localStorage.setItem(storageKey, '1');
   const target =
@@ -62,7 +62,8 @@ function PlaytestInfoActive(props: PropsWithChildren) {
         <p>
           <b>{`> Can I share this with my friends?`}</b>
           <br />
-          Yes! Feel free to share the URL + password all weekend.
+          Yes! Just invite them to the Discord server so they can get the
+          password and hear about updates.
         </p>
         <p>
           <b>{`> The game doesn't have any tutorials yet. How do I play?`}</b>
@@ -75,10 +76,10 @@ function PlaytestInfoActive(props: PropsWithChildren) {
         <p>
           <b>{`> Can I change the controls?`}</b>
           <br />
-          You cannot change the keyboard controls, but there is a Button Mapping
-          menu inside Options that should work with most controllers. If your
-          controller does not work, please report it in the #playtest-bugs
-          channel.
+          You cannot change the keyboard controls, but if you go into "Options"
+          and then "Button Mapping", you should be able to remap most
+          controllers. If your controller does not work, please report it in the
+          #playtest-bugs channel.
         </p>
         <p>
           <b>{`> Can I play this on my phone?`}</b>
@@ -101,8 +102,7 @@ function PlaytestInfoInactive(props: PropsWithChildren) {
   return (
     <>
       <section>
-        Thank you for participating in the first ever Scramble Heart City online
-        playtest! Join the{' '}
+        Join the{' '}
         <ExternalLink href={DiscordUrl}>official Discord server</ExternalLink>{' '}
         to be alerted when the next playtest happens.
       </section>
