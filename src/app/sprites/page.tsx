@@ -5,7 +5,7 @@ import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types';
 
 const playGraph: OpenGraph = {
   ...OpenGraphConfig,
-  title: 'Scramble Heart City - Frame Data',
+  title: 'Scramble Heart City - Sprites',
   images: [],
 };
 export const metadata: Metadata = {
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
 async function fetchData(): Promise<string> {
   // no CORS issue because this is SSG
   const res = await fetch(
-    'https://play.void.dev/mpaulweeks/scramble-heart-city/preview/main/data/framedata.md',
+    'https://play.void.dev/mpaulweeks/scramble-heart-city/preview/main/data/sprites.md',
   );
   const data = await res.text();
   return data;
 }
 
-export default async function FrameDataPage() {
+export default async function SpritesPage() {
   const markdown = await fetchData();
   return <MarkdownPage markdown={markdown} />;
 }
