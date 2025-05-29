@@ -3,18 +3,13 @@ import 'github-markdown-css';
 import Markdown from 'react-markdown';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-import styles from './framedata.module.css';
 
-export type FrameDataProps = {
-  data: string;
-};
-
-export function FrameData(props: FrameDataProps) {
+export function MarkdownPage(props: { markdown: string }) {
   return (
     <div className="markdown-body">
-      <div className={styles.body}>
+      <div style={{ padding: '1em 2em' }}>
         <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]}>
-          {props.data}
+          {props.markdown}
         </Markdown>
       </div>
     </div>
