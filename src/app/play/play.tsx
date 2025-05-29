@@ -76,10 +76,10 @@ function PlaytestInfoActive(props: PropsWithChildren) {
         <p>
           <b>{`> Can I change the controls?`}</b>
           <br />
-          You cannot change the keyboard controls, but if you go into "Options"
-          and then "Button Mapping", you should be able to remap most
-          controllers. If your controller does not work, please report it in the
-          #playtest-bugs channel.
+          You cannot change the keyboard controls, but if you go into
+          &quot;Options&quot; and then &quot;Button Mapping&quot;, you should be
+          able to remap most controllers. If your controller does not work,
+          please report it in the #playtest-bugs channel.
         </p>
         <p>
           <b>{`> Can I play this on my phone?`}</b>
