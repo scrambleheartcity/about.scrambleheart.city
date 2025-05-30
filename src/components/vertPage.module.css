@@ -1,0 +1,49 @@
+.page {
+  min-height: 100vh;
+  font-size: 18px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page h1 {
+  font-size: 2em;
+  margin: 0.5em 0;
+}
+
+.page a {
+  text-decoration: underline;
+}
+
+.column {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 2em;
+  box-sizing: border-box;
+  border-radius: 1em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1em;
+
+  background-color: white;
+  color: black;
+}
+
+.logo {
+  max-width: 80vw;
+  width: 400px;
+}
+
+@media (width <= 800px) {
+  .column {
+    max-width: unset;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+}

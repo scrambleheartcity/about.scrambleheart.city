@@ -1,7 +1,7 @@
 'use client';
 
-import { Background } from '@/components/background';
 import { ExternalLink } from '@/components/externalLink';
+import { VertPage } from '@/components/vertPage';
 import { WebGpuError } from '@/components/webgpu';
 import { useQueryParam } from '@/hooks/useQueryParam';
 import { useUserAgent } from '@/hooks/useUserAgent';
@@ -135,81 +135,49 @@ errorText: ${errorMessage}
 useragent: ${userAgent}
     `.trim();
     return (
-      <main>
-        <Background image="promo">
-          <div className={styles.page}>
-            <aside className={styles.column}>
-              <section style={{ textAlign: 'center' }}>
-                <a href="/">
-                  <img
-                    src="/assets/scramble_logo.png"
-                    className={styles.logo}
-                    alt="Scramble Heart City logo"
-                  />
-                </a>
-              </section>
+      <VertPage>
+        <section>
+          <h1>{`Oh no! An error occurred :(`}</h1>
+          Please copy/paste the following into #playtest-bugs:
+        </section>
 
-              <section>
-                <h1>{`Oh no! An error occurred :(`}</h1>
-                Please copy/paste the following into #playtest-bugs:
-              </section>
-
-              <section>
-                <div className={styles.error}>
-                  {errorSnippet.split('\n').map((line, li) => (
-                    <div key={li}>{line}</div>
-                  ))}
-                </div>
-              </section>
-
-              <section>
-                You can <a href="?">click here</a> to go back to the game.
-              </section>
-            </aside>
+        <section>
+          <div className={styles.error}>
+            {errorSnippet.split('\n').map((line, li) => (
+              <div key={li}>{line}</div>
+            ))}
           </div>
-        </Background>
-      </main>
+        </section>
+
+        <section>
+          You can <a href="?">click here</a> to go back to the game.
+        </section>
+      </VertPage>
     );
   }
 
   const InfoComp = PlaytestIsActive ? PlaytestInfoActive : PlaytestInfoInactive;
 
   return (
-    <main>
-      <Background image="promo" fixed={true}>
-        <div className={styles.page}>
-          <aside className={styles.column}>
-            <section style={{ textAlign: 'center' }}>
-              <a href="/">
-                <img
-                  src="/assets/scramble_logo.png"
-                  className={styles.logo}
-                  alt="Scramble Heart City logo"
-                />
-              </a>
-            </section>
+    <VertPage>
+      <InfoComp>
+        <section>
+          <WebGpuError
+            showWorkarounds={false}
+            onSuccess={() => setWebgpu(true)}
+          />
+        </section>
+        {PlaytestIsActive && webgpu ? (
+          <section className={styles.button}>
+            <button onClick={performRedirect}>PLAY NOW</button>
+          </section>
+        ) : null}
+      </InfoComp>
 
-            <InfoComp>
-              <section>
-                <WebGpuError
-                  showWorkarounds={false}
-                  onSuccess={() => setWebgpu(true)}
-                />
-              </section>
-              {PlaytestIsActive && webgpu ? (
-                <section className={styles.button}>
-                  <button onClick={performRedirect}>PLAY NOW</button>
-                </section>
-              ) : null}
-            </InfoComp>
-
-            <section>
-              <h1>Debug Info</h1>
-              <div>{userAgent}</div>
-            </section>
-          </aside>
-        </div>
-      </Background>
-    </main>
+      <section>
+        <h1>Debug Info</h1>
+        <div>{userAgent}</div>
+      </section>
+    </VertPage>
   );
 }
