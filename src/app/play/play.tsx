@@ -3,7 +3,6 @@
 import { ExternalLink } from '@/components/externalLink';
 import { VertPage } from '@/components/vertPage';
 import { WebGpuError } from '@/components/webgpu';
-import { useQueryParam } from '@/hooks/useQueryParam';
 import { useUserAgent } from '@/hooks/useUserAgent';
 import { PropsWithChildren, useEffect, useState } from 'react';
 import { DiscordUrl, PlaytestIsActive, PlaytestUrl } from '../data';
@@ -114,7 +113,6 @@ function PlaytestInfoInactive(props: PropsWithChildren) {
 export function PlaytestComp() {
   const userAgent = useUserAgent();
   const [webgpu, setWebgpu] = useState(false);
-  const errorMessage = useQueryParam('error');
 
   useEffect(() => {
     const autoRedirect =
@@ -126,35 +124,6 @@ export function PlaytestComp() {
       performRedirect();
     }
   }, []);
-
-  if (errorMessage) {
-    const errorSnippet = `
-error v1
-timestamp: ${new Date().toISOString()}
-errorText: ${errorMessage}
-useragent: ${userAgent}
-    `.trim();
-    return (
-      <VertPage>
-        <section>
-          <h1>{`Oh no! An error occurred :(`}</h1>
-          Please copy/paste the following into #playtest-bugs:
-        </section>
-
-        <section>
-          <div className={styles.error}>
-            {errorSnippet.split('\n').map((line, li) => (
-              <div key={li}>{line}</div>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          You can <a href="?">click here</a> to go back to the game.
-        </section>
-      </VertPage>
-    );
-  }
 
   const InfoComp = PlaytestIsActive ? PlaytestInfoActive : PlaytestInfoInactive;
 
