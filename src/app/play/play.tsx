@@ -6,15 +6,14 @@ import { WebGpuError } from '@/components/webgpu';
 import { useQueryParam } from '@/hooks/useQueryParam';
 import { useUserAgent } from '@/hooks/useUserAgent';
 import { PropsWithChildren, useEffect, useState } from 'react';
-import { DiscordUrl, PlaytestIsActive } from '../data';
+import { DiscordUrl, PlaytestIsActive, PlaytestUrl } from '../data';
 import styles from './play.module.css';
 
 const autoRedirectEnabled = false;
 const storageKey = 'played-v2025-05-28';
 function performRedirect() {
   localStorage.setItem(storageKey, '1');
-  const target =
-    'https://play.void.dev/mpaulweeks/scramble-heart-city/serve/playtest/';
+  const target = PlaytestUrl;
   const search = window.location.search;
   window.location.href = target + search;
 }

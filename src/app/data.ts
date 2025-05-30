@@ -7,6 +7,9 @@ export type SocialLink = Link & {
 };
 
 export const PlaytestIsActive = process.env.NODE_ENV === 'development';
+const HostedUrl = `https://play.void.dev/mpaulweeks/scramble-heart-city/serve`;
+export const ProdUrl = `${HostedUrl}/main`;
+export const PlaytestUrl = `${HostedUrl}/playtest`;
 
 export const DiscordUrl = 'https://discord.gg/6hbrfUgZJB';
 export const ProjectLinks: Link[] = [
