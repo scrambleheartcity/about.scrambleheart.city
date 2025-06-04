@@ -1,18 +1,14 @@
 'use client';
 
 import { VertPage } from '@/components/vertPage';
-import { useMount } from '@/hooks/useMount';
 import { useQueryParam } from '@/hooks/useQueryParam';
-import { useUserAgent } from '@/hooks/useUserAgent';
-import { useState } from 'react';
+import { useClientValue } from '@/hooks/useValue';
 import { PlaytestUrl } from '../data';
 import styles from '../play/play.module.css';
 
 export default function ErrorPage() {
-  const [timestamp, setTimestamp] = useState<string>('');
-  useMount(() => setTimestamp(new Date().toISOString()));
-
-  const userAgent = useUserAgent();
+  const timestamp = useClientValue('loading...', new Date().toISOString());
+  const userAgent = useClientValue('loading...', navigator.userAgent);
   const passThru = useQueryParam('passThrough');
   const errorHead = useQueryParam('head') ?? '';
   const errorBody = useQueryParam('body') ?? '';

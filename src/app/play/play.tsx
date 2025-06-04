@@ -5,7 +5,7 @@ import { VertPage } from '@/components/vertPage';
 import { WebGpuError } from '@/components/webgpu';
 import { useFetch } from '@/hooks/useFetch';
 import { useQueryParam } from '@/hooks/useQueryParam';
-import { useUserAgent } from '@/hooks/useUserAgent';
+import { useClientValue } from '@/hooks/useValue';
 import { PropsWithChildren, useEffect, useState } from 'react';
 import { DiscordUrl, FeatureFlagsUrl, PlaytestUrl } from '../data';
 import styles from './play.module.css';
@@ -112,7 +112,7 @@ function PlaytestInfoInactive(props: PropsWithChildren) {
 }
 
 export function PlaytestComp() {
-  const userAgent = useUserAgent();
+  const userAgent = useClientValue('loading...', navigator.userAgent);
   const [webgpu, setWebgpu] = useState(false);
 
   const forceActive = useQueryParam('access');
