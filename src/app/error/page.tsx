@@ -2,24 +2,19 @@
 
 import { VertPage } from '@/components/vertPage';
 import { useQueryParam } from '@/hooks/useQueryParam';
-import { useClientValue } from '@/hooks/useValue';
 import { PlaytestUrl } from '../data';
 import styles from '../play/play.module.css';
 
 export default function ErrorPage() {
-  const timestamp = useClientValue('loading...', new Date().toISOString());
-  const userAgent = useClientValue('loading...', navigator.userAgent);
   const passThru = useQueryParam('passThrough');
   const errorHead = useQueryParam('head') ?? '';
   const errorBody = useQueryParam('body') ?? '';
   const messageToPlayer = useQueryParam('message') ?? '';
   const errorSnippet = `
 
-## [ERROR] ${errorHead}
+## [error] ${errorHead}
 
 \`\`\`
-time: ${timestamp}
-agent: ${userAgent}
 ${errorBody}
 \`\`\`
 
