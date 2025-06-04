@@ -1,12 +1,17 @@
 'use client';
 
 import { VertPage } from '@/components/vertPage';
+import { useMount } from '@/hooks/useMount';
 import { useQueryParam } from '@/hooks/useQueryParam';
 import { useUserAgent } from '@/hooks/useUserAgent';
+import { useState } from 'react';
 import { PlaytestUrl } from '../data';
 import styles from '../play/play.module.css';
 
 export default function ErrorPage() {
+  const [timestamp, setTimestamp] = useState<string>('');
+  useMount(() => setTimestamp(new Date().toISOString()));
+
   const userAgent = useUserAgent();
   const passThru = useQueryParam('passThrough');
   const errorHead = useQueryParam('head') ?? '';
@@ -17,7 +22,7 @@ export default function ErrorPage() {
 ## [ERROR] ${errorHead}
 
 \`\`\`
-time: ${new Date().toISOString()}
+time: ${timestamp}
 agent: ${userAgent}
 ${errorBody}
 \`\`\`
