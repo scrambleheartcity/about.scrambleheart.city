@@ -16,10 +16,9 @@ export default function ErrorPage() {
 
 ## [ERROR] ${errorHead}
 
-\`${new Date().toISOString()}\`
-\`${userAgent}\`
-
 \`\`\`
+time: ${new Date().toISOString()}
+agent: ${userAgent}
 ${errorBody}
 \`\`\`
 
