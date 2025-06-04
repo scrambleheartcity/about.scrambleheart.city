@@ -3,12 +3,13 @@
 import { ExternalLink } from '@/components/externalLink';
 import { VertPage } from '@/components/vertPage';
 import { WebGpuError } from '@/components/webgpu';
+import { useFetch } from '@/hooks/useFetch';
+import { useQueryParam } from '@/hooks/useQueryParam';
 import { useUserAgent } from '@/hooks/useUserAgent';
 import { PropsWithChildren, useEffect, useState } from 'react';
-import { DiscordUrl, PlaytestIsActive, PlaytestUrl } from '../data';
+import { DiscordUrl, FeatureFlagsUrl, PlaytestUrl } from '../data';
 import styles from './play.module.css';
 
-const autoRedirectEnabled = false;
 const storageKey = 'played-v2025-05-28';
 function performRedirect() {
   localStorage.setItem(storageKey, '1');
@@ -114,18 +115,31 @@ export function PlaytestComp() {
   const userAgent = useUserAgent();
   const [webgpu, setWebgpu] = useState(false);
 
+  const forceActive = useQueryParam('playtest');
+  const featureFlags = useFetch(
+    `${FeatureFlagsUrl}?cacheBust=${new Date().getTime()}`,
+  );
+  const playtestActive: boolean =
+    forceActive === 'false'
+      ? false
+      : forceActive === 'true'
+      ? true
+      : featureFlags
+      ? !!JSON.parse(featureFlags).playtest
+      : false;
+
   useEffect(() => {
     const autoRedirect =
-      autoRedirectEnabled &&
+      playtestActive &&
       localStorage.getItem(storageKey) &&
       (window.location.search.includes('pm=') ||
         window.location.search.includes('replay='));
     if (autoRedirect) {
       performRedirect();
     }
-  }, []);
+  }, [playtestActive]);
 
-  const InfoComp = PlaytestIsActive ? PlaytestInfoActive : PlaytestInfoInactive;
+  const InfoComp = playtestActive ? PlaytestInfoActive : PlaytestInfoInactive;
 
   return (
     <VertPage>
@@ -136,7 +150,7 @@ export function PlaytestComp() {
             onSuccess={() => setWebgpu(true)}
           />
         </section>
-        {PlaytestIsActive && webgpu ? (
+        {playtestActive && webgpu ? (
           <section className={styles.button}>
             <button onClick={performRedirect}>PLAY NOW</button>
           </section>

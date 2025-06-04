@@ -6,10 +6,10 @@ export type SocialLink = Link & {
   icon: string;
 };
 
-export const PlaytestIsActive = process.env.NODE_ENV === 'development';
 const HostedUrl = `https://play.void.dev/mpaulweeks/scramble-heart-city/serve`;
 export const ProdUrl = `${HostedUrl}/main`;
 export const PlaytestUrl = `${HostedUrl}/playtest`;
+export const FeatureFlagsUrl = `https://shc-matchmaker-default-rtdb.firebaseio.com/flags.json`;
 
 export const DiscordUrl = 'https://discord.gg/6hbrfUgZJB';
 export const ProjectLinks: Link[] = [
@@ -21,15 +21,10 @@ export const ProjectLinks: Link[] = [
     label: 'Wishlist on Steam',
     url: 'https://store.steampowered.com/app/3041800/Scramble_Heart_City/',
   },
-  PlaytestIsActive
-    ? {
-        label: 'Playtest now!',
-        url: '/play',
-      }
-    : {
-        label: 'Join the Discord',
-        url: DiscordUrl,
-      },
+  {
+    label: 'Join the Discord',
+    url: DiscordUrl,
+  },
 ];
 export const SocialLinks: SocialLink[] = [
   {
