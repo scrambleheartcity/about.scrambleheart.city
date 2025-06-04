@@ -115,7 +115,7 @@ export function PlaytestComp() {
   const userAgent = useUserAgent();
   const [webgpu, setWebgpu] = useState(false);
 
-  const forceActive = useQueryParam('playtest');
+  const forceActive = useQueryParam('access');
   const featureFlags = useFetch(
     `${FeatureFlagsUrl}?cacheBust=${new Date().getTime()}`,
   );
