@@ -9,14 +9,20 @@ import styles from '../play/play.module.css';
 export default function ErrorPage() {
   const userAgent = useUserAgent();
   const passThru = useQueryParam('passThrough');
-  const errorText = useQueryParam('error') ?? '';
+  const errorHead = useQueryParam('head') ?? '';
+  const errorBody = useQueryParam('body') ?? '';
   const messageToPlayer = useQueryParam('message') ?? '';
   const errorSnippet = `
-## error: ${errorText}
-${new Date().toISOString()}
+
+## [ERROR] ${errorHead}
+
+\`${new Date().toISOString()}\`
+\`${userAgent}\`
+
 \`\`\`
-${userAgent}
+${errorBody}
 \`\`\`
+
   `.trim();
 
   return (
