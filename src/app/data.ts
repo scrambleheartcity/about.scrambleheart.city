@@ -6,7 +6,7 @@ export type SocialLink = Link & {
   icon: string;
 };
 
-const HostedUrl = `https://play.void.dev/mpaulweeks/scramble-heart-city/serve`;
+const HostedUrl = `https://playtest.scrambleheart.city`;
 export const ProdUrl = `${HostedUrl}/main`;
 export const PlaytestUrl = `${HostedUrl}/playtest`;
 export const FeatureFlagsUrl = `https://shc-matchmaker-default-rtdb.firebaseio.com/flags.json`;
