@@ -9,12 +9,14 @@ import styles from '../play/play.module.css';
 export default function ErrorPage() {
   const userAgent = useUserAgent();
   const passThru = useQueryParam('passThrough');
-  const errorMessage = useQueryParam('message') ?? '';
+  const errorText = useQueryParam('error') ?? '';
+  const messageToPlayer = useQueryParam('message') ?? '';
   const errorSnippet = `
-error v1
-timestamp: ${new Date().toISOString()}
-errorText: ${errorMessage || '(none)'}
-useragent: ${userAgent}
+## error: ${errorText}
+${new Date().toISOString()}
+\`\`\`
+${userAgent}
+\`\`\`
   `.trim();
 
   return (
@@ -33,7 +35,7 @@ useragent: ${userAgent}
       </section>
 
       <section>
-        <pre>{errorMessage}</pre>
+        <p>{messageToPlayer}</p>
         {passThru && <a href={`${PlaytestUrl}/?${passThru}`}>back to game</a>}
       </section>
     </VertPage>
