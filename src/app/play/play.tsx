@@ -3,11 +3,10 @@
 import { ExternalLink } from '@/components/externalLink';
 import { VertPage } from '@/components/vertPage';
 import { WebGpuError } from '@/components/webgpu';
-import { useFetch } from '@/hooks/useFetch';
-import { useQueryParam } from '@/hooks/useQueryParam';
+import { usePlaytestStatus } from '@/hooks/usePlaytestStatus';
 import { useClientValue } from '@/hooks/useValue';
 import { PropsWithChildren, useEffect, useState } from 'react';
-import { DiscordUrl, FeatureFlagsUrl, PlaytestUrl } from '../data';
+import { DiscordUrl, PlaytestUrl } from '../data';
 import styles from './play.module.css';
 
 const storageKey = 'played-v2025-05-28';
@@ -114,19 +113,7 @@ function PlaytestInfoInactive(props: PropsWithChildren) {
 export function PlaytestComp() {
   const userAgent = useClientValue('loading...', navigator.userAgent);
   const [webgpu, setWebgpu] = useState(false);
-
-  const forceActive = useQueryParam('access');
-  const featureFlags = useFetch(
-    `${FeatureFlagsUrl}?cacheBust=${new Date().getTime()}`,
-  );
-  const playtestActive: boolean =
-    forceActive === 'false'
-      ? false
-      : forceActive === 'true'
-      ? true
-      : featureFlags
-      ? !!JSON.parse(featureFlags).playtest
-      : false;
+  const playtestActive = usePlaytestStatus();
 
   useEffect(() => {
     const autoRedirect =
