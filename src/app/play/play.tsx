@@ -9,7 +9,7 @@ import { PropsWithChildren, useEffect, useState } from 'react';
 import { DiscordUrl, PlaytestUrl } from '../data';
 import styles from './play.module.css';
 
-const storageKey = 'played-v2025-05-28';
+const storageKey = 'played-v2025-07-09';
 function performRedirect() {
   localStorage.setItem(storageKey, '1');
   const target = PlaytestUrl;
@@ -23,7 +23,7 @@ function PlaytestInfoActive(props: PropsWithChildren) {
       <section>
         Thank you for participating in the Scramble Heart City online playtest!
         <br />
-        This playtest will run Friday June 6 to Sunday June 8.
+        This playtest will run Saturday July 12 to Sunday July 13.
         <br />
         <br />
         <b>
@@ -42,14 +42,6 @@ function PlaytestInfoActive(props: PropsWithChildren) {
 
       <section>
         <h1>FAQ</h1>
-        <p>
-          <b>{`> My game keeps crashing with a white screen! How do I fix it?`}</b>
-          <br />
-          Unfortunately this is a known issue with the experimental engine
-          we&apos;re using and won&apos;t be fixed for another few months. All
-          you can do in the meantime is close other applications to reduce the
-          stress on your machine and try refreshing.
-        </p>
         <p>
           <b>{`> Am I allowed to stream/record footage?`}</b>
           <br />
@@ -86,7 +78,7 @@ function PlaytestInfoActive(props: PropsWithChildren) {
           try.
         </p>
         <p>
-          <b>&gt; How can I support the game?</b>
+          <b>{`> How can I support the game?`}</b>
           <br />
           For now, just sharing the game with your friends and giving us
           feedback is more than enough!
