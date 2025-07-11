@@ -80,8 +80,14 @@ function PlaytestInfoActive(props: PropsWithChildren) {
         <p>
           <b>{`> How can I support the game?`}</b>
           <br />
-          For now, just sharing the game with your friends and giving us
-          feedback is more than enough!
+          Wishlist us on{' '}
+          <a
+            target="_blank"
+            href="https://store.steampowered.com/app/3041800/Scramble_Heart_City/"
+          >
+            Steam
+          </a>
+          !
         </p>
       </section>
     </>
