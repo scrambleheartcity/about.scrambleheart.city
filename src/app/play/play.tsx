@@ -69,7 +69,7 @@ function PlaytestInfoActive(props: PropsWithChildren) {
           This build does not support remapping keyboard controls, but if you go
           into &quot;Options&quot; and then &quot;Button Mapping&quot;, you
           should be able to remap most controllers. If your controller does not
-          work, please report it in the #playtest-bugs channel.
+          work, please report it in the <b>#playtest-bugs</b> channel.
         </p>
         <p>
           <b>{`> Can I play this on my phone?`}</b>
