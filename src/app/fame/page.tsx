@@ -6,7 +6,7 @@ import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types';
 
 const playGraph: OpenGraph = {
   ...OpenGraphConfig,
-  title: 'Scramble Heart City - Community',
+  title: 'Scramble Heart City - Hall of Fame',
   images: [],
 };
 export const metadata: Metadata = {
