@@ -2,7 +2,7 @@ import { Background } from '@/components/background';
 import { Column } from '@/components/column';
 import { ExternalLink } from '@/components/externalLink';
 import { classCat } from '@/components/util';
-import { ProjectLinks, SocialLinks } from './data';
+import { ProjectLinks, SocialLinks, YouTubeEmbedUrl } from './data';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -77,7 +77,7 @@ export default function Home() {
             <div className={styles.right}>
               <iframe
                 className={styles.video}
-                src="https://www.youtube.com/embed/qMK_qhwsqgg?start=62"
+                src={YouTubeEmbedUrl}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
