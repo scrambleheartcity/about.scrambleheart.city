@@ -18,7 +18,7 @@ function parseSheet<T>(excel: ExcelResponse): T[] {
   return records.map<T>(rec => {
     const out: any = {};
     header.forEach((key, col) => {
-      out[key] = rec[col];
+      out[key] = rec[col] || undefined;
     });
     return out;
   });
