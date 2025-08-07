@@ -170,11 +170,16 @@ export default function Home() {
       ></div>
       <section className={styles.footer}>
         <div>
-          <ExternalLink href="https://mpaul.games">
+          <ExternalLink href="https://press.scrambleheart.city/">
+            presskit
+          </ExternalLink>
+        </div>
+        <div>email us at contact@mpaul.games</div>
+        <div>
+          <ExternalLink href="https://mpaul.games/">
             © M. Paul Games LLC
           </ExternalLink>
         </div>
-        <div>contact@mpaul.games</div>
       </section>
     </main>
   );
