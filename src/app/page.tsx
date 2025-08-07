@@ -2,7 +2,7 @@ import { Background } from '@/components/background';
 import { Column } from '@/components/column';
 import { ExternalLink } from '@/components/externalLink';
 import { classCat } from '@/components/util';
-import { ProjectLinks, SocialLinks, YouTubeEmbedUrl } from './data';
+import { DiscordUrl, ProjectLinks, SocialLinks, YouTubeEmbedUrl } from './data';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -130,17 +130,10 @@ export default function Home() {
                     styles.dateSubFlex,
                   )}
                 >
-                  <div className={styles.left}>
-                    <div>
-                      <b>Closed Alpha</b>
-                    </div>
-                    <div>Early 2025</div>
-                  </div>
-                  <div className={styles.right}>
-                    <div>
-                      <b>Early Access</b>
-                    </div>
-                    <div>Est. 2026</div>
+                  <div>
+                    Join the{' '}
+                    <ExternalLink href={DiscordUrl}>Discord</ExternalLink> to
+                    participate in our monthly playtests
                   </div>
                 </div>
               </div>
