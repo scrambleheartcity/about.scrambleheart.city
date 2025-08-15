@@ -2,7 +2,7 @@ import { Background } from '@/components/background';
 import { Column } from '@/components/column';
 import { ExternalLink } from '@/components/externalLink';
 import { classCat } from '@/components/util';
-import { ProjectLinks, SocialLinks } from './data';
+import { DiscordUrl, ProjectLinks, SocialLinks, YouTubeEmbedUrl } from './data';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -77,7 +77,7 @@ export default function Home() {
             <div className={styles.right}>
               <iframe
                 className={styles.video}
-                src="https://www.youtube.com/embed/qMK_qhwsqgg?start=62"
+                src={YouTubeEmbedUrl}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
@@ -130,17 +130,10 @@ export default function Home() {
                     styles.dateSubFlex,
                   )}
                 >
-                  <div className={styles.left}>
-                    <div>
-                      <b>Closed Alpha</b>
-                    </div>
-                    <div>Early 2025</div>
-                  </div>
-                  <div className={styles.right}>
-                    <div>
-                      <b>Early Access</b>
-                    </div>
-                    <div>Est. 2026</div>
+                  <div>
+                    Join the{' '}
+                    <ExternalLink href={DiscordUrl}>Discord</ExternalLink> to
+                    participate in our monthly playtests
                   </div>
                 </div>
               </div>
@@ -170,11 +163,16 @@ export default function Home() {
       ></div>
       <section className={styles.footer}>
         <div>
-          <ExternalLink href="https://mpaul.games">
+          <ExternalLink href="https://press.scrambleheart.city/">
+            presskit
+          </ExternalLink>
+        </div>
+        <div>email us at contact@mpaul.games</div>
+        <div>
+          <ExternalLink href="https://mpaul.games/">
             © M. Paul Games LLC
           </ExternalLink>
         </div>
-        <div>contact@mpaul.games</div>
       </section>
     </main>
   );

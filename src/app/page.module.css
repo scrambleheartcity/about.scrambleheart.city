@@ -113,6 +113,9 @@
   font-size: 60.8px;
   margin: 0.5em auto;
 }
+.page a {
+  color: inherit;
+}
 
 /************
 * section.hero *
@@ -194,6 +197,9 @@ section.dates img {
   filter: invert(var(--image-invert));
   margin: 0 auto;
 }
+section.dates a {
+  text-decoration: underline;
+}
 
 /************
 * section.footer *
@@ -206,9 +212,6 @@ section.footer {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-}
-section.footer a {
-  color: inherit;
 }
 
 /* edge breakpoints */
