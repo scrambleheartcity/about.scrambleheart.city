@@ -9,7 +9,7 @@ import { PropsWithChildren, useEffect, useState } from 'react';
 import { DiscordUrl, PlaytestUrl } from '../data';
 import styles from './play.module.css';
 
-const storageKey = 'played-v2025-07-09';
+const storageKey = 'played-v2025-08-15';
 function performRedirect() {
   localStorage.setItem(storageKey, '1');
   const target = PlaytestUrl;
@@ -23,7 +23,7 @@ function PlaytestInfoActive(props: PropsWithChildren) {
       <section>
         Thank you for participating in the Scramble Heart City online playtest!
         <br />
-        This playtest will run Saturday July 12 to Sunday July 13.
+        This playtest will run Friday August 15 to Sunday August 17.
         <br />
         <br />
         <b>
