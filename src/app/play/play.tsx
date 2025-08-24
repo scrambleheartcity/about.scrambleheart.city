@@ -6,7 +6,7 @@ import { WebGpuError } from '@/components/webgpu';
 import { usePlaytestStatus } from '@/hooks/usePlaytestStatus';
 import { useClientValue } from '@/hooks/useValue';
 import { PropsWithChildren, useEffect, useState } from 'react';
-import { DiscordUrl, PlaytestUrl } from '../data';
+import { DiscordUrl, PlaytestUrl, SteamUrl } from '../data';
 import styles from './play.module.css';
 
 const storageKey = 'played-v2025-08-15';
@@ -81,10 +81,7 @@ function PlaytestInfoActive(props: PropsWithChildren) {
           <b>{`> How can I support the game?`}</b>
           <br />
           Wishlist us on{' '}
-          <a
-            target="_blank"
-            href="https://store.steampowered.com/app/3041800/Scramble_Heart_City/"
-          >
+          <a target="_blank" href={SteamUrl}>
             Steam
           </a>
           !
