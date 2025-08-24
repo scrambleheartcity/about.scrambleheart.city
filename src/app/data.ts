@@ -10,7 +10,7 @@ export const ProdUrl = `https://play.scrambleheart.city/dev`;
 export const PlaytestUrl = `https://playtest.scrambleheart.city`;
 export const FeatureFlagsUrl = `https://shc-matchmaker-default-rtdb.firebaseio.com/flags.json`;
 export const SteamUrl =
-  'steam://open/https://store.steampowered.com/app/3041800/Scramble_Heart_City/';
+  'https://store.steampowered.com/app/3041800/Scramble_Heart_City/';
 export const DiscordUrl = 'https://discord.gg/6hbrfUgZJB';
 export const ProjectLinks: Link[] = [
   // {
