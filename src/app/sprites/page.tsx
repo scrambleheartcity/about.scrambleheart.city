@@ -26,6 +26,7 @@ async function fetchData(): Promise<string> {
 }
 
 export default async function SpritesPage() {
-  const markdown = await fetchData();
+  // const markdown = await fetchData();
+  const markdown = '# coming soon';
   return <MarkdownPage markdown={markdown} />;
 }

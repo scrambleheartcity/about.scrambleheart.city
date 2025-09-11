@@ -6,7 +6,7 @@ export type SocialLink = Link & {
   icon: string;
 };
 
-export const ProdUrl = `https://play.scrambleheart.city/dev`;
+export const ProdUrl = `https://staging.scrambleheart.city/dev`;
 export const PlaytestUrl = `https://playtest.scrambleheart.city`;
 export const FeatureFlagsUrl = `https://shc-matchmaker-default-rtdb.firebaseio.com/flags.json`;
 export const SteamUrl =
