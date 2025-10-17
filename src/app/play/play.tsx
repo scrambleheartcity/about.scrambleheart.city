@@ -23,7 +23,7 @@ function PlaytestInfoActive(props: PropsWithChildren) {
       <section>
         Thank you for participating in the Scramble Heart City online playtest!
         <br />
-        This playtest will run Friday September 12 to Sunday September 14.
+        This playtest will run Friday October 17 to Sunday October 19.
         <br />
         <br />
         <b>
