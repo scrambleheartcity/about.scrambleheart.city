@@ -5,13 +5,13 @@
   font-size: 3em;
   padding: 0.5em 1em;
   border-radius: 0.2em;
-  color: white;
-  background-color: green;
+  color: black;
+  background-color: lightgreen;
 }
 .button button:hover {
   cursor: pointer;
-  color: black;
-  background-color: lightgreen;
+  color: white;
+  background-color: green;
 }
 
 .error {
