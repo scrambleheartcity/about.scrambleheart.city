@@ -15,14 +15,8 @@ export const SteamUrl =
 export const DiscordUrl = 'https://discord.gg/6hbrfUgZJB';
 export const ProjectLinks: Link[] = [
   {
-    label: 'PLAY IT NOW',
+    label: 'Playtest in the Browser',
     url: './play',
-    window: [
-      // new Date('Wed Nov 12 2025 14:01:30 GMT-0500 (Eastern Standard Time)'),
-      // new Date('Wed Nov 12 2025 14:01:40 GMT-0500 (Eastern Standard Time)'),
-      new Date('Fri Nov 14 2025 10:00:00 GMT-0500 (Eastern Standard Time)'),
-      new Date('Sun Nov 16 2025 22:00:00 GMT-0500 (Eastern Standard Time)'),
-    ],
   },
   {
     label: 'Wishlist on Steam',
