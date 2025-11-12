@@ -1,6 +1,7 @@
 export type Link = {
   label: string;
   url: string;
+  sameTab?: boolean;
   window?: [Date, Date];
 };
 export type SocialLink = Link & {
@@ -17,6 +18,7 @@ export const ProjectLinks: Link[] = [
   {
     label: 'Playtest in the Browser',
     url: './play',
+    sameTab: true,
   },
   {
     label: 'Wishlist on Steam',
