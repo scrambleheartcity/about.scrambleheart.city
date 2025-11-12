@@ -2,7 +2,7 @@
 
 import { useCanvas } from '@/hooks/useCanvas';
 import { useGpuTracker } from '@/hooks/useGpuTracker';
-import { useTimer } from '@/hooks/useInterval';
+import { useTimer } from '@/hooks/useTimer';
 import { useCallback, useEffect, useState } from 'react';
 
 function prettyPrintBytes(bytes: number): string {

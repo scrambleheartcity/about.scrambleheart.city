@@ -1,11 +1,43 @@
+'use client';
+
 import { Background } from '@/components/background';
 import { Column } from '@/components/column';
 import { ExternalLink } from '@/components/externalLink';
 import { classCat } from '@/components/util';
+import { useQueryParam } from '@/hooks/useQueryParam';
+import { useTimer } from '@/hooks/useTimer';
+import { useCallback, useEffect, useState } from 'react';
 import { DiscordUrl, ProjectLinks, SocialLinks, YouTubeEmbedUrl } from './data';
 import styles from './page.module.css';
 
 export default function Home() {
+  const [projectLinks, setProjectLinks] = useState(
+    ProjectLinks.filter(pl => pl.window === undefined),
+  );
+
+  const paramNow = useQueryParam('now');
+  const checkNow = useCallback(() => {
+    const now = paramNow ? new Date(paramNow) : new Date();
+    const newLinks = ProjectLinks.filter(pl => {
+      if (pl.window === undefined) return true;
+      const [start, end] = pl.window;
+      return start < now && now < end;
+    });
+    const [currHash, newHash] = [projectLinks, newLinks].map(pls =>
+      pls.map(pl => pl.url).join('|'),
+    );
+    if (currHash !== newHash) {
+      console.log('setProject');
+      setProjectLinks(newLinks);
+    }
+  }, [paramNow, projectLinks, setProjectLinks]);
+
+  const timer = useTimer();
+  useEffect(() => {
+    console.log('useEffect');
+    timer.startInterval(checkNow, 3000, true);
+  }, [timer, checkNow]);
+
   return (
     <main className={styles.page}>
       <aside className={styles.socials}>
@@ -24,7 +56,7 @@ export default function Home() {
             className={classCat(styles.logo, styles.fader)}
             alt="Scramble Heart City logo"
           />
-          {ProjectLinks.map(link => (
+          {projectLinks.map(link => (
             <ExternalLink key={link.url} href={link.url}>
               <div
                 className={classCat(

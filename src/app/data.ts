@@ -1,6 +1,7 @@
 export type Link = {
   label: string;
   url: string;
+  window?: [Date, Date];
 };
 export type SocialLink = Link & {
   icon: string;
@@ -13,10 +14,16 @@ export const SteamUrl =
   'https://store.steampowered.com/app/3041800/Scramble_Heart_City/';
 export const DiscordUrl = 'https://discord.gg/6hbrfUgZJB';
 export const ProjectLinks: Link[] = [
-  // {
-  //   label: 'Join waitlist',
-  //   url: 'https://forms.gle/LSc9YWop2oSNqPdAA',
-  // },
+  {
+    label: 'PLAY IT NOW',
+    url: './play',
+    window: [
+      // new Date('Wed Nov 12 2025 14:01:30 GMT-0500 (Eastern Standard Time)'),
+      // new Date('Wed Nov 12 2025 14:01:40 GMT-0500 (Eastern Standard Time)'),
+      new Date('Fri Nov 14 2025 10:00:00 GMT-0500 (Eastern Standard Time)'),
+      new Date('Sun Nov 16 2025 22:00:00 GMT-0500 (Eastern Standard Time)'),
+    ],
+  },
   {
     label: 'Wishlist on Steam',
     url: SteamUrl,
