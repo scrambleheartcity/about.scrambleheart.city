@@ -25,7 +25,7 @@ export default function Home() {
             alt="Scramble Heart City logo"
           />
           {ProjectLinks.map(link => (
-            <ExternalLink key={link.url} href={link.url}>
+            <ExternalLink key={link.url} href={link.url} sameTab={link.sameTab}>
               <div
                 className={classCat(
                   styles.cta,

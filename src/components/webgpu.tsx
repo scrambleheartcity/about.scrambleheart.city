@@ -11,6 +11,17 @@ enum WebGPU {
   Missing,
 }
 
+function BrowserInfo() {
+  return (
+    <>
+      Try using the latest version of either <b>Google Chrome</b> or{' '}
+      <b>Microsoft Edge</b>. If you are using Chrome, make sure{' '}
+      <ExternalLink href="https://support.google.com/chrome/thread/274266347?hl=en&msgid=274267394">{`"Graphics Acceleration"`}</ExternalLink>{' '}
+      is enabled. If you are on Linux, try <b>Firefox Nightly</b>.
+    </>
+  );
+}
+
 export function WebGpuError(props: {
   showWorkarounds?: boolean;
   onSuccess(): void;
@@ -33,20 +44,20 @@ export function WebGpuError(props: {
     [WebGPU.Checking]: () => <h1>checking for WebGPU...</h1>,
     [WebGPU.Detected]: () => (
       <>
-        <h1>WebGPU detected ✅</h1>
-        <div>You are all set for the playtest!</div>
+        <h1>System test: WebGPU detected ✅</h1>
+        <div>
+          WebGPU support is new and kind of a mixed bag. If you are having
+          problems starting the game, it could be a browser issue.{' '}
+          <BrowserInfo />
+        </div>
       </>
     ),
     [WebGPU.Missing]: () => (
       <>
-        <h1>WebGPU not found ⚠️</h1>
+        <h1>System test: WebGPU not found ⚠️</h1>
         <div>
           This pre-alpha build requires WebGPU to run, which is not yet
-          supported by all web browsers. Please use the latest version of either{' '}
-          <b>Google Chrome</b> or <b>Microsoft Edge</b>. If you are using
-          Chrome, make sure{' '}
-          <ExternalLink href="https://support.google.com/chrome/thread/274266347?hl=en&msgid=274267394">{`"Graphics Acceleration"`}</ExternalLink>{' '}
-          is enabled. If you are on Linux, try <b>Firefox Nightly</b>.
+          supported by all web browsers. <BrowserInfo />
         </div>
         {props.showWorkarounds ? (
           <>
