@@ -10,7 +10,7 @@ export type SocialLink = Link & {
 
 export const ProdUrl = `https://staging.scrambleheart.city/dev`;
 export const PlaytestUrl = `https://playtest.scrambleheart.city`;
-export const FeatureFlagsUrl = `https://shc-matchmaker-default-rtdb.firebaseio.com/flags.json`;
+export const FeatureFlagsUrl = `https://shc-matchmaker-default-rtdb.firebaseio.com/flags/live.json`;
 export const SteamUrl =
   'https://store.steampowered.com/app/3041800/Scramble_Heart_City/';
 export const DiscordUrl = 'https://discord.gg/6hbrfUgZJB';
