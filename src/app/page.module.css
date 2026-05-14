@@ -207,11 +207,13 @@ section.dates a {
 section.footer {
   background-color: var(--background-info);
   font-size: 18px;
-  height: 120px;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  /* half of usual */
+  padding-bottom: 60px;
 }
 
 /* edge breakpoints */

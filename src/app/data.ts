@@ -59,3 +59,15 @@ export const SocialLinks: SocialLink[] = [
     icon: '/assets/social/social_youtube.png',
   },
 ];
+
+export const PressLinks: Link[] = [
+  {
+    label: 'Supercombo - Scramble Heart City : The Making Of',
+    url: 'https://supercombo.gg/2026/05/14/scramble-heart-city-the-making-of/',
+  },
+  {
+    label:
+      'Patrick Miller - Loving tough and scrambling hearts with indie dev M. Paul Weeks',
+    url: 'https://www.patreon.com/posts/loving-tough-and-155871905',
+  },
+];

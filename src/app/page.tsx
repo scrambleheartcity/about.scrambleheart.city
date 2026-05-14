@@ -2,7 +2,13 @@ import { Background } from '@/components/background';
 import { Column } from '@/components/column';
 import { ExternalLink } from '@/components/externalLink';
 import { classCat } from '@/components/util';
-import { DiscordUrl, ProjectLinks, SocialLinks, YouTubeEmbedUrl } from './data';
+import {
+  DiscordUrl,
+  PressLinks,
+  ProjectLinks,
+  SocialLinks,
+  YouTubeEmbedUrl,
+} from './data';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -162,6 +168,18 @@ export default function Home() {
         )}
       ></div>
       <section className={styles.footer}>
+        <div>Learn More</div>
+        <div className={classCat()}>
+          {PressLinks.map(link => (
+            <div key={link.label}>
+              {'> '}
+              <ExternalLink href={link.url} sameTab={link.sameTab}>
+                {link.label}
+              </ExternalLink>
+            </div>
+          ))}
+        </div>
+        <br />
         <div>
           <ExternalLink href="https://press.scrambleheart.city/">
             presskit
