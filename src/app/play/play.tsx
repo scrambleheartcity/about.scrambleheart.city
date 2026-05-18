@@ -18,7 +18,7 @@ function performRedirect() {
 }
 
 function PlaytestDates() {
-  return <b>Friday May 15 to Sunday May 17</b>;
+  return <b>Friday June 26 to Sunday June 28</b>;
 }
 
 function PlaytestInfoActive() {
