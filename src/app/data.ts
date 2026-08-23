@@ -31,7 +31,8 @@ export const ProjectLinks: Link[] = [
 ];
 
 export const YouTubeEmbedUrl =
-  'https://www.youtube.com/embed/f6QIJiZ9wG4?start=35';
+  'https://www.youtube.com/embed/SOF8qy1XPXI?start=3';
+// 'https://www.youtube.com/embed/f6QIJiZ9wG4?start=35';
 export const SocialLinks: SocialLink[] = [
   {
     label: 'Discord',
