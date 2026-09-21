@@ -11,9 +11,9 @@ export const OpenGraphConfig: MyOpenGraph = {
   images: [
     {
       // must be absolute
-      url: 'https://scrambleheart.city/assets/poster_1920x1440.jpg',
-      width: 1920,
-      height: 1440,
+      url: 'https://scrambleheart.city/assets/poster_text.jpg',
+      width: 1232,
+      height: 706,
     },
   ],
   locale: 'en_US',
