@@ -6,7 +6,6 @@ import { PlaytestComp } from './play';
 const playGraph: OpenGraph = {
   ...OpenGraphConfig,
   title: 'Scramble Heart City - Playtest',
-  images: [],
 };
 export const metadata: Metadata = {
   title: playGraph.title,
