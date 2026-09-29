@@ -54,15 +54,17 @@ export default function PartyPage() {
     }
     const newLobbies = partyToData(JSON.parse(partyList));
     setLobbies(newLobbies);
-    for (const lobby of newLobbies) {
-      fetchRoom(lobby).then(newRoom => {
-        setLobbies(curr => {
-          const copy = (curr ?? [])?.concat();
-          copy[newRoom.index] = newRoom;
-          return copy;
+    (async () => {
+      for (const lobby of newLobbies) {
+        await fetchRoom(lobby).then(newRoom => {
+          setLobbies(curr => {
+            const copy = (curr ?? [])?.concat();
+            copy[newRoom.index] = newRoom;
+            return copy;
+          });
         });
-      });
-    }
+      }
+    })();
   }, [partyList]);
 
   return (
