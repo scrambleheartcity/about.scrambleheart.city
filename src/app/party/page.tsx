@@ -8,20 +8,39 @@ const listUrl = `https://shc-partycentral-default-rtdb.firebaseio.com/party.json
 const lobbyUrl = `http://localhost:1999/parties/lobby`;
 // const lobbyUrl = `https://play-scrambleheart-city-party.mpaulweeks.partykit.dev/parties/lobby/`;
 
-type LobbyData = {
-  url: string;
-  name: string;
-  resp: any;
+type PartyData = {
+  [lobbyId: string]: {
+    [userId: string]: true;
+  };
 };
-async function pollLobbies(lobbyKeys: string[]) {
-  const out: LobbyData[] = [];
-  for (const key of lobbyKeys) {
-    const url = `${lobbyUrl}/${key}`;
-    const resp = await fetch(`${url}/short`);
-    const data = await resp.json();
-    out.push({ url, name: key, resp: data });
-  }
-  return out;
+type LobbyData = {
+  index: number;
+  id: string;
+  url: string;
+  users: string[];
+  resp?: any;
+};
+
+function partyToData(party: PartyData): LobbyData[] {
+  const lobbyIds = Object.keys(party);
+  return lobbyIds.map<LobbyData>((key, index) => {
+    const lobbyUsers = Object.keys(party[key]);
+    return {
+      index: index,
+      id: key,
+      url: `${lobbyUrl}/${key}`,
+      urlShort: `${lobbyUrl}/${key}/short`,
+      users: lobbyUsers,
+    };
+  });
+}
+async function fetchRoom(data: LobbyData): Promise<LobbyData> {
+  const resp = await fetch(`${data.url}/short`);
+  const respData = await resp.json();
+  return {
+    ...data,
+    resp: respData,
+  };
 }
 
 export default function PartyPage() {
@@ -33,9 +52,17 @@ export default function PartyPage() {
       setLobbies([]);
       return;
     }
-    const partyObj = JSON.parse(partyList);
-    const keys = Object.keys(partyObj);
-    pollLobbies(keys).then(data => setLobbies(data));
+    const newLobbies = partyToData(JSON.parse(partyList));
+    setLobbies(newLobbies);
+    for (const lobby of newLobbies) {
+      fetchRoom(lobby).then(newRoom => {
+        setLobbies(curr => {
+          const copy = (curr ?? [])?.concat();
+          copy[newRoom.index] = newRoom;
+          return copy;
+        });
+      });
+    }
   }, [partyList]);
 
   return (
@@ -52,7 +79,8 @@ export default function PartyPage() {
         lobbies.map(data => (
           <section key={data.url}>
             <h2>
-              <a href={data.url}>{data.name}</a>
+              <a href={data.url}>Lobby #{data.id}</a> ({data.users.length}{' '}
+              users)
             </h2>
             <div
               style={{
@@ -61,7 +89,9 @@ export default function PartyPage() {
                 padding: '0.5em 1em',
               }}
             >
-              <pre>{JSON.stringify(data.resp, null, 2)}</pre>
+              <pre>
+                {data.resp ? JSON.stringify(data.resp, null, 2) : 'fetching...'}
+              </pre>
             </div>
           </section>
         ))
