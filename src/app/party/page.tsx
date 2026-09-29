@@ -2,11 +2,12 @@
 
 import { VertPage } from '@/components/vertPage';
 import { useFetch } from '@/hooks/useFetch';
+import { useQueryParam } from '@/hooks/useQueryParam';
 import { useEffect, useState } from 'react';
 
 const listUrl = `https://shc-partycentral-default-rtdb.firebaseio.com/party.json`;
-const lobbyUrl = `http://localhost:1999/parties/lobby`;
-// const lobbyUrl = `https://play-scrambleheart-city-party.mpaulweeks.partykit.dev/parties/lobby/`;
+const local_LobbyUrl = `http://localhost:1999/parties/lobby`;
+const prod_LobbyUrl = `https://play-scrambleheart-city-party.mpaulweeks.partykit.dev/parties/lobby/`;
 
 type PartyData = {
   [lobbyId: string]: {
@@ -21,29 +22,39 @@ type LobbyData = {
   resp?: any;
 };
 
-function partyToData(party: PartyData): LobbyData[] {
+function partyToData(baseUrl: string, party: PartyData): LobbyData[] {
   const lobbyIds = Object.keys(party);
   return lobbyIds.map<LobbyData>((key, index) => {
     const lobbyUsers = Object.keys(party[key]);
     return {
       index: index,
       id: key,
-      url: `${lobbyUrl}/${key}`,
-      urlShort: `${lobbyUrl}/${key}/short`,
+      url: `${baseUrl}/${key}`,
+      urlShort: `${baseUrl}/${key}/short`,
       users: lobbyUsers,
     };
   });
 }
+
 async function fetchRoom(data: LobbyData): Promise<LobbyData> {
-  const resp = await fetch(`${data.url}/short`);
-  const respData = await resp.json();
-  return {
-    ...data,
-    resp: respData,
-  };
+  try {
+    const resp = await fetch(`${data.url}/short`);
+    const respData = await resp.json();
+    return {
+      ...data,
+      resp: respData,
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      ...data,
+      resp: { error: (err as any)?.message },
+    };
+  }
 }
 
 export default function PartyPage() {
+  const partyUrl = useQueryParam('api', '');
   const partyList = useFetch(`${listUrl}?cacheBust=${new Date().getTime()}`);
   const [lobbies, setLobbies] = useState<LobbyData[] | undefined>();
 
@@ -52,7 +63,8 @@ export default function PartyPage() {
       setLobbies([]);
       return;
     }
-    const newLobbies = partyToData(JSON.parse(partyList));
+    const baseUrl = partyUrl === 'local' ? local_LobbyUrl : prod_LobbyUrl;
+    const newLobbies = partyToData(baseUrl, JSON.parse(partyList));
     setLobbies(newLobbies);
     (async () => {
       for (const lobby of newLobbies) {
