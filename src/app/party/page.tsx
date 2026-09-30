@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 const listUrl = `https://shc-partycentral-default-rtdb.firebaseio.com/party.json`;
 const local_LobbyUrl = `http://localhost:1999/parties/lobby`;
-const prod_LobbyUrl = `https://play-scrambleheart-city-party.mpaulweeks.partykit.dev/parties/lobby/`;
+const prod_LobbyUrl = `https://play-scrambleheart-city-party.mpaulweeks.partykit.dev/parties/lobby`;
 
 type PartyData = {
   [lobbyId: string]: {
