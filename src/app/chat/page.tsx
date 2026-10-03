@@ -75,16 +75,21 @@ export default function ChatPage() {
 
   // state
   const [isVisible, setVisible] = useState(true);
+  const [input, setInput] = useState<string>('');
   const isTestParent = !!useQueryParam('test');
   const sample = useQueryParam('sample');
   const [hideTestChild, setHideTestChild] = useState(false);
-
   const [isInFrame, setInFrame] = useState(true);
+  const [users, setUsers] = useState<Users>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+
   useMount(() => {
     const check = checkIFrame(window);
     setInFrame(check);
     setVisible(!check);
   });
+
+  // state side effects
   useEffect(() => {
     console.log('setVisible', isVisible);
     if (isVisible) {
@@ -93,9 +98,6 @@ export default function ChatPage() {
       inputRef.current?.blur();
     }
   }, [isVisible]);
-
-  const [users, setUsers] = useState<Users>([]);
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
 
   // handlers
   const handleNetworkPacket = useCallback(
@@ -165,9 +167,6 @@ export default function ChatPage() {
     [handleNetworkPacket],
   );
 
-  // useKeyDown('Escape', () => sendPacket({ ptype: ChatPacketType.RequestHide }));
-
-  const [input, setInput] = useState<string>('');
   const onSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -197,6 +196,7 @@ export default function ChatPage() {
   }, [sample]);
 
   if (!isVisible) {
+    // we dont want expensive dom manip while chat is closed
     return (
       <main
         className={classCat(styles.main, !isInFrame ? styles.noframe : '')}
