@@ -10,5 +10,7 @@ export function useParentWindow<T>(onMessage: (data: MessageEvent<T>) => void) {
     (data: T) => window.parent.postMessage(data),
     [],
   );
+
+  // todo if not iframed, return null
   return { send: sendMessage };
 }

@@ -1,9 +1,9 @@
 'use client';
 
-import { VertPage } from '@/components/vertPage';
+import { range } from '@/components/util';
 import { useParentWindow } from '@/hooks/useParentWindow';
 import { useQueryParam } from '@/hooks/useQueryParam';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 type UserId = number;
 type ChatMessage = [number, UserId, string];
@@ -19,12 +19,30 @@ type ChatState = {
 
 export default function ChatPage() {
   const testing = useQueryParam('test');
+  const sample = useQueryParam('sample');
 
   const [chat, setChat] = useState<ChatState>({
     open: true,
     users: {},
     message: [],
   });
+
+  useEffect(() => {
+    if (sample) {
+      setChat(c => ({
+        ...c,
+        message: [
+          ...c.message,
+          ...range(sample ? parseFloat(sample) : 0).map<ChatMessage>(i => [
+            i,
+            i,
+            `message ${i}`,
+          ]),
+        ],
+      }));
+    }
+  }, [sample, setChat]);
+
   const appendMessage = useCallback(
     (evt: MessageEvent<ChatMessage>) =>
       setChat(c => ({
@@ -48,18 +66,28 @@ export default function ChatPage() {
   );
 
   return (
-    <VertPage>
+    <main
+      style={{
+        background: testing ? '#0FF' : '#ffffff80',
+        fontFamily: 'monospace',
+        fontSize: '2vh',
+        textAlign: 'left',
+        padding: '1em',
+        boxSizing: 'border-box',
+        height: '100vh',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+      }}
+    >
       {testing && (
         <iframe
           src="http://localhost:3000/chat"
-          width="100%"
+          width="300px"
           height="500px"
         ></iframe>
       )}
-      <section>
-        <h1>Chat</h1>
-        chat time!
-      </section>
 
       <section>
         {Object.keys(chat.users)
@@ -92,6 +120,6 @@ export default function ChatPage() {
           <button type="submit">SEND</button>
         </form>
       </section>
-    </VertPage>
+    </main>
   );
 }
