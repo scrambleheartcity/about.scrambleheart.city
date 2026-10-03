@@ -266,7 +266,10 @@ export default function ChatPage() {
             </div>
             <div className={styles.time}>
               <i style={{ fontSize: '0.8em' }}>
-                {new Date(elm.timestamp).toLocaleTimeString()}
+                {new Date(elm.timestamp).toLocaleTimeString(undefined, {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
               </i>
             </div>
           </div>
