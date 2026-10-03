@@ -35,6 +35,7 @@ export function useParentWindow<Incoming, Outgoing>(
   // setup api once using refs
   const [api] = useState<WindowApi<Outgoing>>({
     send: (data: Outgoing) => {
+      console.log('[chat] send to parent');
       const parent = window.self !== window.top ? window.parent : null;
       parent?.postMessage(data, '*');
     },
@@ -46,6 +47,7 @@ export function useParentWindow<Incoming, Outgoing>(
     [handler],
   );
   useEffect(() => {
+    console.log('[chat] setup parent listener');
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
   }, [onMessage]);

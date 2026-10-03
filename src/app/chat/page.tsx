@@ -1,14 +1,14 @@
 'use client';
 
 import { checkIFrame, classCat, range, sleep } from '@/components/util';
-import { useKeyDown } from '@/hooks/useKeyboard';
 import { useMount } from '@/hooks/useMount';
 import { useChildFrame, useParentWindow } from '@/hooks/useOtherWindow';
 import { useQueryParam } from '@/hooks/useQueryParam';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './chat.module.css';
 import {
-  ChatAppPacket,
+  ChatAppIncomingPacket,
+  ChatAppOutgoingPacket,
   ChatId,
   ChatMessage,
   ChatNetworkMessagePacket,
@@ -69,20 +69,41 @@ function convertRawToNetwork(
 }
 
 export default function ChatPage() {
+  // refs
+  const inputRef = useRef<HTMLInputElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  // state
+  const [isVisible, setVisible] = useState(true);
   const isTestParent = !!useQueryParam('test');
   const sample = useQueryParam('sample');
-  const [hide, setHide] = useState(false);
+  const [hideTestChild, setHideTestChild] = useState(false);
 
   const [isInFrame, setInFrame] = useState(true);
-  useMount(() => setInFrame(checkIFrame(window)));
+  useMount(() => {
+    const check = checkIFrame(window);
+    setInFrame(check);
+    setVisible(!check);
+  });
+  useEffect(() => {
+    console.log('setVisible', isVisible);
+    if (isVisible) {
+      inputRef.current?.focus();
+    } else {
+      inputRef.current?.blur();
+    }
+  }, [isVisible]);
 
   const [users, setUsers] = useState<Users>([]);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
 
   // handlers
   const handleNetworkPacket = useCallback(
-    (packet: ChatNetworkPacket) => {
+    (packet: ChatAppIncomingPacket) => {
       switch (packet.ptype) {
+        case ChatPacketType.SetVisibility:
+          setVisible(packet.isVisible);
+          break;
         case ChatPacketType.NetworkMessage:
           const newUsers = users.concat();
           for (const msg of packet.data) {
@@ -104,12 +125,12 @@ export default function ChatPage() {
           console.error(`unexpected packet`, packet);
       }
     },
-    [isInFrame, setMessages, setHide],
+    [setVisible, setUsers, setMessages],
   );
   const handleTestPacket = useCallback(
-    (packet: ChatAppPacket) => {
+    (packet: ChatAppOutgoingPacket) => {
       if (packet.ptype === ChatPacketType.RequestHide) {
-        setHide(true);
+        setHideTestChild(true);
       } else {
         const testPacket = convertRawToNetwork(packet, 1);
         iframeApi.send(testPacket);
@@ -120,18 +141,17 @@ export default function ChatPage() {
   );
 
   // api to other windows
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const iframeApi = useChildFrame<ChatAppPacket, ChatNetworkPacket>(
+  const iframeApi = useChildFrame<ChatAppOutgoingPacket, ChatNetworkPacket>(
     iframeRef,
     isTestParent ? handleTestPacket : () => {},
   );
-  const parentApi = useParentWindow<ChatNetworkPacket, ChatAppPacket>(
+  const parentApi = useParentWindow<ChatNetworkPacket, ChatAppOutgoingPacket>(
     isTestParent ? () => {} : handleNetworkPacket,
   );
 
   // interaction helpers
   const sendPacket = useCallback(
-    (packet: ChatAppPacket) => {
+    (packet: ChatAppOutgoingPacket) => {
       if (isTestParent) {
         if (packet.ptype === ChatPacketType.RawMessage) {
           const testPacket = convertRawToNetwork(packet, 0);
@@ -145,7 +165,7 @@ export default function ChatPage() {
     [handleNetworkPacket],
   );
 
-  useKeyDown('Escape', () => sendPacket({ ptype: ChatPacketType.RequestHide }));
+  // useKeyDown('Escape', () => sendPacket({ ptype: ChatPacketType.RequestHide }));
 
   const [input, setInput] = useState<string>('');
   const onSubmit = useCallback(
@@ -176,17 +196,31 @@ export default function ChatPage() {
     }
   }, [sample]);
 
+  if (!isVisible) {
+    return (
+      <main
+        className={classCat(styles.main, !isInFrame ? styles.noframe : '')}
+        style={{ backgroundColor: isTestParent ? 'blue' : undefined }}
+      >
+        loading...
+      </main>
+    );
+  }
+
   return (
     <main
       className={classCat(styles.main, !isInFrame ? styles.noframe : '')}
       style={{ backgroundColor: isTestParent ? 'blue' : undefined }}
+      onClick={() => {
+        inputRef.current?.focus();
+      }}
     >
       {isTestParent && (
         <iframe
           ref={iframeRef}
           id="testframe"
           style={{
-            visibility: hide ? 'hidden' : undefined,
+            visibility: hideTestChild ? 'hidden' : undefined,
             border: '5px dotted white',
             position: 'absolute',
             top: '1em',
@@ -224,13 +258,20 @@ export default function ChatPage() {
       })}
       <form onSubmit={onSubmit}>
         <input
+          ref={inputRef}
+          id="message_input"
           type="text"
-          name="message"
           value={input}
+          onKeyDown={evt =>
+            evt.code === 'Escape' &&
+            sendPacket({ ptype: ChatPacketType.RequestHide })
+          }
           onChange={evt => setInput(evt.target.value)}
         />
         <button type="submit">SEND</button>
-        {!isInFrame && <button onClick={() => setHide(h => !h)}>{'<>'}</button>}
+        {!isInFrame && (
+          <button onClick={() => setHideTestChild(h => !h)}>{'<>'}</button>
+        )}
       </form>
     </main>
   );
