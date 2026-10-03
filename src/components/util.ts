@@ -24,3 +24,7 @@ export async function detectWebGPU(): Promise<boolean> {
 export function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+export function checkIFrame(window: Window) {
+  return window.self !== window.top;
+}

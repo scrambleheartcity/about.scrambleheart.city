@@ -1,6 +1,7 @@
 'use client';
 
-import { range, sleep } from '@/components/util';
+import { checkIFrame, classCat, range, sleep } from '@/components/util';
+import { useMount } from '@/hooks/useMount';
 import { useOtherWindow } from '@/hooks/useOtherWindow';
 import { useQueryParam } from '@/hooks/useQueryParam';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -10,11 +11,7 @@ type UserId = number;
 type ChatMessage = [number, UserId, string];
 type ChatConfig = {
   open: boolean;
-  users: {
-    [userId: UserId]: {
-      name: string;
-    };
-  };
+  users: { userId: UserId; name: string }[];
 };
 type ChatPacket =
   | {
@@ -26,13 +23,21 @@ type ChatPacket =
       data: ChatMessage[];
     };
 
+function getColor(index: number) {
+  const options = ['red', 'green', 'yellow', 'purple'];
+  return options[index % options.length];
+}
+
 export default function ChatPage() {
   const testing = useQueryParam('test');
   const sample = useQueryParam('sample');
 
+  const [isInFrame, setInFrame] = useState(true);
+  useMount(() => setInFrame(checkIFrame(window)));
+
   const [config, setConfig] = useState<ChatConfig>({
     open: true,
-    users: {},
+    users: [],
   });
   const [messages, setMessages] = useState<ChatMessage[]>([]);
 
@@ -83,22 +88,32 @@ export default function ChatPage() {
 
   useEffect(() => {
     if (sample) {
-      sleep(1000).then(() =>
+      sleep(1000).then(() => {
+        handlePacket({
+          ptype: 'config',
+          data: {
+            users: [
+              { userId: 0, name: 'sam' },
+              { userId: 1, name: 'bob' },
+              { userId: 2, name: 'alex' },
+            ],
+          },
+        });
         sendPacket({
           ptype: 'message',
           data: range(sample ? parseFloat(sample) : 0).map<ChatMessage>(i => [
             i,
-            i,
+            i % 3,
             `message ${i}`,
           ]),
-        }),
-      );
+        });
+      });
     }
   }, [sample]);
 
   return (
     <main
-      className={styles.main}
+      className={classCat(styles.main, !isInFrame ? styles.noframe : '')}
       style={{ backgroundColor: testing ? 'blue' : undefined }}
     >
       {testing && (
@@ -112,37 +127,26 @@ export default function ChatPage() {
         ></iframe>
       )}
 
-      <section>
-        {Object.keys(config.users)
-          .map<UserId>(k => parseFloat(k))
-          .map(userId => {
-            const user = config.users[userId];
-            return <div key={userId}>{user?.name ?? 'unknown'}</div>;
-          })}
-      </section>
-
-      <section>
-        {messages.map((message, messageIndex) => {
-          const [timestamp, userId, text] = message;
-          const user = config.users[userId];
-          return (
-            <div key={messageIndex}>
-              {user?.name ?? userId}: {text}
-            </div>
-          );
-        })}
-      </section>
-
-      <section>
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            value={input}
-            onChange={evt => setInput(evt.target.value)}
-          />
-          <button type="submit">SEND</button>
-        </form>
-      </section>
+      {messages.map((message, messageIndex) => {
+        const [timestamp, userId, text] = message;
+        const index = config.users.findIndex(u => u.userId === userId);
+        const user = config.users[index];
+        const color = getColor(index);
+        return (
+          <div key={messageIndex} style={{ color }}>
+            {`[${userId}]${user?.name ?? '???'}: ${text}`}
+          </div>
+        );
+      })}
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          name="message"
+          value={input}
+          onChange={evt => setInput(evt.target.value)}
+        />
+        <button type="submit">SEND</button>
+      </form>
     </main>
   );
 }
