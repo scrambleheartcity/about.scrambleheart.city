@@ -16,6 +16,9 @@
 .main.noframe {
   background: blue;
 }
+.main.hide {
+  visibility: hidden;
+}
 
 .main form {
   width: 100%;

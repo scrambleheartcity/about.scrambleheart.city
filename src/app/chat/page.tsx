@@ -1,6 +1,7 @@
 'use client';
 
 import { checkIFrame, classCat, range, sleep } from '@/components/util';
+import { useKeyDown } from '@/hooks/useKeyboard';
 import { useMount } from '@/hooks/useMount';
 import { useOtherWindow } from '@/hooks/useOtherWindow';
 import { useQueryParam } from '@/hooks/useQueryParam';
@@ -71,6 +72,9 @@ export default function ChatPage() {
     [handlePacket],
   );
 
+  const [hide, setHide] = useState(false);
+  useKeyDown('Escape', () => setHide(h => !h));
+
   const [input, setInput] = useState<string>('');
   const onSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
@@ -113,7 +117,11 @@ export default function ChatPage() {
 
   return (
     <main
-      className={classCat(styles.main, !isInFrame ? styles.noframe : '')}
+      className={classCat(
+        styles.main,
+        !isInFrame ? styles.noframe : '',
+        hide ? styles.hide : '',
+      )}
       style={{ backgroundColor: testing ? 'blue' : undefined }}
     >
       {testing && (
