@@ -20,6 +20,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 0.5em;
 }
 .main form * {
   box-sizing: border-box;
@@ -31,14 +32,19 @@
   background-color: #ffffff22;
 }
 .main input {
+  font-family: monospace;
   width: 5rem;
   flex: 1;
   font-size: 1em;
 }
+.main input::placeholder {
+  font-style: italic;
+  font-size: 0.8em;
+  color: #bbb;
+}
 .main button {
   font-size: 1.2em;
   cursor: pointer;
-  font-style: italic;
 
   /* center button text */
   display: flex;
@@ -61,6 +67,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-end;
+  border-bottom: 1px solid grey;
 }
 .message .text {
   flex: 1;

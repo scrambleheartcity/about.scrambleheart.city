@@ -262,13 +262,23 @@ export default function ChatPage() {
           id="message_input"
           type="text"
           value={input}
+          placeholder="type to chat, Enter to SEND, Escape to EXIT"
           onKeyDown={evt =>
             evt.code === 'Escape' &&
             sendPacket({ ptype: ChatPacketType.RequestHide })
           }
           onChange={evt => setInput(evt.target.value)}
         />
-        <button type="submit">SEND</button>
+        <button type="submit" style={{ fontStyle: 'italic' }}>
+          SEND
+        </button>
+        {isInFrame && (
+          <button
+            onClick={() => sendPacket({ ptype: ChatPacketType.RequestHide })}
+          >
+            {'❌'}
+          </button>
+        )}
         {!isInFrame && (
           <button onClick={() => setHideTestChild(h => !h)}>{'<>'}</button>
         )}
