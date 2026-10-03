@@ -22,6 +22,9 @@ type ChatPacket =
   | {
       ptype: 'message';
       data: ChatMessage[];
+    }
+  | {
+      ptype: 'hide';
     };
 
 function getColor(index: number) {
@@ -32,6 +35,7 @@ function getColor(index: number) {
 export default function ChatPage() {
   const testing = useQueryParam('test');
   const sample = useQueryParam('sample');
+  const [hide, setHide] = useState(false);
 
   const [isInFrame, setInFrame] = useState(true);
   useMount(() => setInFrame(checkIFrame(window)));
@@ -54,11 +58,15 @@ export default function ChatPage() {
         case 'message':
           setMessages(c => c.concat(packet.data));
           break;
+        case 'hide':
+          // parent only
+          if (!isInFrame) setHide(true);
+          break;
         default:
-          console.error(packet);
+          console.error(`unexpected packet`, packet);
       }
     },
-    [setConfig, setMessages],
+    [isInFrame, setConfig, setMessages, setHide],
   );
 
   const iframe = useRef<HTMLIFrameElement>(null);
@@ -67,13 +75,10 @@ export default function ChatPage() {
     (packet: ChatPacket) => {
       otherApi.send(packet);
       // also "send" to self
-      handlePacket(packet);
+      if (packet.ptype === 'message') handlePacket(packet);
     },
     [handlePacket],
   );
-
-  const [hide, setHide] = useState(false);
-  useKeyDown('Escape', () => setHide(h => !h));
 
   const [input, setInput] = useState<string>('');
   const onSubmit = useCallback(
@@ -90,6 +95,10 @@ export default function ChatPage() {
     [input],
   );
 
+  // child only
+  useKeyDown('Escape', () => sendPacket({ ptype: 'hide' }));
+
+  // only for testing
   useEffect(() => {
     if (sample) {
       sleep(1000).then(() => {
@@ -117,18 +126,20 @@ export default function ChatPage() {
 
   return (
     <main
-      className={classCat(
-        styles.main,
-        !isInFrame ? styles.noframe : '',
-        hide ? styles.hide : '',
-      )}
+      className={classCat(styles.main, !isInFrame ? styles.noframe : '')}
       style={{ backgroundColor: testing ? 'blue' : undefined }}
     >
       {testing && (
         <iframe
           ref={iframe}
           id="testframe"
-          style={{ position: 'absolute', top: '50px', left: '200px' }}
+          style={{
+            visibility: hide ? 'hidden' : undefined,
+            border: 'none',
+            position: 'absolute',
+            top: '50px',
+            left: '200px',
+          }}
           src="http://localhost:3000/chat"
           width="300px"
           height="500px"
@@ -154,6 +165,7 @@ export default function ChatPage() {
           onChange={evt => setInput(evt.target.value)}
         />
         <button type="submit">SEND</button>
+        {!isInFrame && <button onClick={() => setHide(h => !h)}>{'<>'}</button>}
       </form>
     </main>
   );
