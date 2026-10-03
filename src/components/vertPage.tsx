@@ -6,7 +6,7 @@ import styles from './vertPage.module.css';
 
 export function VertPage(props: PropsWithChildren) {
   return (
-    <main>
+    <main className={styles.main}>
       <Background image="promo" fixed={true}>
         <div className={styles.page}>
           <aside className={styles.column}>

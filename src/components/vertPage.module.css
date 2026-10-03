@@ -1,3 +1,7 @@
+.main {
+  background-color: var(--background-info);
+}
+
 .page {
   min-height: 100vh;
   font-size: 18px;
