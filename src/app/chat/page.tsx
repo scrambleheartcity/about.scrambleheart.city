@@ -4,6 +4,7 @@ import { range } from '@/components/util';
 import { useParentWindow } from '@/hooks/useParentWindow';
 import { useQueryParam } from '@/hooks/useQueryParam';
 import { useCallback, useEffect, useState } from 'react';
+import './chat.module.css';
 
 type UserId = number;
 type ChatMessage = [number, UserId, string];
@@ -66,21 +67,7 @@ export default function ChatPage() {
   );
 
   return (
-    <main
-      style={{
-        background: testing ? '#0FF' : '#ffffff80',
-        fontFamily: 'monospace',
-        fontSize: '2vh',
-        textAlign: 'left',
-        padding: '1em',
-        boxSizing: 'border-box',
-        height: '100vh',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-      }}
-    >
+    <main style={{}}>
       {testing && (
         <iframe
           src="http://localhost:3000/chat"

@@ -1,0 +1,13 @@
+body {
+  background: none;
+  font-family: monospace;
+  font-size: 2vh;
+  text-align: left;
+  padding: 1em;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
