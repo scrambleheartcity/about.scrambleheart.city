@@ -1,6 +1,9 @@
 // manually sync this type file chat app
 
-export type ChatId = string;
+export enum ChatReservedId {
+  System = 'system',
+}
+export type ChatId = ChatReservedId | string;
 export type ChatMessage = {
   timestamp: number;
   userId: ChatId;

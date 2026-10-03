@@ -15,6 +15,7 @@ import {
   ChatNetworkPacket,
   ChatPacketType,
   ChatRawMessagePacket,
+  ChatReservedId,
 } from './chatApp';
 
 type Users = { hash: string; userId: ChatId; name: string }[];
@@ -80,7 +81,13 @@ export default function ChatPage() {
   const sample = useQueryParam('sample');
   const [hideTestChild, setHideTestChild] = useState(false);
   const [isInFrame, setInFrame] = useState(true);
-  const [users, setUsers] = useState<Users>([]);
+  const [users, setUsers] = useState<Users>([
+    {
+      userId: ChatReservedId.System,
+      name: 'system',
+      hash: '',
+    },
+  ]);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
 
   useMount(() => {
@@ -233,17 +240,25 @@ export default function ChatPage() {
       )}
 
       {messages.map((elm, messageIndex) => {
+        const isSystem = elm.userId === ChatReservedId.System;
         const index = users.findIndex(u => u.userId === elm.userId);
         const user = users[index];
-        const color = getColor(index);
+        const color =
+          {
+            [ChatReservedId.System]: 'white',
+          }[elm.userId] ?? getColor(index);
         return (
-          <div key={messageIndex} style={{ color }} className={styles.message}>
+          <div
+            key={messageIndex}
+            style={{ color, fontStyle: isSystem ? 'italic' : undefined }}
+            className={styles.message}
+          >
             <div className={styles.text}>
               <b>
                 {user?.name ?? elm.name}
-                <i style={{ fontSize: '0.8em' }}>
-                  (#{user.hash ?? hashUserId(elm.userId)})
-                </i>
+                {user.hash && (
+                  <i style={{ fontSize: '0.8em' }}>(#{user.hash})</i>
+                )}
                 {': '}
               </b>
               {elm.message}
