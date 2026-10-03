@@ -13,7 +13,7 @@ export function useOtherWindow<Incoming, Outgoing>(
       const iframe = iframeRef?.current?.contentWindow;
       const parent = window.self !== window.top ? window.parent : null;
       const otherWindow = iframe ?? parent;
-      otherWindow?.postMessage(data);
+      otherWindow?.postMessage(data, '*');
     },
   });
 
