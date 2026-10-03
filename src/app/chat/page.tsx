@@ -1,31 +1,21 @@
 'use client';
 
-import { checkIFrame, classCat, range, sleep } from '@/components/util';
+import { checkIFrame, classCat } from '@/components/util';
 import { useKeyDown } from '@/hooks/useKeyboard';
 import { useMount } from '@/hooks/useMount';
 import { useOtherWindow } from '@/hooks/useOtherWindow';
 import { useQueryParam } from '@/hooks/useQueryParam';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import styles from './chat.module.css';
+import {
+  ChatAppPacket,
+  ChatId,
+  ChatMessage,
+  ChatNetworkPacket,
+  ChatPacketType,
+} from './chatApp';
 
-type UserId = number;
-type ChatMessage = [number, UserId, string];
-type ChatConfig = {
-  open: boolean;
-  users: { userId: UserId; name: string }[];
-};
-type ChatPacket =
-  | {
-      ptype: 'config';
-      data: Partial<ChatConfig>;
-    }
-  | {
-      ptype: 'message';
-      data: ChatMessage[];
-    }
-  | {
-      ptype: 'hide';
-    };
+type Users = { userId: ChatId; name: string }[];
 
 function getColor(index: number) {
   const options = ['red', 'green', 'yellow', 'purple'];
@@ -40,42 +30,42 @@ export default function ChatPage() {
   const [isInFrame, setInFrame] = useState(true);
   useMount(() => setInFrame(checkIFrame(window)));
 
-  const [config, setConfig] = useState<ChatConfig>({
-    open: true,
-    users: [],
-  });
+  const [users, setUsers] = useState<Users>([]);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
 
   const handlePacket = useCallback(
-    (packet: ChatPacket) => {
+    (packet: ChatNetworkPacket) => {
       switch (packet.ptype) {
-        case 'config':
-          setConfig(config => ({
-            ...config,
-            ...packet.data,
-          }));
-          break;
-        case 'message':
+        case ChatPacketType.NetworkMessage:
+          const newUsers = users.concat();
+          for (const msg of packet.data) {
+            const user = newUsers.find(u => u.userId === msg.userId);
+            if (!user) {
+              newUsers.push({ userId: msg.userId, name: msg.name });
+            } else {
+              user.name = msg.name;
+            }
+          }
+          setUsers(c => c.concat(newUsers));
           setMessages(c => c.concat(packet.data));
-          break;
-        case 'hide':
-          // parent only
-          if (!isInFrame) setHide(true);
           break;
         default:
           console.error(`unexpected packet`, packet);
       }
     },
-    [isInFrame, setConfig, setMessages, setHide],
+    [isInFrame, setMessages, setHide],
   );
 
   const iframe = useRef<HTMLIFrameElement>(null);
-  const otherApi = useOtherWindow<ChatPacket>(iframe, handlePacket);
+  const otherApi = useOtherWindow<ChatNetworkPacket, ChatAppPacket>(
+    iframe,
+    handlePacket,
+  );
   const sendPacket = useCallback(
-    (packet: ChatPacket) => {
+    (packet: ChatAppPacket) => {
       otherApi.send(packet);
       // also "send" to self
-      if (packet.ptype === 'message') handlePacket(packet);
+      // if (packet.ptype === ChatPacketType.RawMessage) handlePacket(packet);
     },
     [handlePacket],
   );
@@ -87,8 +77,8 @@ export default function ChatPage() {
       if (input.length > 0) {
         setInput('');
         sendPacket({
-          ptype: 'message',
-          data: [[new Date().getTime(), 5, input]],
+          ptype: ChatPacketType.RawMessage,
+          data: input,
         });
       }
     },
@@ -96,33 +86,7 @@ export default function ChatPage() {
   );
 
   // child only
-  useKeyDown('Escape', () => sendPacket({ ptype: 'hide' }));
-
-  // only for testing
-  useEffect(() => {
-    if (sample) {
-      sleep(1000).then(() => {
-        handlePacket({
-          ptype: 'config',
-          data: {
-            users: [
-              { userId: 0, name: 'sam' },
-              { userId: 1, name: 'bob' },
-              { userId: 2, name: 'alex' },
-            ],
-          },
-        });
-        sendPacket({
-          ptype: 'message',
-          data: range(sample ? parseFloat(sample) : 0).map<ChatMessage>(i => [
-            i,
-            i % 3,
-            `message ${i}`,
-          ]),
-        });
-      });
-    }
-  }, [sample]);
+  useKeyDown('Escape', () => sendPacket({ ptype: ChatPacketType.RequestHide }));
 
   return (
     <main
@@ -146,14 +110,13 @@ export default function ChatPage() {
         ></iframe>
       )}
 
-      {messages.map((message, messageIndex) => {
-        const [timestamp, userId, text] = message;
-        const index = config.users.findIndex(u => u.userId === userId);
-        const user = config.users[index];
+      {messages.map((elm, messageIndex) => {
+        const index = users.findIndex(u => u.userId === elm.userId);
+        const user = users[index];
         const color = getColor(index);
         return (
           <div key={messageIndex} style={{ color }}>
-            {`[${userId}]${user?.name ?? '???'}: ${text}`}
+            {`[${elm.userId}]${user?.name ?? elm.name}: ${elm.message}`}
           </div>
         );
       })}

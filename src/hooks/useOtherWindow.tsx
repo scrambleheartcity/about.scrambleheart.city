@@ -3,13 +3,13 @@ import { RefObject, useCallback, useEffect, useState } from 'react';
 type WindowApi<T> = {
   send: (data: T) => void;
 };
-export function useOtherWindow<T>(
+export function useOtherWindow<Incoming, Outgoing>(
   iframeRef: RefObject<HTMLIFrameElement> | null,
-  handler: (data: T) => void,
-): WindowApi<T> {
+  handler: (data: Incoming) => void,
+): WindowApi<Outgoing> {
   // setup api once using refs
-  const [api] = useState<WindowApi<T>>({
-    send: (data: T) => {
+  const [api] = useState<WindowApi<Outgoing>>({
+    send: (data: Outgoing) => {
       const iframe = iframeRef?.current?.contentWindow;
       const parent = window.self !== window.top ? window.parent : null;
       const otherWindow = iframe ?? parent;
@@ -19,7 +19,7 @@ export function useOtherWindow<T>(
 
   // handler that can be adjusted
   const onMessage = useCallback(
-    (evt: MessageEvent<T>) => handler(evt.data),
+    (evt: MessageEvent<Incoming>) => handler(evt.data),
     [handler],
   );
   useEffect(() => {
