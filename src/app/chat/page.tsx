@@ -1,0 +1,97 @@
+'use client';
+
+import { VertPage } from '@/components/vertPage';
+import { useParentWindow } from '@/hooks/useParentWindow';
+import { useQueryParam } from '@/hooks/useQueryParam';
+import { useCallback, useState } from 'react';
+
+type UserId = number;
+type ChatMessage = [number, UserId, string];
+type ChatState = {
+  open: boolean;
+  users: {
+    [userId: UserId]: {
+      name: string;
+    };
+  };
+  message: ChatMessage[];
+};
+
+export default function ChatPage() {
+  const testing = useQueryParam('test');
+
+  const [chat, setChat] = useState<ChatState>({
+    open: true,
+    users: {},
+    message: [],
+  });
+  const appendMessage = useCallback(
+    (evt: MessageEvent<ChatMessage>) =>
+      setChat(c => ({
+        ...c,
+        message: [...c.message, evt.data],
+      })),
+    [setChat],
+  );
+  const parent = useParentWindow<ChatMessage>(appendMessage);
+
+  const [input, setInput] = useState<string>('');
+  const onSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      if (input.length > 0 && parent) {
+        parent.send([new Date().getTime(), 5, input]);
+        setInput('');
+      }
+    },
+    [input],
+  );
+
+  return (
+    <VertPage>
+      {testing && (
+        <iframe
+          src="http://localhost:3000/chat"
+          width="100%"
+          height="500px"
+        ></iframe>
+      )}
+      <section>
+        <h1>Chat</h1>
+        chat time!
+      </section>
+
+      <section>
+        {Object.keys(chat.users)
+          .map<UserId>(k => parseFloat(k))
+          .map(userId => {
+            const user = chat.users[userId];
+            return <div key={userId}>{user?.name ?? 'unknown'}</div>;
+          })}
+      </section>
+
+      <section>
+        {chat.message.map((message, messageIndex) => {
+          const [timestamp, userId, text] = message;
+          const user = chat.users[userId];
+          return (
+            <div key={messageIndex}>
+              {user?.name ?? userId}: {text}
+            </div>
+          );
+        })}
+      </section>
+
+      <section>
+        <form onSubmit={onSubmit}>
+          <input
+            type="text"
+            value={input}
+            onChange={evt => setInput(evt.target.value)}
+          />
+          <button type="submit">SEND</button>
+        </form>
+      </section>
+    </VertPage>
+  );
+}
