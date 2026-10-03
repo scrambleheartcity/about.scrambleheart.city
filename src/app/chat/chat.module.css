@@ -1,4 +1,4 @@
-body {
+.main {
   background: none;
   font-family: monospace;
   font-size: 2vh;
@@ -10,4 +10,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.main input {
+  height: 3vh;
+}
+.main button {
+  height: 5vh;
 }
