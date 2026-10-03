@@ -15,11 +15,34 @@ import {
   ChatPacketType,
 } from './chatApp';
 
-type Users = { userId: ChatId; name: string }[];
+type Users = { hash: string; userId: ChatId; name: string }[];
 
 function getColor(index: number) {
-  const options = ['red', 'green', 'yellow', 'purple'];
+  const options = [
+    '#F9B2D7',
+    '#CFECF3',
+    '#DAF9DE',
+    '#F6FFDC',
+    '#F9B2D7',
+    '#CFECF3',
+    '#DAF9DE',
+    '#F6FFDC',
+  ];
   return options[index % options.length];
+}
+
+function hashUserId(userId: string) {
+  const length = 4;
+  const hashNum = userId
+    .split('')
+    .reduce(
+      (sum, char, index) => sum + (index + 1) * 7 * char.charCodeAt(0),
+      0,
+    );
+  const hashStr = (hashNum % Math.pow(10, length))
+    .toString()
+    .padStart(length, '0');
+  return hashStr;
 }
 
 export default function ChatPage() {
@@ -41,7 +64,11 @@ export default function ChatPage() {
           for (const msg of packet.data) {
             const user = newUsers.find(u => u.userId === msg.userId);
             if (!user) {
-              newUsers.push({ userId: msg.userId, name: msg.name });
+              newUsers.push({
+                hash: hashUserId(msg.userId),
+                userId: msg.userId,
+                name: msg.name,
+              });
             } else {
               user.name = msg.name;
             }
@@ -115,8 +142,22 @@ export default function ChatPage() {
         const user = users[index];
         const color = getColor(index);
         return (
-          <div key={messageIndex} style={{ color }}>
-            {`[${elm.userId}]${user?.name ?? elm.name}: ${elm.message}`}
+          <div key={messageIndex} style={{ color }} className={styles.message}>
+            <div className={styles.text}>
+              <b>
+                {user?.name ?? elm.name}
+                <i style={{ fontSize: '0.8em' }}>
+                  (#{user.hash ?? hashUserId(elm.userId)})
+                </i>
+                {': '}
+              </b>
+              {elm.message}
+            </div>
+            <div className={styles.time}>
+              <i style={{ fontSize: '0.8em' }}>
+                {new Date(elm.timestamp).toLocaleTimeString()}
+              </i>
+            </div>
           </div>
         );
       })}

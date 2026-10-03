@@ -54,3 +54,14 @@
 .main.hide {
   visibility: hidden;
 }
+
+.message {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.message .text {
+  flex: 1;
+}

@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 export function useKeyDown(targetKey: string, callback: () => void) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      console.log(event.key);
       if (event.key === targetKey) {
         callback();
       }
