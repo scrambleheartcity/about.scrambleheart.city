@@ -1,9 +1,15 @@
 import { useEffect } from 'react';
 
-export function useKeyDown(targetKey: string, callback: () => void) {
+export function useKeyDown(
+  targetKeyCode: string | string[],
+  callback: () => void,
+) {
   useEffect(() => {
+    const keys = new Set(
+      Array.isArray(targetKeyCode) ? targetKeyCode : [targetKeyCode],
+    );
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === targetKey) {
+      if (keys.has(event.code)) {
         callback();
       }
     };
@@ -15,5 +21,5 @@ export function useKeyDown(targetKey: string, callback: () => void) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [targetKey, callback]); // Re-run if target key or callback changes
+  }, [targetKeyCode, callback]); // Re-run if target key or callback changes
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { checkIFrame, classCat, range, sleep } from '@/components/util';
+import { useKeyDown } from '@/hooks/useKeyboard';
 import { useMount } from '@/hooks/useMount';
 import { useChildFrame, useParentWindow } from '@/hooks/useOtherWindow';
 import { useQueryParam } from '@/hooks/useQueryParam';
@@ -98,7 +99,6 @@ export default function ChatPage() {
 
   // state side effects
   useEffect(() => {
-    console.log('setVisible', isVisible);
     if (isVisible) {
       inputRef.current?.focus();
     } else {
@@ -202,6 +202,10 @@ export default function ChatPage() {
     }
   }, [sample]);
 
+  useKeyDown(['Escape', 'Backslash'], () =>
+    sendPacket({ ptype: ChatPacketType.RequestHide }),
+  );
+
   if (!isVisible) {
     // we dont want expensive dom manip while chat is closed
     return (
@@ -218,9 +222,6 @@ export default function ChatPage() {
     <main
       className={classCat(styles.main, !isInFrame ? styles.noframe : '')}
       style={{ backgroundColor: isTestParent ? 'blue' : undefined }}
-      onClick={() => {
-        inputRef.current?.focus();
-      }}
     >
       {isTestParent && (
         <iframe
@@ -277,11 +278,8 @@ export default function ChatPage() {
           id="message_input"
           type="text"
           value={input}
+          autoComplete="off"
           placeholder="type to chat, Enter to SEND, Escape to EXIT"
-          onKeyDown={evt =>
-            evt.code === 'Escape' &&
-            sendPacket({ ptype: ChatPacketType.RequestHide })
-          }
           onChange={evt => setInput(evt.target.value)}
         />
         <button type="submit" style={{ fontStyle: 'italic' }}>
