@@ -5,6 +5,13 @@ import { useKeyDown } from '@/hooks/useKeyboard';
 import { useMount } from '@/hooks/useMount';
 import { useChildFrame, useParentWindow } from '@/hooks/useOtherWindow';
 import { useQueryParam } from '@/hooks/useQueryParam';
+import {
+  CensorContext,
+  RegExpMatcher,
+  TextCensor,
+  englishDataset,
+  englishRecommendedTransformers,
+} from 'obscenity';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './chat.module.css';
 import {
@@ -20,6 +27,17 @@ import {
 } from './chatApp';
 
 type Users = { hash: string; userId: ChatId; name: string }[];
+
+const matcher = new RegExpMatcher({
+  ...englishDataset.build(),
+  ...englishRecommendedTransformers,
+});
+const asteriskStrategy = (ctx: CensorContext) => '*'.repeat(ctx.matchLength);
+const censor = new TextCensor().setStrategy(asteriskStrategy);
+function censorText(message: string) {
+  const matches = matcher.getAllMatches(message);
+  return censor.applyTo(message, matches);
+}
 
 function getColor(index: number) {
   const options = [
@@ -117,18 +135,26 @@ export default function ChatPage() {
           const newUsers = users.concat();
           for (const msg of packet.data) {
             const user = newUsers.find(u => u.userId === msg.userId);
+            const fixedName = censorText(msg.name);
             if (!user) {
               newUsers.push({
                 hash: hashUserId(msg.userId),
                 userId: msg.userId,
-                name: msg.name,
+                name: fixedName,
               });
             } else {
-              user.name = msg.name;
+              user.name = fixedName;
             }
           }
           setUsers(c => c.concat(newUsers));
-          setMessages(c => c.concat(packet.data));
+          setMessages(c =>
+            c.concat(
+              packet.data.map(cm => ({
+                ...cm,
+                message: censorText(cm.message),
+              })),
+            ),
+          );
           break;
         default:
           console.error(`unexpected packet`, packet);
