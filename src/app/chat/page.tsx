@@ -309,7 +309,8 @@ export default function ChatPage() {
           value={input}
           autoComplete="off"
           placeholder="type to chat, Enter to SEND, Escape to EXIT"
-          onChange={evt => setInput(evt.target.value)}
+          // remove backslash since its reserved for closing
+          onChange={evt => setInput(evt.target.value.replace('\\', ''))}
         />
         <button type="submit" style={{ fontStyle: 'italic' }}>
           SEND
