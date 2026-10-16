@@ -30,9 +30,9 @@ function PlaytestInfoActive() {
       <br />
       <br />
       <b>
-        You must join the{' '}
+        Please join the{' '}
         <ExternalLink href={DiscordUrl}>official Discord server</ExternalLink>{' '}
-        to get the password.
+        for the latest info.
       </b>
       <br />
       <br />
@@ -59,11 +59,8 @@ function FAQ() {
       <p>
         <b>{`> How can I support the game?`}</b>
         <br />
-        Wishlisting us on{' '}
-        <a target="_blank" href={SteamUrl}>
-          Steam
-        </a>{' '}
-        helps a lot!
+        Wishlist us on <ExternalLink href={SteamUrl}>Steam</ExternalLink> and
+        tell your friends!
       </p>
       <p>
         <b>{`> Am I allowed to stream/record footage?`}</b>
@@ -75,8 +72,8 @@ function FAQ() {
       <p>
         <b>{`> Can I share this with my friends?`}</b>
         <br />
-        Yes! Just make sure they join the Discord server so they can get the
-        latest password and hear about updates.
+        Yes! You can share the URL or point them to the playtest on our{' '}
+        <ExternalLink href={SteamUrl}>Steam page</ExternalLink>.
       </p>
       <p>
         <b>{`> The game doesn't have any tutorials yet. How do I play?`}</b>
